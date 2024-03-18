@@ -1,0 +1,66 @@
+#MenuBar {
+    background-color: white;
+    border-bottom-right-radius: 25px;
+    border-top-right-radius: 25px;
+    max-width: 17.5vw;
+    height: 100vh;
+    text-align: center;
+    position: fixed;
+}
+
+#MenuBar input {
+    max-width: 90%;
+    height: auto;
+    margin-top: 1.5vh;
+}
+
+#TechCodeLogo {
+    border-radius: 25px;
+    border: none;
+    max-width: 90%;
+    height: auto;
+    margin-top: 1.5vh;
+}
+
+#LoginButton {
+    border: none;
+    background-color: transparent;
+    width: 90%;
+    text-decoration: none;
+    transition: all 0.5s;
+    cursor: pointer;
+    color: black;
+    font-size: 25px;
+    border-radius: 25px;
+}
+
+#LoginButton:hover {
+    background-color: blue;
+    color: white
+}
+
+#LoginButtonspan {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+  
+#LoginButton span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+#LoginButton:hover span {
+    padding-right: 25px;
+}
+  
+#LoginButton:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+

@@ -1,0 +1,94 @@
+@keyframes scroll {
+    to {
+        transform: translate(calc(-50% - 3.75rem));
+    }
+}
+
+.ScreenItem{
+    background-color: white;
+    border-radius: 25px;
+    text-align: center;
+    padding: 0.5%;
+    margin-top: 2.5vh;
+    position: relative;
+}
+
+.ScreenItem h1 {
+    font-size: 35px;
+}
+
+.ScreenItem p {
+    font-size: 25px;
+}
+
+.LineItem {
+    display: flex;
+    flex-direction: row;
+}
+
+#QuickMenu {
+    margin-left: 2.5vw;
+}
+
+.QuickMenuButton {
+    border: 2px solid black;
+    background-color: purple;
+    width: 90%;
+    text-decoration: none;
+    transition: all 0.5s;
+    cursor: pointer;
+    color: white;
+    font-size: 25px;
+    border-radius: 25px;
+}
+
+.QuickMenuButton:hover {
+    background-color: blue;
+    color: white
+}
+
+#LatestProduct {
+    width: 65vw;
+}
+
+.Companies {
+    max-width: 100%;
+    max-height: 25vh;
+}
+
+.CompanyLogo {
+    height: 20vh;
+    max-height: fit-content;
+    object-fit: contain;
+}
+
+.Companies__inner {
+    padding-block: 1rem;
+    gap: 7.5rem;
+    display: flex;
+    flex-direction: row;
+    color: white;
+}
+
+.Companies[data-animated=true]{
+    overflow: hidden;
+    mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+}
+
+.Companies[data-animated=true] .Companies__inner{
+    width: max-content;
+    flex-wrap: nowrap;
+    animation: scroll var(--_animation-duration, 60s) var(--animation-direction, forwards) linear infinite;
+}
+
+.Companies[data-direction="right"]{
+    --animation-direction: reverse;
+}
+
+.Companies[data-direction="left"]{
+    --animation-direction: forwards;
+}
+
+#TechCodeLogoInput{
+    border-radius: 25px;
+}

@@ -1,0 +1,30 @@
+.LetterOnBlack{
+    color: white;
+}
+
+.Onliner {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+#WorkingImage {
+    border-radius: 25px;
+    width: 50%;
+}
+#WhyToWorkText {
+    margin-left: 2.5vw;
+}
+
+
+.Oppertunity_Choser {
+    background-color: white;
+    border-radius: 25px;
+    text-align: center;
+    padding: 1%;
+    margin-top: 2.5vh;
+}
+
+#CoreValuesText {
+    margin-top: 2.5vh;
+}

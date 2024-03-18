@@ -1,0 +1,21 @@
+#SystemCreateButton {
+    border: none;
+    background-color: transparent;
+    width: 90%;
+    text-decoration: none;
+    transition: all 0.5s;
+    cursor: pointer;
+    color: black;
+    font-size: 25px;
+    border-radius: 25px;
+}
+
+#SystemCreateButton:hover {
+    background-color: blue;
+    color: white
+}
+
+.AcceptanceInput {
+    width: auto;
+    height: auto;
+}

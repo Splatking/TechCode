@@ -1,0 +1,46 @@
+@font-face {
+    font-family: Micro5-Regular;
+    src: url("./components/Fonts/Micro5-Regular.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: DancingFont;
+    src: url("./components/Fonts/DancingScript-VariableFont_wght.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: Garamond-Regular;
+    src: url("../components/Fonts/EBGaramond-VariableFont_wght.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: Garamond-Italic;
+    src: url("../components/Fonts/EBGaramond-Italic-VariableFont_wght.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: Madimi-Regular;
+    src: url("../components/Fonts/MadimiRegular.ttf") format("truetype");
+}
+
+body {
+    font-family: "Madimi-Regular", sans-serif;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    background-size: contain;
+    background-color: black;
+}
+
+.MainScreen {
+    max-width: 77.5vw;
+    position: fixed;
+    margin-left: 20vw;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#HomePage {
+    visibility: visible;
+}
