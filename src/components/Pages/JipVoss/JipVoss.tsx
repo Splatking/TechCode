@@ -44,6 +44,7 @@ function JipVoss() {
                             <li>Typescript</li>
                             <li>React</li>
                             <li>Working with a framework</li>
+                            <li>Working with GIT (in Github and Gitlab)</li>
                         </ul>
                         <p className="PersonalText" id="Third_Lines">
                             Besides all the ICT fun I'm also taking driving lessons at the moment. I still have a few steps to go for the pink paper, but it’s going pretty steady now.<br/><br/>
