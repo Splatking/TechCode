@@ -3,6 +3,7 @@ import "./style.css";
 import FontysLogo from "../../Images/Fontys_Logo.png";
 import DeltaLogo from "../../Images/Delta_Logo.png";
 import TechCodeLogo from "../../Images/TechCode_Logo.jpg";
+import SitePreview from "../../Images/SitePreview.png";
 import { Setters, HideScreens } from "../../Scripts/ScreenHandler";
 
 const RenderMainScreen: React.FC<Setters> = ({ stateSetterFunctions }) => {
@@ -31,6 +32,10 @@ const RenderMainScreen: React.FC<Setters> = ({ stateSetterFunctions }) => {
 
     function LoadDelta(){
         window.open("https://deltafhict.nl/")
+    }
+
+    function LoadLatestProduct(){
+
     }
 
     //This function starts cloning of the companies logos to put in the scrolling loop
@@ -69,6 +74,10 @@ const RenderMainScreen: React.FC<Setters> = ({ stateSetterFunctions }) => {
             <div className="LineItem">
                 <div className="ScreenItem" id="LatestProduct">
                     <h1>Latest product</h1>
+                    <h2>TechCode site</h2>
+                    <img src={SitePreview} alt="Latest product preview" id="PreviewImage"/>
+                    <p>The TechCode site has been created in semester 2 of Open Learning and Delta for Jip Voss at Fontys HBO-ICT. The site has been released around - and will be used as an portofolio site!</p>
+                    <button onClick={LoadLatestProduct} className="QuickMenuButton">Show me more!</button>
                 </div>
                 <div className="ScreenItem" id="QuickMenu">
                     <h1>Quick menu</h1>

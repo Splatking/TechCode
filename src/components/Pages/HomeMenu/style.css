@@ -51,13 +51,19 @@
     width: 65vw;
 }
 
+#PreviewImage {
+    border: 2px solid black;
+    border-radius: 25px;
+    width: 80%;
+}
+
 .Companies {
     max-width: 100%;
-    max-height: 25vh;
+    max-height: 12.5vh;
 }
 
 .CompanyLogo {
-    height: 20vh;
+    height: 7.5vh;
     max-height: fit-content;
     object-fit: contain;
 }
