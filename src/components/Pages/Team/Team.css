@@ -1,3 +1,40 @@
 #TitleTeam {
     color: white;
 }
+
+.LineItem {
+    display: flex;
+    flex-direction: row;
+}
+
+.TableOfRanks {
+    width: 40%;
+    background-color: white;
+    border-radius: 25px;
+}
+
+#TableOfRanksTitle {
+    text-align: center;
+}
+
+table, th, td {
+    border: 1px solid;
+}
+
+table {
+    width: 100%;
+}
+
+th {
+    background-color: blue;
+    color: white;
+}
+
+#LastItemL {
+    border-bottom-left-radius: 25px;
+}
+
+.IntroductionGUI {
+    color: white;
+    margin-left: 2.5%;
+}
