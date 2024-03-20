@@ -1,36 +1,11 @@
 //imports
 import React from "react";
 import "./style.css";
+import { Setters, HideScreens } from "../../Scripts/ScreenHandler";
 
-//interfaces
-interface ButtonsProps {
-    stateSetterFunctions: {
-      setMenuBarVisible: React.Dispatch<React.SetStateAction<boolean>>;
-      setHomePageVisible: React.Dispatch<React.SetStateAction<boolean>>;
-      setProductPageVisible: React.Dispatch<React.SetStateAction<boolean>>;
-      setAccountScreenVisible: React.Dispatch<React.SetStateAction<boolean>>;
-      setLoginScreenVisible: React.Dispatch<React.SetStateAction<boolean>>;
-      setCreateScreenVisible: React.Dispatch<React.SetStateAction<boolean>>;
-      setDashboardScreenVisible: React.Dispatch<React.SetStateAction<boolean>>;
-      setWorkingByScreenVisible: React.Dispatch<React.SetStateAction<boolean>>;
-      setTeamScreenVisible: React.Dispatch<React.SetStateAction<boolean>>;
-      setJipVossVisible: React.Dispatch<React.SetStateAction<boolean>>;
-    };
-}
-
-const Buttons: React.FC<ButtonsProps> = ({ stateSetterFunctions }) => {
-    //functions
-    function HideScreens(){
-        stateSetterFunctions.setHomePageVisible(false);
-        stateSetterFunctions.setProductPageVisible(false);
-        stateSetterFunctions.setAccountScreenVisible(false);
-        stateSetterFunctions.setDashboardScreenVisible(false);
-        stateSetterFunctions.setWorkingByScreenVisible(false);
-        stateSetterFunctions.setTeamScreenVisible(false);
-    }
-
+const Buttons: React.FC<Setters> = ({ stateSetterFunctions }) => {
     function LoadDashboard(){
-        HideScreens();
+        HideScreens(stateSetterFunctions);
         if(sessionStorage.getItem("TechName") == null){
             stateSetterFunctions.setMenuBarVisible(false);
             stateSetterFunctions.setLoginScreenVisible(true);
@@ -40,32 +15,32 @@ const Buttons: React.FC<ButtonsProps> = ({ stateSetterFunctions }) => {
     };
 
     function LoadProductPage(){
-        HideScreens();
+        HideScreens(stateSetterFunctions);
         stateSetterFunctions.setProductPageVisible(true);
     }
 
     function LoadOurTeam(){
-        HideScreens();
+        HideScreens(stateSetterFunctions);
         stateSetterFunctions.setTeamScreenVisible(true);
     }
 
     function LoadJipVoss(){
-        HideScreens();
+        HideScreens(stateSetterFunctions);
         stateSetterFunctions.setJipVossVisible(true);
     }
 
     function LoadWorkingByTechCode(){
-        HideScreens();
+        HideScreens(stateSetterFunctions);
         stateSetterFunctions.setWorkingByScreenVisible(true);
     }
 
     function LoadOurPolicies(){
-        HideScreens();
+        HideScreens(stateSetterFunctions);
         stateSetterFunctions.setProductPageVisible(true);
     }
 
     function LoadVacancies(){
-        HideScreens();
+        HideScreens(stateSetterFunctions);
         stateSetterFunctions.setProductPageVisible(true);
     }
 

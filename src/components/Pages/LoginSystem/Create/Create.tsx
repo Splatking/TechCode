@@ -1,22 +1,8 @@
 import React, { Fragment, useState } from "react";
 import "./style.css";
+import { Setters } from "../../../Scripts/ScreenHandler";
 
-//interfaces
-interface Creationprops {
-    stateSetterFunctions: {
-      setMenuBarVisible: React.Dispatch<React.SetStateAction<boolean>>;
-      setHomePageVisible: React.Dispatch<React.SetStateAction<boolean>>;
-      setProductPageVisible: React.Dispatch<React.SetStateAction<boolean>>;
-      setAccountScreenVisible: React.Dispatch<React.SetStateAction<boolean>>;
-      setLoginScreenVisible: React.Dispatch<React.SetStateAction<boolean>>;
-      setCreateScreenVisible: React.Dispatch<React.SetStateAction<boolean>>;
-      setWorkingByScreenVisible: React.Dispatch<React.SetStateAction<boolean>>;
-      setTeamScreenVisible: React.Dispatch<React.SetStateAction<boolean>>;
-      setJipVossVisible: React.Dispatch<React.SetStateAction<boolean>>;
-    };
-}
-
-const RenderCreateScreen: React.FC<Creationprops> = ({ stateSetterFunctions }) => {
+const RenderCreateScreen: React.FC<Setters> = ({ stateSetterFunctions }) => {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [phonenumber, setPhonenumber] = useState('');

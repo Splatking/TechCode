@@ -1,32 +1,11 @@
 import { Fragment } from "react/jsx-runtime";
 import "./style.css";
-import WorkingImage from "../../Images/Working_Image.png"
+import WorkingImage from "../../Images/Working_Image.png";
+import { Setters, HideScreens } from "../../Scripts/ScreenHandler";
 
-interface WorkingByProps {
-    stateSetterFunctions: {
-      setMenuBarVisible: React.Dispatch<React.SetStateAction<boolean>>;
-      setHomePageVisible: React.Dispatch<React.SetStateAction<boolean>>;
-      setProductPageVisible: React.Dispatch<React.SetStateAction<boolean>>;
-      setAccountScreenVisible: React.Dispatch<React.SetStateAction<boolean>>;
-      setLoginScreenVisible: React.Dispatch<React.SetStateAction<boolean>>;
-      setCreateScreenVisible: React.Dispatch<React.SetStateAction<boolean>>;
-      setWorkingByScreenVisible: React.Dispatch<React.SetStateAction<boolean>>;
-      setTeamScreenVisible: React.Dispatch<React.SetStateAction<boolean>>;
-      setJipVossVisible: React.Dispatch<React.SetStateAction<boolean>>;
-    };
-}
-
-const WorkingByScreen: React.FC<WorkingByProps> = ({ stateSetterFunctions }) => {
-    //functions
-    function HideScreens(){
-        stateSetterFunctions.setHomePageVisible(false);
-        stateSetterFunctions.setProductPageVisible(false);
-        stateSetterFunctions.setAccountScreenVisible(false);
-        stateSetterFunctions.setWorkingByScreenVisible(false);
-    }
-
+const WorkingByScreen: React.FC<Setters> = ({ stateSetterFunctions }) => {
     function LoadVacancies(){
-        HideScreens();
+        HideScreens(stateSetterFunctions);
         stateSetterFunctions.setHomePageVisible(true);
     }
 

@@ -1,22 +1,8 @@
 import React, { Fragment, useState } from "react";
 import "./style.css";
+import { Setters } from "../../../Scripts/ScreenHandler";
 
-//interfaces
-interface LoginProps {
-    stateSetterFunctions: {
-      setMenuBarVisible: React.Dispatch<React.SetStateAction<boolean>>;
-      setHomePageVisible: React.Dispatch<React.SetStateAction<boolean>>;
-      setProductPageVisible: React.Dispatch<React.SetStateAction<boolean>>;
-      setAccountScreenVisible: React.Dispatch<React.SetStateAction<boolean>>;
-      setLoginScreenVisible: React.Dispatch<React.SetStateAction<boolean>>;
-      setCreateScreenVisible: React.Dispatch<React.SetStateAction<boolean>>;
-      setWorkingByScreenVisible: React.Dispatch<React.SetStateAction<boolean>>;
-      setTeamScreenVisible: React.Dispatch<React.SetStateAction<boolean>>;
-      setJipVossVisible: React.Dispatch<React.SetStateAction<boolean>>;
-    };
-}
-
-const RenderLoginScreen: React.FC<LoginProps> = ({ stateSetterFunctions }) => {
+const RenderLoginScreen: React.FC<Setters> = ({ stateSetterFunctions }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 

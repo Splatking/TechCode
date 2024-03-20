@@ -3,46 +3,25 @@ import "./style.css";
 import FontysLogo from "../../Images/Fontys_Logo.png";
 import DeltaLogo from "../../Images/Delta_Logo.png";
 import TechCodeLogo from "../../Images/TechCode_Logo.jpg";
+import { Setters, HideScreens } from "../../Scripts/ScreenHandler";
 
-//interfaces
-interface HomeScreenProps {
-    stateSetterFunctions: {
-      setMenuBarVisible: React.Dispatch<React.SetStateAction<boolean>>;
-      setHomePageVisible: React.Dispatch<React.SetStateAction<boolean>>;
-      setProductPageVisible: React.Dispatch<React.SetStateAction<boolean>>;
-      setAccountScreenVisible: React.Dispatch<React.SetStateAction<boolean>>;
-      setLoginScreenVisible: React.Dispatch<React.SetStateAction<boolean>>;
-      setCreateScreenVisible: React.Dispatch<React.SetStateAction<boolean>>;
-      setWorkingByScreenVisible: React.Dispatch<React.SetStateAction<boolean>>;
-      setTeamScreenVisible: React.Dispatch<React.SetStateAction<boolean>>;
-      setJipVossVisible: React.Dispatch<React.SetStateAction<boolean>>;
-    };
-}
-
-const RenderMainScreen: React.FC<HomeScreenProps> = ({ stateSetterFunctions }) => {
-    //functions
-    function HideScreens(){
-        stateSetterFunctions.setHomePageVisible(false);
-        stateSetterFunctions.setProductPageVisible(false);
-        stateSetterFunctions.setAccountScreenVisible(false);
-    }
-
+const RenderMainScreen: React.FC<Setters> = ({ stateSetterFunctions }) => {
     function Reload(){
         window.location.reload();
     }
 
     function LoadTechAccountPage(){
-        HideScreens();
+        HideScreens(stateSetterFunctions);
         stateSetterFunctions.setAccountScreenVisible(true);
     }
 
     function LoadProductPage(){
-        HideScreens();
+        HideScreens(stateSetterFunctions);
         stateSetterFunctions.setAccountScreenVisible(true);
     }
 
     function LoadWorkingBy(){
-        HideScreens();
+        HideScreens(stateSetterFunctions);
         stateSetterFunctions.setAccountScreenVisible(true);
     }
 
