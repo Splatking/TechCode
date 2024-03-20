@@ -3,6 +3,7 @@ import "./style.css";
 import FontysLogo from "../../Images/Fontys_Logo.png";
 import DeltaLogo from "../../Images/Delta_Logo.png";
 import TechCodeLogo from "../../Images/TechCode_Logo.jpg";
+import DiscordLogo from "../../Images/Discord_Logo.png";
 import SitePreview from "../../Images/SitePreview.png";
 import { Setters, HideScreens } from "../../Scripts/ScreenHandler";
 
@@ -32,6 +33,10 @@ const RenderMainScreen: React.FC<Setters> = ({ stateSetterFunctions }) => {
 
     function LoadDelta(){
         window.open("https://deltafhict.nl/")
+    }
+
+    function LoadDiscord(){
+        window.open("https://discord.gg/U7QctUSwq4")
     }
 
     function LoadLatestProduct(){
@@ -98,6 +103,7 @@ const RenderMainScreen: React.FC<Setters> = ({ stateSetterFunctions }) => {
                     <ul className="tag-list Companies__inner">
                         <li><input type="image" src={FontysLogo} onClick={LoadFontys} className="CompanyLogo" id="FontysLogo"/></li>
                         <li><input type="image" src={DeltaLogo} onClick={LoadDelta} className="CompanyLogo" id="DeltaLogo"/></li>
+                        <li><input type="image" src={DiscordLogo} onClick={LoadDiscord} className="CompanyLogo" id="DiscordLogo"/></li>
                         <li><input type="image" src={TechCodeLogo} onClick={Reload} className="CompanyLogo" id="TechCodeLogoInput"/></li>
                     </ul>
                 </div>
