@@ -8,7 +8,3 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <App />
   </React.StrictMode>,
 )
-
-const VERSION = "DEV";
-
-export default VERSION;

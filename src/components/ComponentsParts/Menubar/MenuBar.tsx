@@ -1,5 +1,5 @@
 import { Fragment, useState, useEffect } from "react";
-import VERSION from "../../../main.tsx";
+import VERSION from "../../Scripts/SiteSettings.tsx";
 import TechCode_Logo from "../../Images/TechCode_Logo.jpg";
 import Buttons from "../MenuButtons/MenuButtons.tsx";
 import "./style.css";

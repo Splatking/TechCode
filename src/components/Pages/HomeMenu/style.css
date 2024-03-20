@@ -57,6 +57,11 @@
     width: 80%;
 }
 
+#PreviewImage:hover {
+    transform-origin: center;
+    animation: scaling 2000ms ease-in-out forwards;
+}
+
 .Companies {
     max-width: 100%;
     max-height: 12.5vh;
