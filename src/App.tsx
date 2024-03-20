@@ -9,6 +9,7 @@ import CreateScreen from "./components/Pages/LoginSystem/Create/Create";
 import Dashboard from "./components/Pages/Dashboard/Dashboard";
 import WorkingByScreen from "./components/Pages/WorkingBy/WorkingBy";
 import RenderTeamScreen from "./components/Pages/Team/Team";
+import JipVoss from "./components/Pages/JipVoss/JipVoss";
 
 function App() {
   const [isMenuBarVisible, setMenuBarVisible] = useState(true);
@@ -20,6 +21,7 @@ function App() {
   const [isDashboardScreenVisbile, setDashboardScreenVisible] = useState(false);
   const [isWorkingByScreenVisible, setWorkingByScreenVisible] = useState(false);
   const [isTeamScreenVisible, setTeamScreenVisible] = useState(false);
+  const [isJipVossVisible, setJipVossVisible] = useState(false);
 
   const stateSetterFunctions = {
     setMenuBarVisible,
@@ -30,7 +32,8 @@ function App() {
     setCreateScreenVisible,
     setDashboardScreenVisible,
     setWorkingByScreenVisible,
-    setTeamScreenVisible
+    setTeamScreenVisible,
+    setJipVossVisible
   };
 
   return (
@@ -40,6 +43,7 @@ function App() {
       {isAccountScreenVisible && <div className="MainScreen" id="AccountScreen"><AccountScreen /></div>}
       {isWorkingByScreenVisible && <div className="MainScreen" id="WorkingByScreen"><WorkingByScreen stateSetterFunctions={stateSetterFunctions}/></div>}
       {isTeamScreenVisible && <div className="MainScreen" id="TeamScreen"><RenderTeamScreen /></div>}
+      {isJipVossVisible && <div id="MenuBar"><JipVoss /></div>}
       {isLoginScreenVisible && <div className="LoginHub" id="LoginScreen"><LoginScreen stateSetterFunctions={stateSetterFunctions}/></div>}
       {isCreateScreenVisible && <div className="LoginHub" id="CreateScreen"><CreateScreen stateSetterFunctions={stateSetterFunctions}/></div>}
       {isDashboardScreenVisbile && <div className="MainScreen" id="DashboardScreen"><Dashboard /></div>}
