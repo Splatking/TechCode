@@ -15,6 +15,7 @@ interface HomeScreenProps {
       setCreateScreenVisible: React.Dispatch<React.SetStateAction<boolean>>;
       setWorkingByScreenVisible: React.Dispatch<React.SetStateAction<boolean>>;
       setTeamScreenVisible: React.Dispatch<React.SetStateAction<boolean>>;
+      setJipVossVisible: React.Dispatch<React.SetStateAction<boolean>>;
     };
 }
 
