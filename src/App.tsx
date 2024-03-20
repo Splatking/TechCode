@@ -43,7 +43,7 @@ function App() {
       {isAccountScreenVisible && <div className="MainScreen" id="AccountScreen"><AccountScreen /></div>}
       {isWorkingByScreenVisible && <div className="MainScreen" id="WorkingByScreen"><WorkingByScreen stateSetterFunctions={stateSetterFunctions}/></div>}
       {isTeamScreenVisible && <div className="MainScreen" id="TeamScreen"><RenderTeamScreen /></div>}
-      {isJipVossVisible && <div id="MenuBar"><JipVoss /></div>}
+      {isJipVossVisible && <div className="MainScreen" id="JipVossScreen"><JipVoss /></div>}
       {isLoginScreenVisible && <div className="LoginHub" id="LoginScreen"><LoginScreen stateSetterFunctions={stateSetterFunctions}/></div>}
       {isCreateScreenVisible && <div className="LoginHub" id="CreateScreen"><CreateScreen stateSetterFunctions={stateSetterFunctions}/></div>}
       {isDashboardScreenVisbile && <div className="MainScreen" id="DashboardScreen"><Dashboard /></div>}

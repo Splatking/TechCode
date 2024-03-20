@@ -1,0 +1,70 @@
+@keyframes scaling {
+    to {
+      transform: scale(1.1);
+    }
+}
+
+.PortofolioDIV {
+    background-color: white;
+    border-radius: 25px;
+    width: 90%;
+    max-height: 90vh;
+    margin-left: 5%;
+    margin-top: 5vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#JipVossTitle {
+    text-align: center;
+}
+
+.PortofolioItems {
+    width: 99%;
+}
+
+#ImageJipVoss {
+    border-radius: 25px;
+    width: 37.9%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    margin-left: 31.05%;
+}
+
+#ImageJipVoss:hover {
+    transform-origin: center;
+    animation: scaling 2000ms ease-in-out forwards;
+}
+
+.PersonalText a {
+    text-decoration: none;
+    color: black;
+}
+
+.PersonalText a:hover {
+    color: blue;
+}
+
+.ThirdPartyLogo{
+    width: 2%;
+    margin-top: 1vh;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+  
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 25px;
+}
+  
+::-webkit-scrollbar-thumb {
+    background: blue;
+    border-radius: 25px;
+    margin-right: -5px;
+}
+  
+::-webkit-scrollbar-thumb:hover {
+    background: purple;
+}

@@ -51,7 +51,7 @@ const Buttons: React.FC<ButtonsProps> = ({ stateSetterFunctions }) => {
 
     function LoadJipVoss(){
         HideScreens();
-        stateSetterFunctions.setProductPageVisible(true);
+        stateSetterFunctions.setJipVossVisible(true);
     }
 
     function LoadWorkingByTechCode(){
