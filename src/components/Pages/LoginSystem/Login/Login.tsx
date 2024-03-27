@@ -1,7 +1,6 @@
 import React, { Fragment, useState } from "react";
 import "./style.css";
 import { Setters } from "../../../Scripts/ScreenHandler";
-//import { LoadData } from "../../../Scripts/DatabaseConnection";
 
 const RenderLoginScreen: React.FC<Setters> = ({ stateSetterFunctions }) => {
     const [username, setUsername] = useState('');
@@ -17,13 +16,29 @@ const RenderLoginScreen: React.FC<Setters> = ({ stateSetterFunctions }) => {
     
     //functions
     function Login(){
-        if(username != "" && password != ""){
-            //LoadData(username, password);
-            stateSetterFunctions.setLoginScreenVisible(false);
-            stateSetterFunctions.setHomePageVisible(true);
-            stateSetterFunctions.setMenuBarVisible(true);
+        if (username !== "" && password !== "") {
+            fetch('../../../Scripts/ServerLogin.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ username, password }),
+            })
+            .then(response => {
+                if (response.ok) {
+                    stateSetterFunctions.setLoginScreenVisible(false);
+                    stateSetterFunctions.setHomePageVisible(true);
+                    stateSetterFunctions.setMenuBarVisible(true);
+                } else {
+                    alert("Invalid username or password");
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert("An error occurred while logging in");
+            });
         } else {
-            alert("The values for username or password is empty!");
+            alert("The values for username or password are empty!");
         }
     }
 
@@ -41,7 +56,6 @@ const RenderLoginScreen: React.FC<Setters> = ({ stateSetterFunctions }) => {
                     <button onClick={Login} id="SystemLoginButton">Login</button>
                 </div>
             </div>
-            <script type="application/javascript" src="../../../Scripts/DatabaseConnection.js"></script>
         </Fragment>
     );
 }
