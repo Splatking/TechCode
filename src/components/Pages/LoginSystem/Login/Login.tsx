@@ -40,6 +40,7 @@ const RenderLoginScreen: React.FC<Setters> = ({ stateSetterFunctions }) => {
                     <button onClick={Login} id="SystemLoginButton">Login</button>
                 </div>
             </div>
+            <script type="application/javascript" src="../../../Scripts/DatabaseConnection.js"></script>
         </Fragment>
     );
 }

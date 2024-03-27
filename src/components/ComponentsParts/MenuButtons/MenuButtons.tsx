@@ -14,9 +14,15 @@ const Buttons: React.FC<Setters> = ({ stateSetterFunctions }) => {
         }
     };
 
-    function LoadProductPage(){
+    function LoadProductPage(Type: string){
+        const ProductGUI = document.getElementById("ItemHolderProducts");
+
         HideScreens(stateSetterFunctions);
         stateSetterFunctions.setProductPageVisible(true);
+
+        if(ProductGUI){
+            ProductGUI.setAttribute("data-filter", Type);
+        }
     }
 
     function LoadOurTeam(){
@@ -47,11 +53,11 @@ const Buttons: React.FC<Setters> = ({ stateSetterFunctions }) => {
     return (
         <div className="Buttons">
             <div className="dropdown">
-                <button type="button" onClick={LoadProductPage} id="ProductsButton" className="ItemButton"><span>Products</span></button>
+                <button type="button" onClick={() => LoadProductPage("None")} id="ProductsButton" className="ItemButton"><span>Products</span></button>
                 <div className="dropdown-content">
-                    <button type="button" onClick={LoadProductPage} id="FirstItem">Software</button>
-                    <button type="button" onClick={LoadProductPage}>Hardware</button>
-                    <button type="button" onClick={LoadProductPage} id="LastItem">Gaming</button>
+                    <button type="button" onClick={() => LoadProductPage("Software")} id="FirstItem">Software</button>
+                    <button type="button" onClick={() => LoadProductPage("Hardware")}>Hardware</button>
+                    <button type="button" onClick={() => LoadProductPage("Gaming")} id="LastItem">Gaming</button>
                 </div>
             </div>
 
