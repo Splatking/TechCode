@@ -23,6 +23,18 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
     "typescript": "^5.2.2",
-    "vite": "^5.1.4"
-  }
+    "vite": "^5.2.6"
+  },
+  "description": "This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Splatking/TechCode.git"
+  },
+  "author": "TechCode",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Splatking/TechCode/issues"
+  },
+  "homepage": "https://github.com/Splatking/TechCode#readme"
 }
