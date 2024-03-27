@@ -1,6 +1,7 @@
 import React, { Fragment, useState } from "react";
 import "./style.css";
 import { Setters } from "../../../Scripts/ScreenHandler";
+import { LoadData } from "../../../Scripts/DatabaseConnection";
 
 const RenderLoginScreen: React.FC<Setters> = ({ stateSetterFunctions }) => {
     const [username, setUsername] = useState('');
@@ -17,7 +18,7 @@ const RenderLoginScreen: React.FC<Setters> = ({ stateSetterFunctions }) => {
     //functions
     function Login(){
         if(username != "" && password != ""){
-            sessionStorage.setItem("TechName", username);
+            LoadData(username, password);
             stateSetterFunctions.setLoginScreenVisible(false);
             stateSetterFunctions.setHomePageVisible(true);
             stateSetterFunctions.setMenuBarVisible(true);
