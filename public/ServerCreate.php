@@ -25,7 +25,7 @@
     $sql = "INSERT INTO `accounts` (Gebruikersnaam, Voornaam, Achternaam, Geboortedatum, Email, Telefoonnummer, Wachtwoord) VALUES (?, ?, ?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
 
-    $stmt->bind_param("sssssss", $username, $firstname, $lastname, $birthday, $email, $phonenumber, $password);
+    $stmt->bind_param("ssssdis", $username, $firstname, $lastname, $birthday, $email, $phonenumber, $password);
     $stmt->execute();
 
     if ($stmt->affected_rows > 0) {

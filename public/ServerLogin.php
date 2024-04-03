@@ -35,7 +35,7 @@
             $username = mysqli_real_escape_string($conn, $username);
             $password = mysqli_real_escape_string($conn, $password);
 
-            $sql = "SELECT * FROM `accounts` WHERE `username`=? AND `password`=?";
+            $sql = "SELECT * FROM `accounts` WHERE `Gebruikersnaam`=? AND `Wachtwoord`=?";
             $stmt = $conn->prepare($sql);
 
             $stmt->bind_param("ss", $username, $password);

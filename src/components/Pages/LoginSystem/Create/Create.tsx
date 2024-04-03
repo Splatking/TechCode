@@ -60,9 +60,44 @@ const RenderCreateScreen: React.FC<Setters> = ({ stateSetterFunctions }) => {
                     })
                     .then(response => {
                         if(response.ok){
-                            stateSetterFunctions.setCreateScreenVisible(false);
-                            stateSetterFunctions.setHomePageVisible(true);
-                            stateSetterFunctions.setMenuBarVisible(true);
+                            fetch('ServerLogin.php', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                    'Accept': 'application/json'
+                                },
+                                body: JSON.stringify({ username, password }),
+                            })
+                            .then(function (response) {
+                                console.log(response.status);
+                                if (response.ok) {
+                                    return response.json();
+                                } else {
+                                    throw new Error('Invalid username or password');
+                                }
+                            })
+                            .then(function (data) {
+                                sessionStorage.setItem("Tech_ID", data.GivenID);
+                                sessionStorage.setItem("Username", data.GivenUsername);
+                                sessionStorage.setItem("Firstname", data.GivenFirstname);
+                                sessionStorage.setItem("Lastname", data.GivenLastname);
+                                sessionStorage.setItem("Birthday", data.GivenBirthday);
+                                sessionStorage.setItem("Email", data.GivenEmail);
+                                sessionStorage.setItem("WorkEmail", data.GivenWorkMail);
+                                sessionStorage.setItem("Phonenumber", data.GivenPhoneNumber);
+                                sessionStorage.setItem("Country", data.GivenLand);
+                                sessionStorage.setItem("Adres", data.GivenAdres);
+                                sessionStorage.setItem("DeliverCode", data.GivenDeliverCode);
+                                sessionStorage.setItem("Rol", data.GivenRol);
+                    
+                                stateSetterFunctions.setCreateScreenVisible(false);
+                                stateSetterFunctions.setHomePageVisible(true);
+                                stateSetterFunctions.setMenuBarVisible(true);
+                            })
+                            .catch(error => {
+                                console.error('Error:', error.message);
+                                alert(error.message);
+                            });
                         } else {
                             alert("Invalid username or password");
                         }
