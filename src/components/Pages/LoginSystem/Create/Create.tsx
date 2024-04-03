@@ -50,7 +50,7 @@ const RenderCreateScreen: React.FC<Setters> = ({ stateSetterFunctions }) => {
         if(checkbox?.checked == true){
             if(username != "" && password != ""){
                 if(password == password2){
-                    fetch('ServerCreate.php', {
+                    fetch('http://localhost/TechCodeDatabase/ServerCreate.php', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
@@ -60,7 +60,7 @@ const RenderCreateScreen: React.FC<Setters> = ({ stateSetterFunctions }) => {
                     })
                     .then(response => {
                         if(response.ok){
-                            fetch('ServerLogin.php', {
+                            fetch('http://localhost/TechCodeDatabase/ServerLogin.php', {
                                 method: 'POST',
                                 headers: {
                                     'Content-Type': 'application/json',

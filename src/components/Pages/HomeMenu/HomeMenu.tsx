@@ -19,12 +19,12 @@ const RenderMainScreen: React.FC<Setters> = ({ stateSetterFunctions }) => {
 
     function LoadProductPage(){
         HideScreens(stateSetterFunctions);
-        stateSetterFunctions.setAccountScreenVisible(true);
+        stateSetterFunctions.setProductPageVisible(true);
     }
 
     function LoadWorkingBy(){
         HideScreens(stateSetterFunctions);
-        stateSetterFunctions.setAccountScreenVisible(true);
+        stateSetterFunctions.setWorkingByScreenVisible(true);
     }
 
     function LoadFontys(){

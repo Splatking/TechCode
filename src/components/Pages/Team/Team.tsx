@@ -6,7 +6,7 @@ function RenderTeamScreen() {
             <h1 id="TitleTeam">Our team</h1>
             <div className="LineItem">
                 <div className="TableOfRanks">
-                    <h1 id="TableOfRanksTitle">Table of ranks</h1>
+                    <h1 id="TableOfRanksTitle">Table of ranking</h1>
                     <table>
                         <tr>
                             <th>Rank</th>
@@ -77,9 +77,9 @@ function RenderTeamScreen() {
                 </div>
                 <div className="IntroductionGUI">
                     <p>
-                        The TechCode community is devided in different department, in which each department needs to work with eachother to create a final product! On the left you can see which ranks their are and how those ranks are devided within the departments.<br/><br/>
+                        The TechCode community is devided in different department, in which each department needs to work with eachother to create a final product! On the left you can see which ranks there are and how those ranks are devided within the departments.<br/><br/>
                         Even though this table shows your level, we don't like to call it like that within the company. Each person is unique and everyone can bring in their own specialities within the company. It's important that we all can work on the way we would to do and discover your own talents!<br/><br/>
-                        The TechCode community is ready to take your challenges on! But we're also ready to see what you can bring onto the table, show us your work and the team will be happy with that!
+                        The TechCode community is ready to take your challenges on! But we're also ready to see what you can bring onto the table, show us your work and the team will be happy to welcome you!
                     </p>
                 </div>
             </div>

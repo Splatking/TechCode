@@ -31,6 +31,10 @@ function ProductsScreen(){
                 setSoftwareDIVVisible(false);
                 setHardwareDIVVisible(false);
                 setGamingDIVVIsible(true);
+            } else {
+                setSoftwareDIVVisible(true);
+                setHardwareDIVVisible(true);
+                setGamingDIVVIsible(true);
             }
         }
     }, [filter]);
