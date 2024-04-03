@@ -6,7 +6,7 @@ import { Setters, HideScreens } from "../../Scripts/ScreenHandler";
 const Buttons: React.FC<Setters> = ({ stateSetterFunctions }) => {
     function LoadDashboard(){
         HideScreens(stateSetterFunctions);
-        if(sessionStorage.getItem("TechName") == null){
+        if(sessionStorage.getItem("Username") == null){
             stateSetterFunctions.setMenuBarVisible(false);
             stateSetterFunctions.setLoginScreenVisible(true);
         } else {

@@ -7,7 +7,6 @@ import { Setters, HideScreens } from "../../Scripts/ScreenHandler";
 
 const RenderMenuBar: React.FC<Setters> = ({ stateSetterFunctions }) => {
     //variable
-    const LoggedInText = document.getElementById("LoginText");
     const LoginButton = document.getElementById("LoginButton");
 
     const [loggedInUser, setLoggedInUser] = useState(sessionStorage.getItem("TechName") || "-");
@@ -18,17 +17,24 @@ const RenderMenuBar: React.FC<Setters> = ({ stateSetterFunctions }) => {
     };
 
     const LoadLoginScreen = () => {
-        stateSetterFunctions.setMenuBarVisible(prevState => !prevState);
-        HideScreens(stateSetterFunctions);
-        stateSetterFunctions.setLoginScreenVisible(true);
+        if(LoginButton?.innerHTML == "Login"){
+            stateSetterFunctions.setMenuBarVisible(prevState => !prevState);
+            HideScreens(stateSetterFunctions);
+            stateSetterFunctions.setLoginScreenVisible(true);
+        } else {
+            sessionStorage.clear();
+            stateSetterFunctions.setMenuBarVisible(prevState => !prevState);
+            HideScreens(stateSetterFunctions);
+            stateSetterFunctions.setLoginScreenVisible(true);
+        }
     };
 
     const LoadLoginName = () => {
-        if(LoggedInText && LoginButton){
+        if(LoginButton){
             if(sessionStorage.getItem("Username") == null){
                 LoginButton.innerHTML = "Login";
             } else {
-                LoginButton.innerHTML = "Account settings";
+                LoginButton.innerHTML = "Logout";
             }
         }
     }
