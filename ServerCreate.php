@@ -36,15 +36,17 @@
             $username = $request["username"];
             $email = $request["email"];
             $phonenumber = $request["phonenumber"];
-            $birthday = $request["birthday"];
+            $birthday = date('Y-m-d', strtotime($request["birthday"]));
             $firstname = $request["Firstname"];
             $lastname = $request["Lastname"];
             $password = $request["password"];
 
+            $hashed_password = password_hash($password, PASSWORD_BCRYPT);
+
             $sql = "INSERT INTO `accounts` (Gebruikersnaam, Voornaam, Achternaam, Geboortedatum, Email, Telefoonnummer, Wachtwoord) VALUES (?, ?, ?, ?, ?, ?, ?)";
             $stmt = $conn->prepare($sql);
 
-            $stmt->bind_param("sssdsss", $username, $firstname, $lastname, $birthday, $email, $phonenumber, $password);
+            $stmt->bind_param("sssdsss", $username, $firstname, $lastname, $birthday, $email, $phonenumber, $hashed_password);
             $stmt->execute();
 
             if ($stmt->affected_rows > 0) {
@@ -62,7 +64,7 @@
             echo json_encode(array("message" => "Invalid request"));
         }
     } else {
-        http_response_code(400); // Bad Request
+        http_response_code(400);
         echo json_encode(array("message" => "No data received"));
     } 
 ?>

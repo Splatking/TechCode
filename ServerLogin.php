@@ -49,10 +49,10 @@
             $username = $request["username"];
             $password = $request["password"];
 
-            $sql = "SELECT * FROM `accounts` WHERE `Gebruikersnaam`=? AND `Wachtwoord`=?";
+            $sql = "SELECT * FROM `accounts` WHERE `Gebruikersnaam`=?";
             $stmt = $conn->prepare($sql);
 
-            $stmt->bind_param("ss", $username, $password);
+            $stmt->bind_param("s", $username);
 
             $stmt->execute();
 
@@ -60,52 +60,58 @@
 
             if ($result->num_rows > 0) {
                 $row = $result->fetch_assoc();
+                $hashedPassword = $row["Wachtwoord"];
 
-                $GivenID = $row["Tech_ID"];
-                $GivenUsername = $row["Gebruikersnaam"];
-                $GivenFirstname = $row["Voornaam"];
-                $GivenLastname = $row["Achternaam"];
-                $GivenBirthday = $row["Geboortedatum"];
-                $GivenEmail = $row["Email"];
-                $GivenWorkMail = $row["Werkmail"];
-                $GivenPhoneNumber = $row["Telefoonnummer"];
-                $GivenLand = $row["Land"];
-                $GivenAdres = $row["Adres"];
-                $GivenDeliverCode = $row["Postcode"];
-                $GivenRol = $row["Rol"];
+                if(password_verify($password, $hashedPassword)){
+                    $GivenID = $row["Tech_ID"];
+                    $GivenUsername = $row["Gebruikersnaam"];
+                    $GivenFirstname = $row["Voornaam"];
+                    $GivenLastname = $row["Achternaam"];
+                    $GivenBirthday = $row["Geboortedatum"];
+                    $GivenEmail = $row["Email"];
+                    $GivenWorkMail = $row["Werkmail"];
+                    $GivenPhoneNumber = $row["Telefoonnummer"];
+                    $GivenLand = $row["Land"];
+                    $GivenAdres = $row["Adres"];
+                    $GivenDeliverCode = $row["Postcode"];
+                    $GivenRol = $row["Rol"];
 
-                $responseData = array(
-                    "message" => "Login successful",
-                    "GivenID" => $GivenID,
-                    "GivenUsername" => $GivenUsername,
-                    "GivenFirstname" => $GivenFirstname,
-                    "GivenLastname" => $GivenLastname,
-                    "GivenBirthday" => $GivenBirthday,
-                    "GivenEmail" => $GivenEmail,
-                    "GivenWorkMail" => $GivenWorkMail,
-                    "GivenPhoneNumber" => $GivenPhoneNumber,
-                    "GivenLand" => $GivenLand,
-                    "GivenAdres" => $GivenAdres,
-                    "GivenDeliverCode" => $GivenDeliverCode,
-                    "GivenRol" => $GivenRol
-                );
-
-                header('Content-Type: application/json');
-
-                echo json_encode($responseData);
+                    $responseData = array(
+                        "message" => "Login successful",
+                        "GivenID" => $GivenID,
+                        "GivenUsername" => $GivenUsername,
+                        "GivenFirstname" => $GivenFirstname,
+                        "GivenLastname" => $GivenLastname,
+                        "GivenBirthday" => $GivenBirthday,
+                        "GivenEmail" => $GivenEmail,
+                        "GivenWorkMail" => $GivenWorkMail,
+                        "GivenPhoneNumber" => $GivenPhoneNumber,
+                        "GivenLand" => $GivenLand,
+                        "GivenAdres" => $GivenAdres,
+                        "GivenDeliverCode" => $GivenDeliverCode,
+                        "GivenRol" => $GivenRol
+                    );
+    
+                    header('Content-Type: application/json');
+    
+                    echo json_encode($responseData);
+                } else {
+                    http_response_code(401);
+                    echo json_encode(array("message" => "Invalid username or password"));
+                }
+    
+                $stmt->close();
+                $conn->close();
             } else {
                 http_response_code(401);
                 echo json_encode(array("message" => "Invalid username or password"));
             }
-
-            $stmt->close();
-            $conn->close();
         } else {
             http_response_code(400);
             echo json_encode(array("message" => "Invalid request"));
         }
     } else {
-        http_response_code(400); // Bad Request
+        http_response_code(400);
         echo json_encode(array("message" => "No data received"));
     } 
 ?>
