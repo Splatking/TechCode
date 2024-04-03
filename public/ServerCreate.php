@@ -19,7 +19,7 @@
     $username = mysqli_real_escape_string($conn, $username);
     $password = mysqli_real_escape_string($conn, $password);
 
-    $sql = "SELECT * FROM accounts WHERE username='$username' AND password='$password'";
+    $sql = "INSERT INTO accounts (Tech_ID, Gebruikersnaam, Voornaam, Achternaam, Geboortedatum, Email, Werkmail, Telefoonnummer, Land, Adres, Postcode, Rol, Wachtwoord) VALUES ('$username', '$password')";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {

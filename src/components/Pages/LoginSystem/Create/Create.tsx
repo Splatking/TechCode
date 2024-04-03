@@ -39,10 +39,28 @@ const RenderCreateScreen: React.FC<Setters> = ({ stateSetterFunctions }) => {
     function CreateAccount(){
         if(checkbox?.checked == true){
             if(username != "" && password != ""){
-                sessionStorage.setItem("TechName", username);
-                stateSetterFunctions.setLoginScreenVisible(false);
-                stateSetterFunctions.setHomePageVisible(true);
-                stateSetterFunctions.setMenuBarVisible(true);
+                fetch('ServerCreate.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept' : 'application/json'
+                    },
+                    body: JSON.stringify({ username, password }),
+                })
+                .then(response => {
+                    if(response.ok){
+                        sessionStorage.setItem("TechName", username);
+                        stateSetterFunctions.setLoginScreenVisible(false);
+                        stateSetterFunctions.setHomePageVisible(true);
+                        stateSetterFunctions.setMenuBarVisible(true);
+                    } else {
+                        alert("Invalid username or password");
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert("An error occurred while logging in");
+                });
             } else {
                 alert("The values for username or password is empty!");
             }

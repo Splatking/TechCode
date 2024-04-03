@@ -25,18 +25,16 @@ const RenderMenuBar: React.FC<Setters> = ({ stateSetterFunctions }) => {
 
     const LoadLoginName = () => {
         if(LoggedInText && LoginButton){
-            if(sessionStorage.getItem("TechName") == null){
-                LoggedInText.innerHTML = `Logged in as: -`;
+            if(sessionStorage.getItem("Username") == null){
                 LoginButton.innerHTML = "Login";
             } else {
-                LoggedInText.innerHTML = `Logged in as: ${sessionStorage.getItem("TechName")}`;
                 LoginButton.innerHTML = "Account settings";
             }
         }
     }
 
     useEffect(() => {
-        const loggedInUser = sessionStorage.getItem("TechName") || "-";
+        const loggedInUser = sessionStorage.getItem("Username") || "-";
         setLoggedInUser(loggedInUser);
         LoadLoginName();
     }, []);
