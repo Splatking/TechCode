@@ -27,13 +27,10 @@
 
     $postdata = file_get_contents("php://input");
     if($postdata){
-        $request = json_decode($postdata);
-        if (isset($request->username) && isset($request->password)) {
-            $username = $request->username;
-            $password = $request->password;
-
-            $username = mysqli_real_escape_string($conn, $username);
-            $password = mysqli_real_escape_string($conn, $password);
+        $request = json_decode($postdata, true);
+        if (isset($request["username"]) && isset($request["password"])) {
+            $username = $request["username"];
+            $password = $request["password"];
 
             $sql = "SELECT * FROM `accounts` WHERE `Gebruikersnaam`=? AND `Wachtwoord`=?";
             $stmt = $conn->prepare($sql);
@@ -84,6 +81,7 @@
                 echo json_encode(array("message" => "Invalid username or password"));
             }
 
+            $stmt->close();
             $conn->close();
         } else {
             http_response_code(400);

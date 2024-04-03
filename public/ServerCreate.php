@@ -12,30 +12,40 @@
     }
 
     $postdata = file_get_contents("php://input");
-    $request = json_decode($postdata);
+    if($postdata){
+        $request = json_decode($postdata, true);
 
-    $username = mysqli_real_escape_string($conn, $request->username);
-    $email = mysqli_real_escape_string($conn, $request->email);
-    $phonenumber = mysqli_real_escape_string($conn, $request->phonenumber);
-    $birthday = mysqli_real_escape_string($conn, $request->birthday);
-    $firstname = mysqli_real_escape_string($conn, $request->Firstname);
-    $lastname = mysqli_real_escape_string($conn, $request->Lastname);
-    $password = mysqli_real_escape_string($conn, $request->password);
+        if(isset($request["username"]) && isset($request["password"])){
+            $username = $request["username"];
+            $email = $request["email"];
+            $phonenumber = $request["phonenumber"];
+            $birthday = $request["birthday"];
+            $firstname = $request["Firstname"];
+            $lastname = $request["Lastname"];
+            $password = $request["password"];
 
-    $sql = "INSERT INTO `accounts` (Gebruikersnaam, Voornaam, Achternaam, Geboortedatum, Email, Telefoonnummer, Wachtwoord) VALUES (?, ?, ?, ?, ?, ?, ?)";
-    $stmt = $conn->prepare($sql);
+            $sql = "INSERT INTO `accounts` (Gebruikersnaam, Voornaam, Achternaam, Geboortedatum, Email, Telefoonnummer, Wachtwoord) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            $stmt = $conn->prepare($sql);
 
-    $stmt->bind_param("ssssdis", $username, $firstname, $lastname, $birthday, $email, $phonenumber, $password);
-    $stmt->execute();
+            $stmt->bind_param("sssdsss", $username, $firstname, $lastname, $birthday, $email, $phonenumber, $password);
+            $stmt->execute();
 
-    if ($stmt->affected_rows > 0) {
-        http_response_code(200);
-        echo json_encode(array("message" => "Registration successful"));
+            if ($stmt->affected_rows > 0) {
+                http_response_code(200);
+                echo json_encode(array("message" => "Registration successful"));
+            } else {
+                http_response_code(401);
+                echo json_encode(array("message" => "Registration failed"));
+            }
+
+            $stmt->close();
+            $conn->close();
+        } else {
+            http_response_code(400);
+            echo json_encode(array("message" => "Invalid request"));
+        }
     } else {
-        http_response_code(401);
-        echo json_encode(array("message" => "Registration failed"));
-    }
-
-    $stmt->close();
-    $conn->close();
+        http_response_code(400); // Bad Request
+        echo json_encode(array("message" => "No data received"));
+    } 
 ?>
