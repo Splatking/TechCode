@@ -1,7 +1,6 @@
 import React, { Fragment, useState } from "react";
 import "./style.css";
 import { Setters } from "../../../Scripts/ScreenHandler";
-import getCookie from "../../../Scripts/CookiesHandler";
 
 const RenderLoginScreen: React.FC<Setters> = ({ stateSetterFunctions }) => {
     const [username, setUsername] = useState('');
@@ -16,47 +15,50 @@ const RenderLoginScreen: React.FC<Setters> = ({ stateSetterFunctions }) => {
     };
     
     //functions
-    function Login(){
+    function Login() {
         if (username !== "" && password !== "") {
             fetch('ServerLogin.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Accept' : 'application/json'
+                    'Accept': 'application/json'
                 },
                 body: JSON.stringify({ username, password }),
             })
-            .then(response => {
+            .then(function (response) {
+                console.log(response.status);
                 if (response.ok) {
-                    //setting up the local storage to communicate over the site
-                    sessionStorage.setItem("Tech_ID", getCookie("Tech_ID"));
-                    sessionStorage.setItem("Username", getCookie("Username"));
-                    sessionStorage.setItem("Firstname", getCookie("Firstname"));
-                    sessionStorage.setItem("Lastname", getCookie("Lastname"));
-                    sessionStorage.setItem("Birthday", getCookie("Birthday"));
-                    sessionStorage.setItem("Email", getCookie("Email"));
-                    sessionStorage.setItem("WorkEmail", getCookie("WorkEmail"));
-                    sessionStorage.setItem("Phonenumber", getCookie("Phonenumber"));
-                    sessionStorage.setItem("Country", getCookie("Country"));
-                    sessionStorage.setItem("Adres", getCookie("Adres"));
-                    sessionStorage.setItem("DeliverCode", getCookie("DeliverCode"));
-                    sessionStorage.setItem("Rol", getCookie("Rol"));
-
-                    stateSetterFunctions.setLoginScreenVisible(false);
-                    stateSetterFunctions.setHomePageVisible(true);
-                    stateSetterFunctions.setMenuBarVisible(true);
+                    return response.json();
                 } else {
-                    alert("Invalid username or password");
+                    throw new Error('Invalid username or password');
                 }
             })
+            .then(function (data) {
+                sessionStorage.setItem("Tech_ID", data.GivenID);
+                sessionStorage.setItem("Username", data.GivenUsername);
+                sessionStorage.setItem("Firstname", data.GivenFirstname);
+                sessionStorage.setItem("Lastname", data.GivenLastname);
+                sessionStorage.setItem("Birthday", data.GivenBirthday);
+                sessionStorage.setItem("Email", data.GivenEmail);
+                sessionStorage.setItem("WorkEmail", data.GivenWorkMail);
+                sessionStorage.setItem("Phonenumber", data.GivenPhoneNumber);
+                sessionStorage.setItem("Country", data.GivenLand);
+                sessionStorage.setItem("Adres", data.GivenAdres);
+                sessionStorage.setItem("DeliverCode", data.GivenDeliverCode);
+                sessionStorage.setItem("Rol", data.GivenRol);
+    
+                stateSetterFunctions.setLoginScreenVisible(false);
+                stateSetterFunctions.setHomePageVisible(true);
+                stateSetterFunctions.setMenuBarVisible(true);
+            })
             .catch(error => {
-                console.error('Error:', error);
-                alert("An error occurred while logging in");
+                console.error('Error:', error.message);
+                alert(error.message);
             });
         } else {
             alert("The values for username or password are empty!");
         }
-    }
+    }    
 
     function LoadCreateScreen(){
         stateSetterFunctions.setLoginScreenVisible(false);

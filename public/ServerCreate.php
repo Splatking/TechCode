@@ -13,22 +13,29 @@
 
     $postdata = file_get_contents("php://input");
     $request = json_decode($postdata);
-    $username = $request->username;
-    $password = $request->password;
 
-    $username = mysqli_real_escape_string($conn, $username);
-    $password = mysqli_real_escape_string($conn, $password);
+    $username = mysqli_real_escape_string($conn, $request->username);
+    $email = mysqli_real_escape_string($conn, $request->email);
+    $phonenumber = mysqli_real_escape_string($conn, $request->phonenumber);
+    $birthday = mysqli_real_escape_string($conn, $request->birthday);
+    $firstname = mysqli_real_escape_string($conn, $request->Firstname);
+    $lastname = mysqli_real_escape_string($conn, $request->Lastname);
+    $password = mysqli_real_escape_string($conn, $request->password);
 
-    $sql = "INSERT INTO accounts (Tech_ID, Gebruikersnaam, Voornaam, Achternaam, Geboortedatum, Email, Werkmail, Telefoonnummer, Land, Adres, Postcode, Rol, Wachtwoord) VALUES ('$username', '$password')";
-    $result = $conn->query($sql);
+    $sql = "INSERT INTO `accounts` (Gebruikersnaam, Voornaam, Achternaam, Geboortedatum, Email, Telefoonnummer, Wachtwoord) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    $stmt = $conn->prepare($sql);
 
-    if ($result->num_rows > 0) {
+    $stmt->bind_param("sssssss", $username, $firstname, $lastname, $birthday, $email, $phonenumber, $password);
+    $stmt->execute();
+
+    if ($stmt->affected_rows > 0) {
         http_response_code(200);
-        echo json_encode(array("message" => "Login successful"));
+        echo json_encode(array("message" => "Registration successful"));
     } else {
         http_response_code(401);
-        echo json_encode(array("message" => "Invalid username or password"));
+        echo json_encode(array("message" => "Registration failed"));
     }
 
+    $stmt->close();
     $conn->close();
 ?>

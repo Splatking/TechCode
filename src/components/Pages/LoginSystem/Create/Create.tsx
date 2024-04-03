@@ -7,6 +7,8 @@ const RenderCreateScreen: React.FC<Setters> = ({ stateSetterFunctions }) => {
     const [email, setEmail] = useState('');
     const [phonenumber, setPhonenumber] = useState('');
     const [birthday, setBirthday] = useState('');
+    const [Firstname, setFirstname] = useState('');
+    const [Lastname, setLastname] = useState('');
     const [password, setPassword] = useState('');
     const [password2, setPassword2] = useState('');
     const checkbox = document.getElementById('AcceptanceValue') as HTMLInputElement | null;
@@ -27,6 +29,14 @@ const RenderCreateScreen: React.FC<Setters> = ({ stateSetterFunctions }) => {
         setBirthday(event.target.value);
     };
 
+    const handleFirstnameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setFirstname(event.target.value);
+    };
+
+    const handleLastnameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setLastname(event.target.value);
+    };
+
     const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setPassword(event.target.value);
     };
@@ -39,28 +49,31 @@ const RenderCreateScreen: React.FC<Setters> = ({ stateSetterFunctions }) => {
     function CreateAccount(){
         if(checkbox?.checked == true){
             if(username != "" && password != ""){
-                fetch('ServerCreate.php', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Accept' : 'application/json'
-                    },
-                    body: JSON.stringify({ username, password }),
-                })
-                .then(response => {
-                    if(response.ok){
-                        sessionStorage.setItem("TechName", username);
-                        stateSetterFunctions.setLoginScreenVisible(false);
-                        stateSetterFunctions.setHomePageVisible(true);
-                        stateSetterFunctions.setMenuBarVisible(true);
-                    } else {
-                        alert("Invalid username or password");
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert("An error occurred while logging in");
-                });
+                if(password == password2){
+                    fetch('ServerCreate.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept' : 'application/json'
+                        },
+                        body: JSON.stringify({ username, email, phonenumber, birthday, Firstname, Lastname, password }),
+                    })
+                    .then(response => {
+                        if(response.ok){
+                            stateSetterFunctions.setCreateScreenVisible(false);
+                            stateSetterFunctions.setHomePageVisible(true);
+                            stateSetterFunctions.setMenuBarVisible(true);
+                        } else {
+                            alert("Invalid username or password");
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert("An error occurred while logging in");
+                    });
+                } else {
+                    alert("The passwords are not the same!");
+                }
             } else {
                 alert("The values for username or password is empty!");
             }
@@ -79,7 +92,7 @@ const RenderCreateScreen: React.FC<Setters> = ({ stateSetterFunctions }) => {
             <div className="LoginGUI">
                 <div className="ItemHolderLogin">
                     <h1>Create TechAccount</h1>
-                    <p id="LoginText">Username: <input type="text" value={username} onChange={handleUsernameChange} className="UserInput" id="UsernameValue" name="UsernameValue"/><br/>E-mail: <input type="email" value={email} onChange={handleEmailChange} className="EmailInput" id="EmailValue" name="EmailValue"/><br/>Phonenumber: <input type="text" value={phonenumber} onChange={handlePhonenumberChange} className="PhonenumberInput" id="PhonenumberValue" name="PhonenumberValue"/><br/>Birthday: <input type="date" value={birthday} onChange={handleBirthdayChange} className="BirthdayInput" id="BirthdayValue" name="BirthdayValue"/><br/>Password: <input type="password" value={password} onChange={handlePasswordChange} className="PasswordInput" id="PasswordValue" name="PasswordValue"/><br/>Repeat password: <input type="password" value={password2} onChange={handlePassword2Change} className="Password2Input" id="Password2Value" name="Password2Value"/><br/>I have accept the userpolicy and privacypolicy of TechCode <input type="checkbox" className="AcceptanceInput" id="AcceptanceValue" name="AcceptanceValue"/><br/><br/>Don't you've a TechAccount yet? Click <button onClick={LoadLoginScreen} id="CreationButton">here</button> to create one!</p>
+                    <p id="LoginText">Username: <input type="text" value={username} onChange={handleUsernameChange} className="UserInput" id="UsernameValue" name="UsernameValue"/><br/>Firstname: <input type="text" value={Firstname} onChange={handleFirstnameChange} className="UserInput" id="FirstnameValue" name="FirstnameValue"/><br/>Lastname: <input type="text" value={Lastname} onChange={handleLastnameChange} className="UserInput" id="LastnameValue" name="LastnameValue"/><br/>E-mail: <input type="email" value={email} onChange={handleEmailChange} className="EmailInput" id="EmailValue" name="EmailValue"/><br/>Phonenumber: <input type="text" value={phonenumber} onChange={handlePhonenumberChange} className="PhonenumberInput" id="PhonenumberValue" name="PhonenumberValue"/><br/>Birthday: <input type="date" value={birthday} onChange={handleBirthdayChange} className="BirthdayInput" id="BirthdayValue" name="BirthdayValue"/><br/>Password: <input type="password" value={password} onChange={handlePasswordChange} className="PasswordInput" id="PasswordValue" name="PasswordValue"/><br/>Repeat password: <input type="password" value={password2} onChange={handlePassword2Change} className="Password2Input" id="Password2Value" name="Password2Value"/><br/>I have accept the userpolicy and privacypolicy of TechCode <input type="checkbox" className="AcceptanceInput" id="AcceptanceValue" name="AcceptanceValue"/><br/><br/>Don't you've a TechAccount yet? Click <button onClick={LoadLoginScreen} id="CreationButton">here</button> to create one!</p>
                     <button onClick={CreateAccount} id="SystemCreateButton">Create TechAccount</button>
                 </div>
             </div>

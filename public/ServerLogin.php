@@ -1,5 +1,5 @@
 <?php
-    //DataHolder
+    //DATA HOLDER
     $GivenID;
     $GivenUsername;
     $GivenFirstname;
@@ -26,53 +26,71 @@
     }
 
     $postdata = file_get_contents("php://input");
-    $request = json_decode($postdata);
-    $username = $request->username;
-    $password = $request->password;
+    if($postdata){
+        $request = json_decode($postdata);
+        if (isset($request->username) && isset($request->password)) {
+            $username = $request->username;
+            $password = $request->password;
 
-    $username = mysqli_real_escape_string($conn, $username);
-    $password = mysqli_real_escape_string($conn, $password);
+            $username = mysqli_real_escape_string($conn, $username);
+            $password = mysqli_real_escape_string($conn, $password);
 
-    $sql = "SELECT * FROM accounts WHERE username='$username' AND password='$password'";
-    $result = $conn->query($sql);
+            $sql = "SELECT * FROM `accounts` WHERE `username`=? AND `password`=?";
+            $stmt = $conn->prepare($sql);
 
-    if ($result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) {
-            $GivenID = $row["Tech_ID"];
-            $GivenUsername = $row["Gebruikersnaam"];
-            $GivenFirstname = $row["Voornaam"];
-            $GivenLastname = $row["Achternaam"];
-            $GivenBirthday = $row["Geboortedatum"];
-            $GivenEmail = $row["Email"];
-            $GivenWorkMail = $row["Werkmail"];
-            $GivenPhoneNumber = $row["Telefoonnummer"];
-            $GivenLand = $row["Land"];
-            $GivenAdres = $row["Adres"];
-            $GivenDeliverCode = $row["Postcode"];
-            $GivenRol = $row["Rol"];
+            $stmt->bind_param("ss", $username, $password);
+
+            $stmt->execute();
+
+            $result = $stmt->get_result();
+
+            if ($result->num_rows > 0) {
+                $row = $result->fetch_assoc();
+
+                $GivenID = $row["Tech_ID"];
+                $GivenUsername = $row["Gebruikersnaam"];
+                $GivenFirstname = $row["Voornaam"];
+                $GivenLastname = $row["Achternaam"];
+                $GivenBirthday = $row["Geboortedatum"];
+                $GivenEmail = $row["Email"];
+                $GivenWorkMail = $row["Werkmail"];
+                $GivenPhoneNumber = $row["Telefoonnummer"];
+                $GivenLand = $row["Land"];
+                $GivenAdres = $row["Adres"];
+                $GivenDeliverCode = $row["Postcode"];
+                $GivenRol = $row["Rol"];
+
+                $responseData = array(
+                    "message" => "Login successful",
+                    "GivenID" => $GivenID,
+                    "GivenUsername" => $GivenUsername,
+                    "GivenFirstname" => $GivenFirstname,
+                    "GivenLastname" => $GivenLastname,
+                    "GivenBirthday" => $GivenBirthday,
+                    "GivenEmail" => $GivenEmail,
+                    "GivenWorkMail" => $GivenWorkMail,
+                    "GivenPhoneNumber" => $GivenPhoneNumber,
+                    "GivenLand" => $GivenLand,
+                    "GivenAdres" => $GivenAdres,
+                    "GivenDeliverCode" => $GivenDeliverCode,
+                    "GivenRol" => $GivenRol
+                );
+
+                header('Content-Type: application/json');
+
+                echo json_encode($responseData);
+            } else {
+                http_response_code(401);
+                echo json_encode(array("message" => "Invalid username or password"));
+            }
+
+            $conn->close();
+        } else {
+            http_response_code(400);
+            echo json_encode(array("message" => "Invalid request"));
         }
-
-        //Cookie setter to send data over the site
-        setcookie("Tech_ID", $GivenID, time() + (86400 * 30), "/");
-        setcookie("Username", $GivenUsername, time() + (86400 * 30), "/");
-        setcookie("Firstname", $GivenFirstname, time() + (86400 * 30), "/");
-        setcookie("Lastname", $GivenLastname, time() + (86400 * 30), "/");
-        setcookie("Birthday", $GivenBirthday, time() + (86400 * 30), "/");
-        setcookie("Email", $GivenEmail, time() + (86400 * 30), "/");
-        setcookie("WorkEmail", $GivenWorkMail, time() + (86400 * 30), "/");
-        setcookie("Phonenumber", $GivenPhoneNumber, time() + (86400 * 30), "/");
-        setcookie("Country", $GivenLand, time() + (86400 * 30), "/");
-        setcookie("Adres", $GivenAdres, time() + (86400 * 30), "/");
-        setcookie("DeliverCode", $GivenDeliverCode, time() + (86400 * 30), "/");
-        setcookie("Rol", $GivenRol, time() + (86400 * 30), "/");
-
-
-        http_response_code(200);
-        echo json_encode(array("message" => "Login successful"));
     } else {
-        http_response_code(401);
-        echo json_encode(array("message" => "Invalid username or password"));
-    }
-
-    $conn->close();
+        http_response_code(400); // Bad Request
+        echo json_encode(array("message" => "No data received"));
+    } 
 ?>
