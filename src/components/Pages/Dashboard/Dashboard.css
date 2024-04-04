@@ -1,0 +1,11 @@
+.DashboardGUI {
+    background-color: white;
+    border-radius: 25px;
+    width: 77.5vw;
+    text-align: center;
+}
+
+.AccountTable {
+    text-align: left;
+    width: 100%;
+}

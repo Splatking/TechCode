@@ -7,7 +7,7 @@ function RenderTeamScreen() {
             <div className="LineItem">
                 <div className="TableOfRanks">
                     <h1 id="TableOfRanksTitle">Table of ranking</h1>
-                    <table>
+                    <table className="RankingTable">
                         <tr>
                             <th>Rank</th>
                             <th>Department</th>

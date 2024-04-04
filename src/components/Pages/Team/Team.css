@@ -17,15 +17,15 @@
     text-align: center;
 }
 
-table, th, td {
+.RankingTable, .RankingTable th, .RankingTable td {
     border: 1px solid;
 }
 
-table {
+.RankingTable {
     width: 100%;
 }
 
-th {
+.RankingTable th {
     background-color: blue;
     color: white;
 }

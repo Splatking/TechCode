@@ -47,6 +47,7 @@ const RenderLoginScreen: React.FC<Setters> = ({ stateSetterFunctions }) => {
                 sessionStorage.setItem("Adres", data.GivenAdres);
                 sessionStorage.setItem("DeliverCode", data.GivenDeliverCode);
                 sessionStorage.setItem("Rol", data.GivenRol);
+                sessionStorage.setItem("Password", password);
     
                 stateSetterFunctions.setLoginScreenVisible(false);
                 stateSetterFunctions.setHomePageVisible(true);
