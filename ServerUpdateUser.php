@@ -33,28 +33,29 @@
         $request = json_decode($postdata, true);
 
         if(isset($request["username"]) && isset($request["password"])){
+            $TechID = $request["TechID"];
             $username = $request["username"];
             $email = $request["email"];
             $phonenumber = $request["phonenumber"];
             $birthday = date('Y-m-d', strtotime($request["birthday"]));
-            $firstname = $request["Firstname"];
-            $lastname = $request["Lastname"];
-            $password = $request["password"];
+            $firstname = $request["firstname"];
+            $lastname = $request["lastname"];
+            $country = $request["country"];
+            $adress = $request["adres"];
+            $delivercode = $request["delivercode"];
 
-            $hashed_password = password_hash($password, PASSWORD_BCRYPT);
-
-            $sql = "INSERT INTO `accounts` (Gebruikersnaam, Voornaam, Achternaam, Geboortedatum, Email, Telefoonnummer, Wachtwoord) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            $sql = "UPDATE `accounts` SET Gebruikersnaam=?, Voornaam=?, Achternaam=?, Geboortedatum=?, Email=?, Telefoonnummer=?, Land=?, Adres=?, Postcode=? WHERE Tech_ID=?";
             $stmt = $conn->prepare($sql);
 
-            $stmt->bind_param("sssssss", $username, $firstname, $lastname, $birthday, $email, $phonenumber, $hashed_password);
+            $stmt->bind_param("sssssssssss", $username, $firstname, $lastname, $birthday, $email, $phonenumber, $country, $adress, $delivercode, $TechID);
             $stmt->execute();
 
             if ($stmt->affected_rows > 0) {
                 http_response_code(200);
-                echo json_encode(array("message" => "Registration successful"));
+                echo json_encode(array("message" => "User successful updated"));
             } else {
                 http_response_code(401);
-                echo json_encode(array("message" => "Registration failed"));
+                echo json_encode(array("message" => "Updating user failed"));
             }
 
             $stmt->close();
