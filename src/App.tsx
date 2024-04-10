@@ -33,7 +33,7 @@ function App() {
     setDashboardScreenVisible,
     setWorkingByScreenVisible,
     setTeamScreenVisible,
-    setJipVossVisible
+    setJipVossVisible,
   };
 
   return (

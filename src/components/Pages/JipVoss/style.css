@@ -7,10 +7,8 @@
 .PortofolioDIV {
     background-color: white;
     border-radius: 25px;
-    width: 90%;
-    max-height: 90vh;
-    margin-left: 5%;
-    margin-top: 5vh;
+    max-height: 83vh;
+    margin-top: 1vh;
     overflow-y: auto;
     overflow-x: hidden;
 }

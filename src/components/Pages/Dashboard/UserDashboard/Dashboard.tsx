@@ -2,7 +2,7 @@ import { Fragment } from "react/jsx-runtime";
 import "./Dashboard.css";
 import { useState } from "react";
 
-function RenderMainScreen() {
+function RenderMainScreen(){
     const TechID = useState(sessionStorage.getItem("Tech_ID") || "-");
     const [username, setUsername] = useState(sessionStorage.getItem("Username") || "-");
     const [firstname, setFirstname] = useState(sessionStorage.getItem("Firstname") || "-");
@@ -117,6 +117,8 @@ function RenderMainScreen() {
                 <table className="AccountTable">
                     <tr>
                         <th>Userdata: {sessionStorage.getItem("Username")}</th>
+                        <th>Current information</th>
+                        <th>New information</th>
                     </tr>
                     <tr>
                         <td>TechID:</td>
