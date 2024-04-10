@@ -79,7 +79,7 @@ const RenderMainScreen: React.FC<Setters> = ({ stateSetterFunctions }) => {
             <div className="LineItem">
                 <div className="ScreenItem" id="LatestProduct">
                     <h1 className="Title">Latest product</h1>
-                    <h2>TechCode site</h2>
+                    <h2 className="SubTitle">TechCode site</h2>
                     <img src={SitePreview} alt="Latest product preview" id="PreviewImage"/>
                     <p>The TechCode site has been created in semester 2 of Open Learning and Delta for Jip Voss at Fontys HBO-ICT. The site has been released around - and will be used as an portofolio site!</p>
                     <button onClick={LoadLatestProduct} className="QuickMenuButton">Show me more!</button>
