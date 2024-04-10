@@ -1,5 +1,5 @@
 <?php
-    //Server Settup
+    //Server Setup
     if (isset($_SERVER['HTTP_ORIGIN'])) {
         header("Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']}");
         header('Access-Control-Allow-Credentials: true');
@@ -16,7 +16,7 @@
         exit(0);
     }
 
-    //DATABASE CONNECTION
+    // DATABASE CONNECTION
     $servername = "localhost";
     $username = "TechCode_Systems";
     $password = "System123";
@@ -28,11 +28,13 @@
         die("Connection failed: " . $conn->connect_error);
     }
 
+    // Get raw POST data
     $postdata = file_get_contents("php://input");
-    if($postdata){
+
+    if($postdata) {
         $request = json_decode($postdata, true);
 
-        if(isset($request["username"]) && isset($request["password"])){
+        if(isset($request["TechID"]) && isset($request["username"]) && isset($request["email"]) && isset($request["phonenumber"]) && isset($request["birthday"]) && isset($request["firstname"]) && isset($request["lastname"]) && isset($request["country"]) && isset($request["adres"]) && isset($request["delivercode"])) {
             $TechID = $request["TechID"];
             $username = $request["username"];
             $email = $request["email"];
@@ -47,25 +49,30 @@
             $sql = "UPDATE `accounts` SET Gebruikersnaam=?, Voornaam=?, Achternaam=?, Geboortedatum=?, Email=?, Telefoonnummer=?, Land=?, Adres=?, Postcode=? WHERE Tech_ID=?";
             $stmt = $conn->prepare($sql);
 
-            $stmt->bind_param("sssssssssss", $username, $firstname, $lastname, $birthday, $email, $phonenumber, $country, $adress, $delivercode, $TechID);
+            $stmt->bind_param("ssssssssss", $username, $firstname, $lastname, $birthday, $email, $phonenumber, $country, $adress, $delivercode, $TechID);
             $stmt->execute();
 
             if ($stmt->affected_rows > 0) {
                 http_response_code(200);
-                echo json_encode(array("message" => "User successful updated"));
+                echo json_encode(array("message" => "User successfully updated"));
             } else {
-                http_response_code(401);
-                echo json_encode(array("message" => "Updating user failed"));
+                if ($stmt->errno == 0) {
+                    http_response_code(200);
+                    echo json_encode(array("message" => "User was not updated, possibly no changes"));
+                } else {
+                    http_response_code(500);
+                    echo json_encode(array("message" => "Database error occurred while updating user"));
+                }
             }
-
             $stmt->close();
-            $conn->close();
         } else {
             http_response_code(400);
-            echo json_encode(array("message" => "Invalid request"));
+            echo json_encode(array("message" => "Invalid request, missing parameters"));
         }
     } else {
         http_response_code(400);
         echo json_encode(array("message" => "No data received"));
-    } 
+    }
+
+    $conn->close();
 ?>
