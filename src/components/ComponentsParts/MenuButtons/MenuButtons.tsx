@@ -53,7 +53,7 @@ const Buttons: React.FC<Setters> = ({ stateSetterFunctions }) => {
     return (
         <div className="Buttons">
             <div className="dropdown">
-                <button type="button" onClick={() => LoadProductPage("None")} id="ProductsButton" className="ItemButton"><span>Products</span></button>
+                <button type="button" onClick={() => LoadProductPage("None")} id="ProductsButton" className="ItemButton">Products</button>
                 <div className="dropdown-content">
                     <button type="button" onClick={() => LoadProductPage("Software")} id="FirstItem">Software</button>
                     <button type="button" onClick={() => LoadProductPage("Hardware")}>Hardware</button>
@@ -62,7 +62,7 @@ const Buttons: React.FC<Setters> = ({ stateSetterFunctions }) => {
             </div>
 
             <div className="dropdown">
-                <button type="button" onClick={LoadOurTeam} id="TeamButton" className="ItemButton"><span>Team</span></button>
+                <button type="button" onClick={LoadOurTeam} id="TeamButton" className="ItemButton">Team</button>
                 <div className="dropdown-content">
                     <button type="button" onClick={LoadOurTeam} id="FirstItem">Our team</button>
                     <button type="button" onClick={LoadJipVoss} id="LastItem">Jip Voss</button>
@@ -70,7 +70,7 @@ const Buttons: React.FC<Setters> = ({ stateSetterFunctions }) => {
             </div>
 
             <div className="dropdown">
-                <button type="button" onClick={LoadWorkingByTechCode} id="WorkingByButton" className="ItemButton"><span>Working by TechCode</span></button>
+                <button type="button" onClick={LoadWorkingByTechCode} id="WorkingByButton" className="ItemButton">Working by TechCode</button>
                 <div className="dropdown-content">
                     <button type="button" onClick={LoadWorkingByTechCode} id="FirstItem">About working by TechCode</button>
                     <button type="button" onClick={LoadOurPolicies}>Our policies</button>
@@ -79,7 +79,7 @@ const Buttons: React.FC<Setters> = ({ stateSetterFunctions }) => {
             </div>
 
             <div className="TechAccountButtonHolder">
-                <button type="button" onClick={LoadDashboard} id="MyAccountButton" className="ItemButton"><span>Tech Account</span></button>
+                <button type="button" onClick={LoadDashboard} id="MyAccountButton" className="ItemButton">Tech Account</button>
             </div>
         </div>
     );

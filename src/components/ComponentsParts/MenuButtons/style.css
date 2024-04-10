@@ -1,14 +1,15 @@
 .Buttons {
-    height: 67.5vh;
     display: flex;
     flex-direction: row;
+    align-items: stretch;
+    align-self: flex-end;
 }
 
 .ItemButton {
     border: none;
     background-color: transparent;
     max-width: auto;
-    margin-left: 5%;
+    padding: 15px;
     text-decoration: none;
     transition: all 0.5s;
     cursor: pointer;
@@ -22,48 +23,23 @@
     color: white
 }
 
-.ItemButton span {
-    cursor: pointer;
-    display: inline-block;
-    position: relative;
-    transition: 0.5s;
-}
-  
-.ItemButton span:after {
-    content: '\00bb';
-    position: absolute;
-    opacity: 0;
-    top: 0;
-    right: -20px;
-    transition: 0.5s;
-}
-
-.ItemButton:hover span {
-    padding-right: 25px;
-  }
-  
-.ItemButton:hover span:after {
-    opacity: 1;
-    right: 0;
-}
-
 .dropdown {
     position: relative;
+    display: inline-block;
     display: flex;
     flex-direction: column;
+    align-items: stretch;
 }
   
 .dropdown-content {
-    margin-left: 100%;
-    margin-top: -30px;
     display: none;
     position: absolute;
     background-color: white;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
+    border-bottom-left-radius: 25px;
     border-bottom-right-radius: 25px;
-    border-top-right-radius: 25px;
 }
   
 .dropdown-content button {
@@ -82,10 +58,7 @@
   
 .dropdown:hover .dropdown-content {display: block;}
 
-#FirstItem {
-    border-top-right-radius: 25px;
-}
-
 #LastItem {
+    border-bottom-left-radius: 25px;
     border-bottom-right-radius: 25px;
 }

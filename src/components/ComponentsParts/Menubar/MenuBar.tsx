@@ -5,6 +5,9 @@ import Buttons from "../MenuButtons/MenuButtons.tsx";
 import "./style.css";
 import { Setters, HideScreens } from "../../Scripts/ScreenHandler";
 
+//images
+import LoggedInAsPerson from "../../Icons/person_FILL0_wght400_GRAD0_opsz24.png";
+
 const RenderMenuBar: React.FC<Setters> = ({ stateSetterFunctions }) => {
     //variable
     const LoginButton = document.getElementById("LoginButton");
@@ -53,8 +56,8 @@ const RenderMenuBar: React.FC<Setters> = ({ stateSetterFunctions }) => {
             </div>
             <Buttons stateSetterFunctions={stateSetterFunctions}/>
             <div className="AccountItems">
-                <p id="LoginText">Logged in as: {loggedInUser}</p>
-                <button type="button" onClick={LoadLoginScreen} id="LoginButton"><span>Login </span></button>
+                <p id="LoginText"><img src={LoggedInAsPerson}/> {loggedInUser}</p>
+                <button type="button" onClick={LoadLoginScreen} id="LoginButton">Login</button>
                 <p id="VERSION">Version: {VERSION}</p>
             </div>
         </Fragment>

@@ -40,21 +40,3 @@
     position: relative;
     transition: 0.5s;
 }
-  
-#LoginButton span:after {
-    content: '\00bb';
-    position: absolute;
-    opacity: 0;
-    top: 0;
-    right: -20px;
-    transition: 0.5s;
-}
-
-#LoginButton:hover span {
-    padding-right: 25px;
-}
-  
-#LoginButton:hover span:after {
-    opacity: 1;
-    right: 0;
-}

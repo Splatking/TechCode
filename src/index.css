@@ -34,9 +34,10 @@ body {
 }
 
 .MainScreen {
-    width: 100vw;
-    height: 80vh;
-    margin-top: 17.5vh;
+    width: 98vw;
+    height: 85vh;
+    margin-top: 15vh;
+    padding: 1% 1% 1% 1%;
     position: fixed;
     overflow-y: auto;
     overflow-x: hidden;
@@ -46,7 +47,7 @@ body {
     background-color: white;
     border-bottom-left-radius: 25px;
     border-bottom-right-radius: 25px;
-    width: 100%;
+    width: 99vw;
     height: 15vh;
     padding: 0.5%;
     position: fixed;
