@@ -44,7 +44,8 @@
     border-bottom-left-radius: 25px;
     border-bottom-right-radius: 25px;
     top: 100%;
-    left: 0;
+    left: 50%;
+    transform: translateX(-50%);
 }
   
 .dropdown-content button {
@@ -55,8 +56,6 @@
     padding: 12px 16px;
     text-decoration: none;
     display: block;
-    top: 100%;
-    left: 0;
 }
   
 .dropdown-content button:hover {
