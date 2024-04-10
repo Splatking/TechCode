@@ -31,10 +31,11 @@
     background-color: transparent;
     width: 20%;
     text-decoration: none;
+    text-align: right;
     transition: all 0.5s;
     cursor: pointer;
     color: black;
-    font-size: 25px;
+    font-size: 16pt;
     border-radius: 25px;
 }
 

@@ -141,12 +141,12 @@ function RenderMainScreen() {
                     <tr>
                         <td>Birthday:</td>
                         <td className="UserData" id="Birthday">{sessionStorage.getItem("Birthday")}</td>
-                        <td><input type="text" value={birthday} onChange={handleBirthdayChange} className="UserInput" id="BirthdayValue" name="BirthdayValue"/></td>
+                        <td><input type="date" value={birthday} onChange={handleBirthdayChange} className="UserInput" id="BirthdayValue" name="BirthdayValue"/></td>
                     </tr>
                     <tr>
                         <td>Email:</td>
                         <td className="UserData" id="Email">{sessionStorage.getItem("Email")}</td>
-                        <td><input type="text" value={email} onChange={handleEmailChange} className="UserInput" id="EmailValue" name="EmailValue"/></td>
+                        <td><input type="email" value={email} onChange={handleEmailChange} className="UserInput" id="EmailValue" name="EmailValue"/></td>
                     </tr>
                     <tr>
                         <td>Phonenumber:</td>

@@ -10,27 +10,37 @@
 
 @font-face {
     font-family: Garamond-Regular;
-    src: url("../components/Fonts/EBGaramond-VariableFont_wght.ttf") format("truetype");
+    src: url("./components/Fonts/EBGaramond-VariableFont_wght.ttf") format("truetype");
 }
 
 @font-face {
     font-family: Garamond-Italic;
-    src: url("../components/Fonts/EBGaramond-Italic-VariableFont_wght.ttf") format("truetype");
+    src: url("./components/Fonts/EBGaramond-Italic-VariableFont_wght.ttf") format("truetype");
 }
 
 @font-face {
     font-family: Madimi-Regular;
-    src: url("../components/Fonts/MadimiRegular.ttf") format("truetype");
+    src: url("./components/Fonts/MadimiRegular.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: Lora;
+    src: url("./components/Fonts/Lora-VariableFont_wght.ttf") format("truetype");
 }
 
 body {
-    font-family: "Madimi-Regular", sans-serif;
+    font-family: "Lora", sans-serif;
+    font-size: 14pt;
     overflow: hidden;
     width: 100vw;
     height: 100vh;
     margin: 0;
     background-size: contain;
     background-color: black;
+}
+
+body button {
+    font-family: "Lora", sans-serif;
 }
 
 .MainScreen {
@@ -54,6 +64,18 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+}
+
+.Title {
+    font-size: 22pt;
+}
+
+.SubTitle {
+    font-size: 16pt;
+}
+
+.Button {
+    font-size: 16pt;
 }
 
 #HomePage {

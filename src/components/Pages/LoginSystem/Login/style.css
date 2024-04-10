@@ -45,7 +45,7 @@
     transition: all 0.5s;
     cursor: pointer;
     color: black;
-    font-size: 17.5px;
+    font-size: 14pt;
     border-radius: 25px;
 }
 
@@ -57,7 +57,7 @@
     transition: all 0.5s;
     cursor: pointer;
     color: black;
-    font-size: 25px;
+    font-size: 16pt;
     border-radius: 25px;
 }
 

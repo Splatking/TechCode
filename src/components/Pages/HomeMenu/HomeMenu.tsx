@@ -73,19 +73,19 @@ const RenderMainScreen: React.FC<Setters> = ({ stateSetterFunctions }) => {
     return (
         <Fragment>
             <div className="ScreenItem" id="TechCode_Introduction">
-                <h1>Welcome by TechCode</h1>
+                <h1 className="Title">Welcome by TechCode</h1>
                 <p>Your go-to online shop for games and other types of gaming accessoires</p>
             </div>
             <div className="LineItem">
                 <div className="ScreenItem" id="LatestProduct">
-                    <h1>Latest product</h1>
+                    <h1 className="Title">Latest product</h1>
                     <h2>TechCode site</h2>
                     <img src={SitePreview} alt="Latest product preview" id="PreviewImage"/>
                     <p>The TechCode site has been created in semester 2 of Open Learning and Delta for Jip Voss at Fontys HBO-ICT. The site has been released around - and will be used as an portofolio site!</p>
                     <button onClick={LoadLatestProduct} className="QuickMenuButton">Show me more!</button>
                 </div>
                 <div className="ScreenItem" id="QuickMenu">
-                    <h1>Quick menu</h1>
+                    <h1 className="Title">Quick menu</h1>
                     <p id="QuickMenuButtonHolder">
                         Within the TechCode website, there is a lot to explore. Here we've a short list for you what you can do and view within the side.<br/><br/>
                         With the next button you're able to go to your own account:<br/>
@@ -98,7 +98,7 @@ const RenderMainScreen: React.FC<Setters> = ({ stateSetterFunctions }) => {
                 </div>
             </div>
             <div className="ScreenItem" id="PossibleBy">
-                <h1>Made possible by</h1>
+                <h1 className="Title">Made possible by</h1>
                 <div className="Companies">
                     <ul className="tag-list Companies__inner">
                         <li><input type="image" src={FontysLogo} onClick={LoadFontys} className="CompanyLogo" id="FontysLogo"/></li>
