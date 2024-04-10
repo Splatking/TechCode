@@ -8,6 +8,7 @@
     background-color: white;
     border-radius: 25px;
     max-height: 83vh;
+    padding: 0.5%;
     margin-top: 1vh;
     overflow-y: auto;
     overflow-x: hidden;
