@@ -49,10 +49,12 @@ const RenderMenuBar: React.FC<Setters> = ({ stateSetterFunctions }) => {
     }
 
     useEffect(() => {
-        const loggedInUser = sessionStorage.getItem("Username") || "-";
-        setLoggedInUser(loggedInUser);
-        LoadLoginName();
-    }, []);
+        const interval = setInterval(() => {
+            const loggedInUser = sessionStorage.getItem("Username") || "-";
+            setLoggedInUser(loggedInUser);
+            LoadLoginName();
+        }, 5 * 1000);
+    })
 
     return (
         <Fragment>
