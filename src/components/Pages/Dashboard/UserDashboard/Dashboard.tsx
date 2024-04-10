@@ -4,7 +4,6 @@ import { useState } from "react";
 
 function RenderMainScreen() {
     const TechID = useState(sessionStorage.getItem("Tech_ID") || "-");
-    const password = useState(sessionStorage.getItem("Password") || "-");
     const [username, setUsername] = useState(sessionStorage.getItem("Username") || "-");
     const [firstname, setFirstname] = useState(sessionStorage.getItem("Firstname") || "-");
     const [lastname, setLastname] = useState(sessionStorage.getItem("Lastname") || "-");
@@ -59,17 +58,17 @@ function RenderMainScreen() {
                     'Content-Type': 'application/json',
                     'Accept' : 'application/json'
                            },
-                body: JSON.stringify({ username, email, phonenumber, birthday, firstname, lastname, country, adres, delivercode, TechID }),
+                body: JSON.stringify({ TechID: TechID[0], username, email, phonenumber, birthday, firstname, lastname, country, adres, delivercode }),
             })
             .then(response => {
                 if(response.ok){
                     fetch('http://localhost/TechCodeDatabase/ServerLogin.php', {
-                        method: 'POST'    ,
+                        method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
                             'Accept': 'application/json'
                         },
-                        body: JSON.stringify({ username, password }),
+                        body: JSON.stringify({ TechID: TechID[0] }),
                     })
                     .then(function (response) {
                         console.log(response.status);
@@ -98,7 +97,7 @@ function RenderMainScreen() {
                         alert(error.message);
                     });
                 } else {
-                    alert("Invalid username or password");
+                    alert("Failed to connect with the server!");
                 }
             })
             .catch(error => {
