@@ -3,6 +3,9 @@ import React from "react";
 import "./style.css";
 import { Setters, HideScreens } from "../../Scripts/ScreenHandler";
 
+//images
+import AccountCirlce from "../../Icons/account_circle_FILL0_wght400_GRAD0_opsz24.png";
+
 const Buttons: React.FC<Setters> = ({ stateSetterFunctions }) => {
     function LoadDashboard(){
         HideScreens(stateSetterFunctions);
@@ -79,7 +82,7 @@ const Buttons: React.FC<Setters> = ({ stateSetterFunctions }) => {
             </div>
 
             <div className="TechAccountButtonHolder">
-                <button type="button" onClick={LoadDashboard} id="MyAccountButton" className="ItemButton">Tech Account</button>
+                <button type="button" onClick={LoadDashboard} id="MyAccountButton" className="ItemButton"><img src={AccountCirlce}/></button>
             </div>
         </div>
     );

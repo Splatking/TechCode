@@ -36,8 +36,10 @@ const RenderMenuBar: React.FC<Setters> = ({ stateSetterFunctions }) => {
         if(LoginButton){
             if(sessionStorage.getItem("Username") == null){
                 LoginButton.innerHTML = "Login";
+                LoginButton.setAttribute("data-status", "LoginButton");
             } else {
                 LoginButton.innerHTML = "Logout";
+                LoginButton.setAttribute("data-status", "LogoutButton");
             }
         }
     }
@@ -52,13 +54,16 @@ const RenderMenuBar: React.FC<Setters> = ({ stateSetterFunctions }) => {
         <Fragment>
             <div className="CompanyItems">
                 <input type="image" src={TechCode_Logo} alt="TechCode Logo" id="TechCodeLogo" onClick={LoadHomeScreen}/>
-                <h1 id="TechName">TechCode</h1>
             </div>
             <Buttons stateSetterFunctions={stateSetterFunctions}/>
             <div className="AccountItems">
-                <p id="LoginText"><img src={LoggedInAsPerson}/> {loggedInUser}</p>
-                <button type="button" onClick={LoadLoginScreen} id="LoginButton">Login</button>
-                <p id="VERSION">Version: {VERSION}</p>
+                <div></div>
+                <div>
+                    <p id="LoginText"><img src={LoggedInAsPerson}/> {loggedInUser}</p>
+                    <button type="button" onClick={LoadLoginScreen} id="LoginButton" data-status="LoginButton">Login</button>
+                    <p id="VERSION">Version: {VERSION}</p>
+                </div>
+                <div></div>
             </div>
         </Fragment>
     );
