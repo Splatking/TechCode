@@ -56,12 +56,7 @@ const Buttons: React.FC<Setters> = ({ stateSetterFunctions }) => {
     return (
         <div className="Buttons">
             <div className="dropdown">
-                <button type="button" onClick={() => LoadProductPage("None")} id="ProductsButton" className="ItemButton">Products</button>
-                <div className="dropdown-content">
-                    <button type="button" onClick={() => LoadProductPage("Software")} id="FirstItem">Software</button>
-                    <button type="button" onClick={() => LoadProductPage("Hardware")}>Hardware</button>
-                    <button type="button" onClick={() => LoadProductPage("Gaming")} id="LastItem">Gaming</button>
-                </div>
+                <button type="button" onClick={() => LoadProductPage("None")} id="ProductsButton" className="ItemButton">Projects</button>
             </div>
 
             <div className="dropdown">
