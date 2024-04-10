@@ -1,11 +1,13 @@
 .Buttons {
     height: 67.5vh;
+    display: flex;
+    flex-direction: row;
 }
 
 .ItemButton {
     border: none;
     background-color: transparent;
-    width: 90%;
+    max-width: auto;
     margin-left: 5%;
     text-decoration: none;
     transition: all 0.5s;

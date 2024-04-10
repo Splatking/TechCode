@@ -3,7 +3,7 @@ import "./Dashboard.css";
 import { useState } from "react";
 
 function RenderMainScreen() {
-    const TechID = useState(sessionStorage.getItem("TechID") || "-");
+    const TechID = useState(sessionStorage.getItem("Tech_ID") || "-");
     const password = useState(sessionStorage.getItem("Password") || "-");
     const [username, setUsername] = useState(sessionStorage.getItem("Username") || "-");
     const [firstname, setFirstname] = useState(sessionStorage.getItem("Firstname") || "-");
@@ -52,58 +52,62 @@ function RenderMainScreen() {
     };
 
     function UpdateUserData(){
-        fetch('http://localhost/TechCodeDatabase/ServerUpdateUser.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept' : 'application/json'
-            },
-            body: JSON.stringify({ username, email, phonenumber, birthday, firstname, lastname, country, adres, delivercode, TechID }),
-        })
-        .then(response => {
-            if(response.ok){
-                fetch('http://localhost/TechCodeDatabase/ServerLogin.php', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    },
-                    body: JSON.stringify({ username, password }),
-                })
-                .then(function (response) {
-                    console.log(response.status);
-                    if (response.ok) {
-                        return response.json();
-                    } else {
-                        throw new Error('Invalid username or password');
-                    }
-                })
-                .then(function (data) {
-                    sessionStorage.setItem("Tech_ID", data.GivenID);
-                    sessionStorage.setItem("Username", data.GivenUsername);
-                    sessionStorage.setItem("Firstname", data.GivenFirstname);
-                    sessionStorage.setItem("Lastname", data.GivenLastname);
-                    sessionStorage.setItem("Birthday", data.GivenBirthday);
-                    sessionStorage.setItem("Email", data.GivenEmail);
-                    sessionStorage.setItem("WorkEmail", data.GivenWorkMail);
-                    sessionStorage.setItem("Phonenumber", data.GivenPhoneNumber);
-                    sessionStorage.setItem("Country", data.GivenLand);
-                    sessionStorage.setItem("Adres", data.GivenAdres);
-                    sessionStorage.setItem("DeliverCode", data.GivenDeliverCode);
-                    sessionStorage.setItem("Rol", data.GivenRol);
-                })
-                .catch(error => {
-                    console.error('Error:', error.message);
-                    alert(error.message);
-                });
-            } else {
-                alert("Invalid username or password");
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert("An error occurred while logging in");
-        });
+        if(username !== "" && firstname !== "" && lastname !== "" && birthday !== "" && email !== "" && phonenumber !== ""){
+            fetch('http://localhost/TechCodeDatabase/ServerUpdateUser.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept' : 'application/json'
+                           },
+                body: JSON.stringify({ username, email, phonenumber, birthday, firstname, lastname, country, adres, delivercode, TechID }),
+            })
+            .then(response => {
+                if(response.ok){
+                    fetch('http://localhost/TechCodeDatabase/ServerLogin.php', {
+                        method: 'POST'    ,
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json'
+                        },
+                        body: JSON.stringify({ username, password }),
+                    })
+                    .then(function (response) {
+                        console.log(response.status);
+                        if (response.ok) {
+                            return response.json();
+                        } else {
+                            throw new Error('Invalid username or password');
+                        }
+                    })
+                    .then(function (data) {
+                        sessionStorage.setItem("Tech_ID", data.GivenID);
+                        sessionStorage.setItem("Username", data.GivenUsername);
+                        sessionStorage.setItem("Firstname", data.GivenFirstname);
+                        sessionStorage.setItem("Lastname", data.GivenLastname);
+                        sessionStorage.setItem("Birthday", data.GivenBirthday);
+                        sessionStorage.setItem("Email", data.GivenEmail);
+                        sessionStorage.setItem("WorkEmail", data.GivenWorkMail);
+                        sessionStorage.setItem("Phonenumber", data.GivenPhoneNumber);
+                        sessionStorage.setItem("Country", data.GivenLand);
+                        sessionStorage.setItem("Adres", data.GivenAdres);
+                        sessionStorage.setItem("DeliverCode", data.GivenDeliverCode);
+                        sessionStorage.setItem("Rol", data.GivenRol);
+                    })
+                    .catch(error => {
+                        console.error('Error:', error.message);
+                        alert(error.message);
+                    });
+                } else {
+                    alert("Invalid username or password");
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert("An error occurred while logging in");
+            });
+        } else {
+            alert("You're missing one of the following items: Username, Firstname, Lastname, Birthday, Email or Phonennumber! Can you fill out this one as well? Otherwise we don't get to know you good enough!");
+        }
     }
 
     return (

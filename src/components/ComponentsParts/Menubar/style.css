@@ -1,16 +1,11 @@
-#MenuBar {
-    background-color: white;
-    border-bottom-right-radius: 25px;
-    border-top-right-radius: 25px;
-    max-width: 17.5vw;
-    height: 100vh;
-    text-align: center;
-    position: fixed;
+.CompanyItems {
+    display: flex;
+    flex-direction: row;
 }
 
 #MenuBar input {
     max-width: 90%;
-    height: auto;
+    height: 80%;
     margin-top: 1.5vh;
 }
 
@@ -63,4 +58,3 @@
     opacity: 1;
     right: 0;
 }
-

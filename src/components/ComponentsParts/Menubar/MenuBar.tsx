@@ -47,8 +47,10 @@ const RenderMenuBar: React.FC<Setters> = ({ stateSetterFunctions }) => {
 
     return (
         <Fragment>
-            <input type="image" src={TechCode_Logo} alt="TechCode Logo" id="TechCodeLogo" onClick={LoadHomeScreen}/>
-            <h1>TechCode</h1>
+            <div className="CompanyItems">
+                <input type="image" src={TechCode_Logo} alt="TechCode Logo" id="TechCodeLogo" onClick={LoadHomeScreen}/>
+                <h1 id="TechName">TechCode</h1>
+            </div>
             <Buttons stateSetterFunctions={stateSetterFunctions}/>
             <div className="AccountItems">
                 <p id="LoginText">Logged in as: {loggedInUser}</p>
