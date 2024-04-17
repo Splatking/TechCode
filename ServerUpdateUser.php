@@ -16,6 +16,9 @@
         exit(0);
     }
 
+    //includes
+    include "./MailingSystem/Mailer.php";
+
     // DATABASE CONNECTION
     $servername = "localhost";
     $username = "TechCode_Systems";
@@ -65,6 +68,8 @@
                 }
             }
             $stmt->close();
+
+            sendEmail($email, $username, "Account update");
         } else {
             http_response_code(400);
             echo json_encode(array("message" => "Invalid request, missing parameters"));

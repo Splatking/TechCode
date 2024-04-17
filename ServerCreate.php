@@ -16,6 +16,9 @@
         exit(0);
     }
 
+    //includes
+    include "./MailingSystem/Mailer.php";
+
     //DATABASE CONNECTION
     $servername = "localhost";
     $username = "TechCode_Systems";
@@ -59,6 +62,8 @@
 
             $stmt->close();
             $conn->close();
+
+            sendEmail($email, $username, "Account creation");
         } else {
             http_response_code(400);
             echo json_encode(array("message" => "Invalid request"));
