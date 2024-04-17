@@ -5,7 +5,12 @@
     justify-content: space-evenly;
 }
 
+.LeftGUI {
+    width: 45%;
+}
+
 .RightGUI {
+    width: 45%;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -14,4 +19,13 @@
 .AccountInformation, .UsefullLinks, .CustomerGUI {
     background-color: white;
     border-radius: 25px;
+}
+
+.AccountInformation {
+    margin-top: 5vh;
+}
+
+.AccountInformation button {
+    width: 25%;
+    margin-left: 37.5%;
 }
