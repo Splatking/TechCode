@@ -26,12 +26,12 @@
             <li>By violating our terms of service and terms of policy your account can be blocked from all of our services. Expecting you won't do that but we still listed it here so you're aware of that :)</li>
         </ul><br><br>
         If there are still some questions unanswered don't hesitate to send us a mail on: system.techcode@gmail.com or visit our website: https://TechCode.com/ <br><br>
-        <img src='../Images/TechCode_Logo.jpg'>";
+        <img src='http://localhost/TechCodeDatabase/Images/TechCode_Logo.jpg'>";
     }
 
     function GenerateUpdateEmail($User){
         return "Hey $User,<br><br> 
         just wanted to let you know. Your account is succesfully updated! Go check it out on https://TechCode.com for the full details of your account settings!<br><br>
-        <img src='../Images/TechCode_Logo.jpg'>";
+        <img src='http://localhost/TechCodeDatabase/Images/TechCode_Logo.jpg'>";
     }
 ?>
