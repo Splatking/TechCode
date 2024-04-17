@@ -1,0 +1,17 @@
+.WorkerDashboardGUI {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.RightGUI {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.AccountInformation, .UsefullLinks, .CustomerGUI {
+    background-color: white;
+    border-radius: 25px;
+}

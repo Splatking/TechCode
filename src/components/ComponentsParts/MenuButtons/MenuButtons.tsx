@@ -13,7 +13,11 @@ const Buttons: React.FC<Setters> = ({ stateSetterFunctions }) => {
             stateSetterFunctions.setMenuBarVisible(false);
             stateSetterFunctions.setLoginScreenVisible(true);
         } else {
-            stateSetterFunctions.setDashboardScreenVisible(true);
+            if(sessionStorage.getItem("WorkEmail") != null){
+                stateSetterFunctions.setWorkersDashboardScreenVisible(true);
+            } else {
+                stateSetterFunctions.setDashboardScreenVisible(true);
+            }
         }
     };
 

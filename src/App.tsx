@@ -7,6 +7,7 @@ import AccountScreen from "./components/Pages/Dashboard/UserDashboard/Dashboard"
 import LoginScreen from "./components/Pages/LoginSystem/Login/Login";
 import CreateScreen from "./components/Pages/LoginSystem/Create/Create";
 import Dashboard from "./components/Pages/Dashboard/UserDashboard/Dashboard";
+import WorkersDashboard from "./components/Pages/Dashboard/WorkersDashboard/WorkersDashboard";
 import WorkingByScreen from "./components/Pages/WorkingBy/WorkingBy";
 import RenderTeamScreen from "./components/Pages/Team/Team";
 import JipVoss from "./components/Pages/JipVoss/JipVoss";
@@ -19,6 +20,7 @@ function App() {
   const [isLoginScreenVisible, setLoginScreenVisible] = useState(false);
   const [isCreateScreenVisible, setCreateScreenVisible] = useState(false);
   const [isDashboardScreenVisbile, setDashboardScreenVisible] = useState(false);
+  const [isWorkersDashboardScreenVisbile, setWorkersDashboardScreenVisible] = useState(false);
   const [isWorkingByScreenVisible, setWorkingByScreenVisible] = useState(false);
   const [isTeamScreenVisible, setTeamScreenVisible] = useState(false);
   const [isJipVossVisible, setJipVossVisible] = useState(false);
@@ -31,6 +33,7 @@ function App() {
     setLoginScreenVisible,
     setCreateScreenVisible,
     setDashboardScreenVisible,
+    setWorkersDashboardScreenVisible,
     setWorkingByScreenVisible,
     setTeamScreenVisible,
     setJipVossVisible,
@@ -47,6 +50,7 @@ function App() {
       {isLoginScreenVisible && <div className="LoginHub" id="LoginScreen"><LoginScreen stateSetterFunctions={stateSetterFunctions}/></div>}
       {isCreateScreenVisible && <div className="LoginHub" id="CreateScreen"><CreateScreen stateSetterFunctions={stateSetterFunctions}/></div>}
       {isDashboardScreenVisbile && <div className="MainScreen" id="DashboardScreen"><Dashboard /></div>}
+      {isWorkersDashboardScreenVisbile && <div className="MainScreen" id="DashboardScreen"><WorkersDashboard /></div>}
       {isMenuBarVisible && <div id="MenuBar"><RenderMenuBar stateSetterFunctions={stateSetterFunctions} /></div>}
     </div>
   );
