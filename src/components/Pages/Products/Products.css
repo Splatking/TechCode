@@ -30,10 +30,11 @@
     width: 15%;
     height: 94%;
     margin-right: 1%;
-    padding: 0.5% 0.5% 0.5% 0.5%;
+    padding: 0.5%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: flex-start;
     border: 2px solid white;
     background-size: contain;
     background-repeat: no-repeat;
@@ -46,17 +47,24 @@
 
 .ProjectDescription {
     font-size: 14pt;
+    align-self: flex-end;
 }
 
 #MoreInfoProjectButton {
     background-color: white;
+    width: 100%;
     text-decoration: none;
     border: none;
     border-radius: 25px;
+    align-self: flex-end;
 }
 
 #MoreInfoProjectButton:hover {
     color: purple;
+}
+
+#TechCodeAssistanceProject {
+    background-image: url("../../Images/TechCodeAssistanceLogo.png");
 }
 
 #GlowProject {
@@ -64,7 +72,12 @@
 }
 
 #VRIntroductionProject {
-    background-image: url("../../Images/BvOF-GLOW2023_A-Futures-of-GLOW-01-scaled.jpg");
+    background-image: url("../../Images/VRIntroduction.png");
+}
+
+#VRIntroductionProject h2, #VRIntroductionProject p {
+    background-color: black;
+    width: 100%;
 }
 
 #TechCodeSiteProject {

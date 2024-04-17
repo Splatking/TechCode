@@ -74,7 +74,7 @@ const RenderMainScreen: React.FC<Setters> = ({ stateSetterFunctions }) => {
         <Fragment>
             <div className="ScreenItem" id="TechCode_Introduction">
                 <h1 className="Title">Welcome by TechCode</h1>
-                <p>Your go-to online shop for games and other types of gaming accessoires</p>
+                <p>Your go-to for searching our online portofolio and view our upcoming products!</p>
             </div>
             <div className="LineItem">
                 <div className="ScreenItem" id="LatestProduct">
@@ -90,8 +90,8 @@ const RenderMainScreen: React.FC<Setters> = ({ stateSetterFunctions }) => {
                         Within the TechCode website, there is a lot to explore. Here we've a short list for you what you can do and view within the side.<br/><br/>
                         With the next button you're able to go to your own account:<br/>
                         <button onClick={LoadTechAccountPage} className="QuickMenuButton">Tech Account</button><br/><br/>
-                        Ever wondered what we've to offer? Explore our product page or select the filtered category in the menubar:<br/>
-                        <button onClick={LoadProductPage} className="QuickMenuButton">Products</button><br/><br/>
+                        Ever wondered what we've done in the past?<br/> Explore our project page and see what we've done with TechCode so far:<br/>
+                        <button onClick={LoadProductPage} className="QuickMenuButton">Project</button><br/><br/>
                         So your on the site to get a job by us? That's possible press the next button:<br/>
                         <button onClick={LoadWorkingBy} className="QuickMenuButton">Working by TechCode</button><br/><br/>
                     </p>

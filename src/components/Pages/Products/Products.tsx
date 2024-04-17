@@ -11,9 +11,9 @@ function ProductsScreen(){
                     <div className="ProjectCategory" id="FromTechCode">
                         <h2 className="SubTitle" id="ProjectCategoryTitle">Projects by: TechCode</h2>
                         <div className="ProjectScroller">
-                            <div className="ProjectItem" id="GlowProject">
-                                <h2 className="ProjectTitle">Glow</h2>
-                                <p className="ProjectDescription">Cubes placed in a group which can be activated by touch!</p>
+                            <div className="ProjectItem" id="TechCodeAssistanceProject">
+                                <h2 className="ProjectTitle">TechCode Assistance</h2>
+                                <p className="ProjectDescription">TechCode Assistance is a discord bot, which does the admin stuff in the server from TechCode!</p>
                                 <button className="Button" id="MoreInfoProjectButton">More info</button>
                             </div>
                         </div>
