@@ -5,6 +5,7 @@ import DeltaLogo from "../../Images/Delta_Logo.png";
 import TechCodeLogo from "../../Images/TechCode_Logo.png";
 import DiscordLogo from "../../Images/Discord_Logo.png";
 import SitePreview from "../../Images/SitePreview.png";
+import JipVoss from "../../Images/JipVoss.png";
 
 function RenderMainScreen() { 
     function Reload(){
@@ -57,8 +58,40 @@ function RenderMainScreen() {
     return (
         <Fragment>
             <div className="ScreenItem" id="TechCode_Introduction">
-                <h1 className="Title">Welcome by TechCode</h1>
-                <p>Your go-to for searching our online portofolio and view our upcoming products! The portofolio will be mainly focussed on that from Jip Voss.</p>
+                <div className="LeftSide">
+                    <h1 className="Title">Welcome by TechCode</h1>
+                    <p>
+                        Your go-to for searching our online portofolio and view our upcoming products! The portofolio will be mainly focussed on that from Jip Voss.<br/><br/>
+                        The portofolio contains information of who Jip is and what for ICT background he has. To make sure you can find all information about Jip they're 3 categories:<br/>
+                        <ul>
+                            <li>About me</li>
+                            <li>Projects</li>
+                            <li>Contact options</li>
+                        </ul><br/>
+                        Who is Jip Voss? Jip Voss is a man (18 years old) and living in the Netherlands. Where he works on ICT problems within school. He is now following the Fontys ICT study in the Delta excellence program. Working on mulitple projects at the same time. Because he doesn't really like to do the same stuff together. Jip is a motivated boy who really wants to reach the end-goal of all the projects he is working on.<br/><br/>
+                        Nice to know which languages I can write:<br/>
+                        <ul>
+                            <li>Java(script)</li>
+                            <li>Lua</li>
+                            <li>HTML</li>
+                            <li>CSS</li>
+                            <li>PHP</li>
+                            <li>C#</li>
+                            <li>C++</li>
+                            <li>Frameworking (with Vite)</li>
+                        </ul><br/>
+                        Get in contact with Jip through:<br/>
+                        <ul>
+                            <li><a href="https://www.linkedin.com/in/jip-voss">LinkedIn</a></li>
+                            <li><a href="https://www.instagram.com/jipthefox/">Instagram</a></li>
+                        </ul><br/><br/>
+                        Or press this little button to go into the portofolio:
+                    </p>
+                    <button>Open portofolio</button>
+                </div>
+                <div className="RightSide">
+                    <img src={JipVoss}/>
+                </div>
             </div>
             <div className="LineItem">
                 <div className="ScreenItem" id="LatestProduct">
