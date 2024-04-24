@@ -6,10 +6,16 @@ import TechCodeLogo from "../../Images/TechCode_Logo.png";
 import DiscordLogo from "../../Images/Discord_Logo.png";
 import SitePreview from "../../Images/SitePreview.png";
 import JipVoss from "../../Images/JipVoss.png";
+import { Setters, HideScreens } from "../../Scripts/ScreenHandler";
 
-function RenderMainScreen() { 
+const RenderMainScreen: React.FC<Setters> = ({ stateSetterFunctions }) => {
     function Reload(){
         window.location.reload();
+    }
+
+    function LoadPortofolio(){
+        HideScreens(stateSetterFunctions);
+        stateSetterFunctions.setProductPageVisible(true);
     }
 
     function LoadFontys(){
@@ -87,7 +93,7 @@ function RenderMainScreen() {
                         </ul><br/><br/>
                         Or press this little button to go into the portofolio:
                     </p>
-                    <button>Open portofolio</button>
+                    <button onClick={LoadPortofolio} className="QuickMenuButton"><div><p>Open portofolio</p></div><div className="arrows-body"><div className="arrow"></div><div className="arrow"></div><div className="arrow"></div></div></button>
                 </div>
                 <div className="RightSide">
                     <img src={JipVoss}/>
@@ -99,7 +105,7 @@ function RenderMainScreen() {
                     <h2 className="SubTitle">TechCode site</h2>
                     <img src={SitePreview} alt="Latest product preview" id="PreviewImage"/>
                     <p>The TechCode site has been created in semester 2 of Open Learning and Delta for Jip Voss at Fontys HBO-ICT. The site has been released around - and will be used as an portofolio site!</p>
-                    <button onClick={LoadLatestProduct} className="QuickMenuButton">Show me more!</button>
+                    <button onClick={LoadLatestProduct} className="QuickMenuButton"><div><p>Show me more!</p></div><div className="arrows-body"><div className="arrow"></div><div className="arrow"></div><div className="arrow"></div></div></button>
                 </div>
             </div>
             <div className="ScreenItem" id="PossibleBy">

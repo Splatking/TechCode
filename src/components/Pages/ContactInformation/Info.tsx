@@ -25,6 +25,7 @@ function RenderInfoScreen() {
                     <h1>Contact options TechCode</h1>
                     <div className="ContactHolder">
                         <input type="image" src={DiscordIcon} onClick={LoadDiscord} className="SocialLoader" id="DiscordLoader"/>
+                        <a href="mailto:techcode.development@gmail.com" target="_newtab"><img src={EmailIcon} className="SocialLoader" id="EmailLoader"/></a>
                     </div>
                 </div>
                 <div className="LowerItem">

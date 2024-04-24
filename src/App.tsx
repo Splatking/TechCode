@@ -44,7 +44,7 @@ function App() {
 
   return (
     <div id="Screen">
-      {isHomePageVisible && <div className="MainScreen" id="HomePage"><MainScreen /></div>}
+      {isHomePageVisible && <div className="MainScreen" id="HomePage"><MainScreen stateSetterFunctions={stateSetterFunctions}/></div>}
       {isProductPageVisible && <div className="MainScreen" id="ProductPage"><ProductsScreen /></div>}
       {isAccountScreenVisible && <div className="MainScreen" id="AccountScreen"><AccountScreen /></div>}
       {isWorkingByScreenVisible && <div className="MainScreen" id="WorkingByScreen"><WorkingByScreen stateSetterFunctions={stateSetterFunctions}/></div>}
