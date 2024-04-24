@@ -2,7 +2,7 @@ import { Fragment, useEffect } from "react";
 import "./style.css";
 import FontysLogo from "../../Images/Fontys_Logo.png";
 import DeltaLogo from "../../Images/Delta_Logo.png";
-import TechCodeLogo from "../../Images/TechCode_Logo.jpg";
+import TechCodeLogo from "../../Images/TechCode_Logo.png";
 import DiscordLogo from "../../Images/Discord_Logo.png";
 import SitePreview from "../../Images/SitePreview.png";
 import { Setters, HideScreens } from "../../Scripts/ScreenHandler";
@@ -74,7 +74,7 @@ const RenderMainScreen: React.FC<Setters> = ({ stateSetterFunctions }) => {
         <Fragment>
             <div className="ScreenItem" id="TechCode_Introduction">
                 <h1 className="Title">Welcome by TechCode</h1>
-                <p>Your go-to for searching our online portofolio and view our upcoming products!</p>
+                <p>Your go-to for searching our online portofolio and view our upcoming products! The portofolio will be mainly focussed on that from Jip Voss.</p>
             </div>
             <div className="LineItem">
                 <div className="ScreenItem" id="LatestProduct">
