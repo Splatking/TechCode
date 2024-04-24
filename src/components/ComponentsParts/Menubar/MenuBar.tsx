@@ -5,9 +5,14 @@ import Buttons from "../MenuButtons/MenuButtons.tsx";
 import "./style.css";
 import { Setters, HideScreens } from "../../Scripts/ScreenHandler";
 
+//images
+import LoggedInAsPerson from "../../Icons/person_FILL0_wght400_GRAD0_opsz24.png";
+import LoginSymbol from "../../Icons/login_FILL0_wght400_GRAD0_opsz24.png";
+
 const RenderMenuBar: React.FC<Setters> = ({ stateSetterFunctions }) => {
     //variable
     const LoginButton = document.getElementById("LoginButton");
+    const LoginSymbolImage = document.getElementById("LoginSymbolImage");
 
     const [loggedInUser, setLoggedInUser] = useState(sessionStorage.getItem("TechName") || "-");
 
@@ -30,30 +35,41 @@ const RenderMenuBar: React.FC<Setters> = ({ stateSetterFunctions }) => {
     };
 
     const LoadLoginName = () => {
-        if(LoginButton){
+        if(LoginButton && LoginSymbolImage){
             if(sessionStorage.getItem("Username") == null){
                 LoginButton.innerHTML = "Login";
+                LoginButton.setAttribute("data-status", "LoginButton");
+                LoginSymbolImage.style.visibility = "visible";
             } else {
                 LoginButton.innerHTML = "Logout";
+                LoginButton.setAttribute("data-status", "LogoutButton");
+                LoginSymbolImage.style.visibility = "hidden";
             }
         }
     }
 
     useEffect(() => {
-        const loggedInUser = sessionStorage.getItem("Username") || "-";
-        setLoggedInUser(loggedInUser);
-        LoadLoginName();
-    }, []);
+        const interval = setInterval(() => {
+            const loggedInUser = sessionStorage.getItem("Username") || "-";
+            setLoggedInUser(loggedInUser);
+            LoadLoginName();
+        }, 5 * 1000);
+    })
 
     return (
         <Fragment>
-            <input type="image" src={TechCode_Logo} alt="TechCode Logo" id="TechCodeLogo" onClick={LoadHomeScreen}/>
-            <h1>TechCode</h1>
+            <div className="CompanyItems">
+                <input type="image" src={TechCode_Logo} alt="TechCode Logo" id="TechCodeLogo" onClick={LoadHomeScreen}/>
+            </div>
             <Buttons stateSetterFunctions={stateSetterFunctions}/>
             <div className="AccountItems">
-                <p id="LoginText">Logged in as: {loggedInUser}</p>
-                <button type="button" onClick={LoadLoginScreen} id="LoginButton"><span>Login </span></button>
-                <p id="VERSION">Version: {VERSION}</p>
+                <div></div>
+                <div>
+                    <p id="LoginText"><img src={LoggedInAsPerson}/> {loggedInUser}</p>
+                    <button type="button" onClick={LoadLoginScreen} id="LoginButton" data-status="LoginButton"><img src={LoginSymbol} id="LoginSymbolImage"/> Login</button>
+                    <p id="VERSION">Version: {VERSION}</p>
+                </div>
+                <div></div>
             </div>
         </Fragment>
     );

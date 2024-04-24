@@ -1,16 +1,20 @@
-#MenuBar {
-    background-color: white;
-    border-bottom-right-radius: 25px;
-    border-top-right-radius: 25px;
-    max-width: 17.5vw;
-    height: 100vh;
-    text-align: center;
-    position: fixed;
+.CompanyItems {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 2;
+}
+
+.AccountItems {
+    flex-grow: 2;
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
 #MenuBar input {
     max-width: 90%;
-    height: auto;
+    height: 80%;
     margin-top: 1.5vh;
 }
 
@@ -25,42 +29,22 @@
 #LoginButton {
     border: none;
     background-color: transparent;
-    width: 90%;
+    width: 20%;
     text-decoration: none;
+    text-align: right;
     transition: all 0.5s;
     cursor: pointer;
     color: black;
-    font-size: 25px;
+    font-size: 16pt;
     border-radius: 25px;
 }
 
-#LoginButton:hover {
-    background-color: blue;
-    color: white
+#LoginButton[data-status="LoginButton"]:hover {
+    background-color: #ddd;
+    color: black;
 }
 
-#LoginButtonspan {
-    cursor: pointer;
-    display: inline-block;
-    position: relative;
-    transition: 0.5s;
+#LoginButton[data-status="LogoutButton"]:hover {
+    background-color: red;
+    color: white;
 }
-  
-#LoginButton span:after {
-    content: '\00bb';
-    position: absolute;
-    opacity: 0;
-    top: 0;
-    right: -20px;
-    transition: 0.5s;
-}
-
-#LoginButton:hover span {
-    padding-right: 25px;
-}
-  
-#LoginButton:hover span:after {
-    opacity: 1;
-    right: 0;
-}
-

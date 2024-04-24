@@ -1,3 +1,85 @@
 #ProductTitle {
     color: white;
 }
+
+#ProjectCategoryTitle {
+    color: white;
+}
+
+.AllProjects {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.ProjectCategory {
+    margin-bottom: 1%;
+}
+
+.ProjectScroller {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: hidden;
+    width: 100%;
+    height: 40vh;
+}
+
+.ProjectItem {
+    color: white;
+    width: 15%;
+    height: 94%;
+    margin-right: 1%;
+    padding: 0.5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    border: 2px solid white;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.ProjectTitle {
+    font-size: 16pt;
+}
+
+.ProjectDescription {
+    font-size: 14pt;
+    align-self: flex-end;
+}
+
+#MoreInfoProjectButton {
+    background-color: white;
+    width: 100%;
+    text-decoration: none;
+    border: none;
+    border-radius: 25px;
+    align-self: flex-end;
+}
+
+#MoreInfoProjectButton:hover {
+    color: purple;
+}
+
+#TechCodeAssistanceProject {
+    background-image: url("../../Images/TechCodeAssistanceLogo.png");
+}
+
+#GlowProject {
+    background-image: url("../../Images/BvOF-GLOW2023_A-Futures-of-GLOW-01-scaled.jpg");
+}
+
+#VRIntroductionProject {
+    background-image: url("../../Images/VRIntroduction.png");
+}
+
+#VRIntroductionProject h2, #VRIntroductionProject p {
+    background-color: black;
+    width: 100%;
+}
+
+#TechCodeSiteProject {
+    background-image: url("../../Images/TechCode_Logo.jpg");
+}

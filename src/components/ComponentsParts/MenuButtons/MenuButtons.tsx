@@ -3,6 +3,9 @@ import React from "react";
 import "./style.css";
 import { Setters, HideScreens } from "../../Scripts/ScreenHandler";
 
+//images
+import AccountCirlce from "../../Icons/account_circle_FILL0_wght400_GRAD0_opsz24.png";
+
 const Buttons: React.FC<Setters> = ({ stateSetterFunctions }) => {
     function LoadDashboard(){
         HideScreens(stateSetterFunctions);
@@ -10,7 +13,11 @@ const Buttons: React.FC<Setters> = ({ stateSetterFunctions }) => {
             stateSetterFunctions.setMenuBarVisible(false);
             stateSetterFunctions.setLoginScreenVisible(true);
         } else {
-            stateSetterFunctions.setDashboardScreenVisible(true);
+            if(sessionStorage.getItem("WorkEmail") != null){
+                stateSetterFunctions.setWorkersDashboardScreenVisible(true);
+            } else {
+                stateSetterFunctions.setDashboardScreenVisible(true);
+            }
         }
     };
 
@@ -53,16 +60,11 @@ const Buttons: React.FC<Setters> = ({ stateSetterFunctions }) => {
     return (
         <div className="Buttons">
             <div className="dropdown">
-                <button type="button" onClick={() => LoadProductPage("None")} id="ProductsButton" className="ItemButton"><span>Products</span></button>
-                <div className="dropdown-content">
-                    <button type="button" onClick={() => LoadProductPage("Software")} id="FirstItem">Software</button>
-                    <button type="button" onClick={() => LoadProductPage("Hardware")}>Hardware</button>
-                    <button type="button" onClick={() => LoadProductPage("Gaming")} id="LastItem">Gaming</button>
-                </div>
+                <button type="button" onClick={() => LoadProductPage("None")} id="ProductsButton" className="ItemButton">Projects</button>
             </div>
 
             <div className="dropdown">
-                <button type="button" onClick={LoadOurTeam} id="TeamButton" className="ItemButton"><span>Team</span></button>
+                <button type="button" onClick={LoadOurTeam} id="TeamButton" className="ItemButton">Team</button>
                 <div className="dropdown-content">
                     <button type="button" onClick={LoadOurTeam} id="FirstItem">Our team</button>
                     <button type="button" onClick={LoadJipVoss} id="LastItem">Jip Voss</button>
@@ -70,7 +72,7 @@ const Buttons: React.FC<Setters> = ({ stateSetterFunctions }) => {
             </div>
 
             <div className="dropdown">
-                <button type="button" onClick={LoadWorkingByTechCode} id="WorkingByButton" className="ItemButton"><span>Working by TechCode</span></button>
+                <button type="button" onClick={LoadWorkingByTechCode} id="WorkingByButton" className="ItemButton">Working by TechCode</button>
                 <div className="dropdown-content">
                     <button type="button" onClick={LoadWorkingByTechCode} id="FirstItem">About working by TechCode</button>
                     <button type="button" onClick={LoadOurPolicies}>Our policies</button>
@@ -79,7 +81,7 @@ const Buttons: React.FC<Setters> = ({ stateSetterFunctions }) => {
             </div>
 
             <div className="TechAccountButtonHolder">
-                <button type="button" onClick={LoadDashboard} id="MyAccountButton" className="ItemButton"><span>Tech Account</span></button>
+                <button type="button" onClick={LoadDashboard} id="MyAccountButton" className="ItemButton"><img src={AccountCirlce}/></button>
             </div>
         </div>
     );

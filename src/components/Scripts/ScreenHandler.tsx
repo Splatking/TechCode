@@ -6,6 +6,7 @@ interface Setters {
       setProductPageVisible: React.Dispatch<React.SetStateAction<boolean>>;
       setAccountScreenVisible: React.Dispatch<React.SetStateAction<boolean>>;
       setDashboardScreenVisible: React.Dispatch<React.SetStateAction<boolean>>;
+      setWorkersDashboardScreenVisible: React.Dispatch<React.SetStateAction<boolean>>;
       setLoginScreenVisible: React.Dispatch<React.SetStateAction<boolean>>;
       setCreateScreenVisible: React.Dispatch<React.SetStateAction<boolean>>;
       setWorkingByScreenVisible: React.Dispatch<React.SetStateAction<boolean>>;
@@ -20,6 +21,7 @@ function HideScreens(stateSetterFunctions: Setters['stateSetterFunctions']){
   stateSetterFunctions.setProductPageVisible(false);
   stateSetterFunctions.setAccountScreenVisible(false);
   stateSetterFunctions.setDashboardScreenVisible(false);
+  stateSetterFunctions.setWorkersDashboardScreenVisible(false);
   stateSetterFunctions.setWorkingByScreenVisible(false);
   stateSetterFunctions.setTeamScreenVisible(false);
   stateSetterFunctions.setJipVossVisible(false);

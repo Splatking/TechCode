@@ -13,14 +13,6 @@
     position: relative;
 }
 
-.ScreenItem h1 {
-    font-size: 35px;
-}
-
-.ScreenItem p {
-    font-size: 25px;
-}
-
 .LineItem {
     display: flex;
     flex-direction: row;
@@ -31,20 +23,21 @@
 }
 
 .QuickMenuButton {
+    font-size: 16pt;
     border: 2px solid black;
-    background-color: purple;
+    background-color: black;
     width: 90%;
     text-decoration: none;
     transition: all 0.5s;
     cursor: pointer;
     color: white;
-    font-size: 25px;
     border-radius: 25px;
 }
 
 .QuickMenuButton:hover {
-    background-color: blue;
-    color: white
+    background-color: #ddd;
+    color: black;
+    text-decoration: underline;
 }
 
 #LatestProduct {

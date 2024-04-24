@@ -11,7 +11,7 @@ const WorkingByScreen: React.FC<Setters> = ({ stateSetterFunctions }) => {
 
     return (
         <Fragment>
-            <h1 id="PageTitle" className="LetterOnBlack">Working by TechCode! Your dreams, our reality!!!</h1>
+            <h1 id="PageTitle" className="LetterOnBlack">Working by TechCode! Your dream, our reality!!!</h1>
             <div className="Onliner">
                 <img id="WorkingImage" src={WorkingImage} alt="Working people"/>
                 <p className="LetterOnBlack" id="WhyToWorkText">
