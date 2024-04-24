@@ -18,41 +18,14 @@
     flex-direction: row;
 }
 
-#QuickMenu {
-    margin-left: 2.5vw;
-}
-
-.QuickMenuButton {
-    font-size: 16pt;
-    border: 2px solid black;
-    background-color: black;
-    width: 90%;
-    text-decoration: none;
-    transition: all 0.5s;
-    cursor: pointer;
-    color: white;
-    border-radius: 25px;
-}
-
-.QuickMenuButton:hover {
-    background-color: #ddd;
-    color: black;
-    text-decoration: underline;
-}
-
 #LatestProduct {
-    width: 65vw;
+    width: 100%;
 }
 
 #PreviewImage {
     border: 2px solid black;
     border-radius: 25px;
     width: 80%;
-}
-
-#PreviewImage:hover {
-    transform-origin: center;
-    animation: scaling 2000ms ease-in-out forwards;
 }
 
 .Companies {

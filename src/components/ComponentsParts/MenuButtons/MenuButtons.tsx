@@ -21,15 +21,14 @@ const Buttons: React.FC<Setters> = ({ stateSetterFunctions }) => {
         }
     };
 
-    function LoadProductPage(Type: string){
-        const ProductGUI = document.getElementById("ItemHolderProducts");
-
+    function LoadProductPage(){
         HideScreens(stateSetterFunctions);
         stateSetterFunctions.setProductPageVisible(true);
+    }
 
-        if(ProductGUI){
-            ProductGUI.setAttribute("data-filter", Type);
-        }
+    function LoadContactPage(){
+        HideScreens(stateSetterFunctions);
+        stateSetterFunctions.setInfoVisible(true);
     }
 
     function LoadOurTeam(){
@@ -60,7 +59,12 @@ const Buttons: React.FC<Setters> = ({ stateSetterFunctions }) => {
     return (
         <div className="Buttons">
             <div className="dropdown">
-                <button type="button" onClick={() => LoadProductPage("None")} id="ProductsButton" className="ItemButton">Projects</button>
+                <button type="button" onClick={LoadProductPage} id="TeamButton" className="ItemButton">Portofolio - Jip Voss</button>
+                <div className="dropdown-content">
+                    <button type="button" onClick={LoadJipVoss} id="FirstItem">About me</button>
+                    <button type="button" onClick={LoadProductPage}>Projects</button>
+                    <button type="button" onClick={LoadContactPage} id="LastItem">Contact options</button>
+                </div>
             </div>
 
             <div className="dropdown">

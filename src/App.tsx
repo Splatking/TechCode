@@ -11,6 +11,7 @@ import WorkersDashboard from "./components/Pages/Dashboard/WorkersDashboard/Work
 import WorkingByScreen from "./components/Pages/WorkingBy/WorkingBy";
 import RenderTeamScreen from "./components/Pages/Team/Team";
 import JipVoss from "./components/Pages/JipVoss/JipVoss";
+import Info from "./components/Pages/ContactInformation/Info";
 
 function App() {
   const [isMenuBarVisible, setMenuBarVisible] = useState(true);
@@ -24,6 +25,7 @@ function App() {
   const [isWorkingByScreenVisible, setWorkingByScreenVisible] = useState(false);
   const [isTeamScreenVisible, setTeamScreenVisible] = useState(false);
   const [isJipVossVisible, setJipVossVisible] = useState(false);
+  const [isInfoVisible, setInfoVisible] = useState(false);
 
   const stateSetterFunctions = {
     setMenuBarVisible,
@@ -37,16 +39,18 @@ function App() {
     setWorkingByScreenVisible,
     setTeamScreenVisible,
     setJipVossVisible,
+    setInfoVisible
   };
 
   return (
     <div id="Screen">
-      {isHomePageVisible && <div className="MainScreen" id="HomePage"><MainScreen stateSetterFunctions={stateSetterFunctions}/></div>}
+      {isHomePageVisible && <div className="MainScreen" id="HomePage"><MainScreen /></div>}
       {isProductPageVisible && <div className="MainScreen" id="ProductPage"><ProductsScreen /></div>}
       {isAccountScreenVisible && <div className="MainScreen" id="AccountScreen"><AccountScreen /></div>}
       {isWorkingByScreenVisible && <div className="MainScreen" id="WorkingByScreen"><WorkingByScreen stateSetterFunctions={stateSetterFunctions}/></div>}
       {isTeamScreenVisible && <div className="MainScreen" id="TeamScreen"><RenderTeamScreen /></div>}
       {isJipVossVisible && <div className="MainScreen" id="JipVossScreen"><JipVoss /></div>}
+      {isInfoVisible && <div className="MainScreen" id="JipVossScreen"><Info /></div>}
       {isLoginScreenVisible && <div className="LoginHub" id="LoginScreen"><LoginScreen stateSetterFunctions={stateSetterFunctions}/></div>}
       {isCreateScreenVisible && <div className="LoginHub" id="CreateScreen"><CreateScreen stateSetterFunctions={stateSetterFunctions}/></div>}
       {isDashboardScreenVisbile && <div className="MainScreen" id="DashboardScreen"><Dashboard /></div>}
