@@ -64,7 +64,7 @@ const RenderMainScreen: React.FC<Setters> = ({ stateSetterFunctions }) => {
     return (
         <Fragment>
             <div className="ScreenItem" id="TechCode_Introduction">
-                <div className="LeftSide">
+                <div className="LeftSideWelcome">
                     <h1 className="Title">Welcome by TechCode</h1>
                     <p>
                         Your go-to for searching our online portofolio and view our upcoming products! The portofolio will be mainly focussed on that from Jip Voss.<br/><br/>
@@ -93,23 +93,27 @@ const RenderMainScreen: React.FC<Setters> = ({ stateSetterFunctions }) => {
                         </ul><br/><br/>
                         Or press this little button to go into the portofolio:
                     </p>
-                    <button onClick={LoadPortofolio} className="QuickMenuButton"><div><p>Open portofolio</p></div><div className="arrows-body"><div className="arrow"></div><div className="arrow"></div><div className="arrow"></div></div></button>
+                    <button onClick={LoadPortofolio} className="QuickMenuButton" id="PortofolioButton"><div><p>Open portofolio</p></div><div className="arrows-body"><div className="arrow"></div><div className="arrow"></div><div className="arrow"></div></div></button>
                 </div>
-                <div className="RightSide">
-                    <img src={JipVoss}/>
+                <div className="RightSideWelcome">
+                    <img src={JipVoss} id="JipVossImage"/>
                 </div>
             </div>
             <div className="LineItem">
                 <div className="ScreenItem" id="LatestProduct">
-                    <h1 className="Title">Latest product</h1>
-                    <h2 className="SubTitle">TechCode site</h2>
-                    <img src={SitePreview} alt="Latest product preview" id="PreviewImage"/>
-                    <p>The TechCode site has been created in semester 2 of Open Learning and Delta for Jip Voss at Fontys HBO-ICT. The site has been released around - and will be used as an portofolio site!</p>
-                    <button onClick={LoadLatestProduct} className="QuickMenuButton"><div><p>Show me more!</p></div><div className="arrows-body"><div className="arrow"></div><div className="arrow"></div><div className="arrow"></div></div></button>
+                    <div className="LeftSideLatestProject">
+                        <img src={SitePreview} alt="Latest product preview" id="PreviewImage"/>
+                    </div>
+                    <div className="RightSideLatestProject">
+                        <h1 className="Title">Latest project</h1>
+                        <h2 className="SubTitle">TechCode site</h2>
+                        <p>The TechCode site has been created in semester 2 of Open Learning and Delta for Jip Voss at Fontys HBO-ICT. The site has been released around - and will be used as an portofolio site!</p><br/>
+                        <button onClick={LoadLatestProduct} className="QuickMenuButton" id="LatestProjectButton"><div><p>Show me more!</p></div><div className="arrows-body"><div className="arrow"></div><div className="arrow"></div><div className="arrow"></div></div></button>
+                    </div>
                 </div>
             </div>
             <div className="ScreenItem" id="PossibleBy">
-                <h1 className="Title">Made possible by</h1>
+                <h1 className="Title">Made possible by:</h1>
                 <div className="Companies">
                     <ul className="tag-list Companies__inner">
                         <li><input type="image" src={FontysLogo} onClick={LoadFontys} className="CompanyLogo" id="FontysLogo"/></li>

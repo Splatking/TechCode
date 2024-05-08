@@ -21,10 +21,13 @@
 .ScreenItem{
     background-color: white;
     border-radius: 25px;
-    text-align: center;
     padding: 0.5%;
     margin-top: 2.5vh;
     position: relative;
+}
+
+#PortofolioButton{
+    width: 25%;
 }
 
 .QuickMenuButton{
@@ -33,7 +36,6 @@
     color: white;
     font-size: 16pt;;
     border-radius: 25px;
-    width: 20%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -80,7 +82,7 @@
     text-align: left;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
 }
 
 .LineItem {
@@ -88,14 +90,42 @@
     flex-direction: row;
 }
 
+.LeftSideWelcome {
+    width: 70%;
+}
+
+.RightSideWelcome {
+    width: 25%;
+}
+
+#JipVossImage {
+    height: 100%;
+}
+
 #LatestProduct {
     width: 100%;
+    text-align: right;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.LeftSideLatestProject {
+    width: 50%;
+}
+
+.RightSideLatestProject {
+    width: 45%;
+}
+
+#LatestProjectButton {
+    width: 50%;
+    margin-left: 50%;
 }
 
 #PreviewImage {
     border: 2px solid black;
-    border-radius: 25px;
-    width: 80%;
+    width: 100%;
 }
 
 .Companies {
