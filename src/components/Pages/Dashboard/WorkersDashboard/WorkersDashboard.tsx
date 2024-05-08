@@ -2,6 +2,7 @@ import { Fragment } from "react/jsx-runtime";
 import "./style.css";
 import { useEffect } from "react";
 import Table from "../../../ComponentsParts/AccountTable/Table";
+import WorkersTable from "../../../ComponentsParts/AllAccountsInformation/AccountLoader";
 
 
 function RenderMainScreen(){
@@ -15,6 +16,7 @@ function RenderMainScreen(){
                 <div className="LeftGUI">
                     <div className="CustomerGUI">
                         <h1>Accounts</h1>
+                        <WorkersTable />
                     </div>
                 </div>
                 <div className="RightGUI">
@@ -22,7 +24,7 @@ function RenderMainScreen(){
                         <h1>Useful links</h1>
                     </div>
                     <div className="AccountInformation">
-                        <h1>AccountInformation</h1>
+                        <h1>My account information</h1>
                         <Table />
                     </div>  
                 </div>        

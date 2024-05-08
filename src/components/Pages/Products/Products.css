@@ -81,5 +81,16 @@
 }
 
 #TechCodeSiteProject {
-    background-image: url("../../Images/TechCode_Logo.jpg");
+    background-color: white;
+    color: black;    
+    background-image: url("../../Images/TechCode_Logo.png");
+}
+
+#TechCodeSiteProject button {
+    border: 2px solid black;
+}
+
+#TechCodeSiteProject p {
+    background-color: white;
+    color: black;
 }
