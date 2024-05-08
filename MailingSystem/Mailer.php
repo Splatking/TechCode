@@ -10,6 +10,8 @@
             $message = GenerateUpdateEmail($user);
         } else if($Subject == "Accountrole update"){
             $message = GenerateRolEmail($user);
+        } else if($Subject == "Accountrole termination"){
+            $message = GenerateTerminationEmail($user);
         }
 
         mail($Email, $Subject, $message, $headers);
@@ -40,6 +42,18 @@
     function GenerateRolEmail($user){
         return "Hey $User,<br><br> 
         just wanted to let you know. Your accountrole is succesfully updated (by an TechCode employee)! Go check it out on https://TechCode.com for the full details of your account settings!<br><br>
+        <img src='http://localhost/TechCodeDatabase/Images/TechCode_Logo.jpg' alt='TechCode'>";
+    }
+
+    function GenerateTerminationEmail($user){
+        return "Hey $User,<br><br> 
+        We're sad to see you go! Because your account has been terminated (by you or an TechCode employee). This can have the following causes:<br>
+        <ul>
+            <li>A employee has found issues with you around our products.</li>
+            <li>You've requested to terminate your account!</li>
+        </ul><br><br>
+        
+        We hope you've a nice time and it was nice to have you!<br><br>
         <img src='http://localhost/TechCodeDatabase/Images/TechCode_Logo.jpg' alt='TechCode'>";
     }
 ?>
