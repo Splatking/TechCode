@@ -1,4 +1,6 @@
-import { useState, useEffect, Fragment } from "react";
+import { useState, useEffect, Fragment, ChangeEvent } from "react";
+import TerminationIcon from "../../../components/Icons/delete_forever_24dp_FILL0_wght400_GRAD0_opsz24.png";
+import "./style.css";
 
 function ExportTable() {
     const [tableData, setTableData] = useState([]);
@@ -30,7 +32,7 @@ function ExportTable() {
         });
     }
 
-    function UpdateRole(event, techId, Gebruikersnaam, Email) {
+    function UpdateRole(event: ChangeEvent<HTMLSelectElement>, techId: any, Gebruikersnaam: any, Email: any) {
         const newRole = event.target.value;
         fetch('http://localhost/TechCodeDatabase/ServerRoleUpdate.php', {
             method: 'POST',
@@ -51,9 +53,29 @@ function ExportTable() {
         });
     }
 
+    function AccountTermination(techId: any, Gebruikersnaam: any, Email: any) {
+        fetch('http://localhost/TechCodeDatabase/ServerAccountTermination.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({ techId, Gebruikersnaam, Email }),
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert("An error occurred while terminating account");
+        });
+    }
+
     return (
         <Fragment>
-            <table>
+            <table id="AccountsTable">
                 <thead>
                     <tr>
                         <th>Tech_ID</th>
@@ -64,6 +86,7 @@ function ExportTable() {
                         <th>Email</th>
                         <th>Werkmail</th>
                         <th>Rol</th>
+                        <th>Account termination</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -107,6 +130,7 @@ function ExportTable() {
                                     row.Rol
                                 )}
                             </td>
+                            <td><input type="image" onClick={() => AccountTermination(row.Tech_ID, row.Gebruikersnaam, row.Email)} src={TerminationIcon} id="TerminationButton"/></td>
                         </tr>
                     ))}
                 </tbody>

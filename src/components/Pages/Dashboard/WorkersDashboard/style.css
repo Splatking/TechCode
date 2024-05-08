@@ -6,14 +6,22 @@
 }
 
 .LeftGUI {
-    width: 45%;
+    width: 60%;
 }
 
 .RightGUI {
-    width: 45%;
+    width: 35%;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+}
+
+#AccountsTable{
+    width: 100%;
+}
+
+#AccountsTable th {
+    text-align: left;
 }
 
 .AccountInformation, .UsefullLinks, .CustomerGUI {
