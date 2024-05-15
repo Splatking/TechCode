@@ -65,6 +65,7 @@
                 if(password_verify($password, $hashedPassword)){
                     $GivenID = $row["Tech_ID"];
                     $GivenUsername = $row["Gebruikersnaam"];
+                    $GivenDiscordID = $row["Discord_ID"];
                     $GivenFirstname = $row["Voornaam"];
                     $GivenLastname = $row["Achternaam"];
                     $GivenBirthday = $row["Geboortedatum"];
@@ -80,6 +81,7 @@
                         "message" => "Login successful",
                         "GivenID" => $GivenID,
                         "GivenUsername" => $GivenUsername,
+                        "GivenDiscordID" => $GivenDiscordID,
                         "GivenFirstname" => $GivenFirstname,
                         "GivenLastname" => $GivenLastname,
                         "GivenBirthday" => $GivenBirthday,
@@ -123,11 +125,12 @@
 
                 $GivenID = $row["Tech_ID"];
                 $GivenUsername = $row["Gebruikersnaam"];
+                $GivenDiscordID = $row["Discord_ID"];
                 $GivenFirstname = $row["Voornaam"];
                 $GivenLastname = $row["Achternaam"];
                 $GivenBirthday = $row["Geboortedatum"];
                 $GivenEmail = $row["Email"];
-                $GivenWorkMail = $row["Werkmail"];                    
+                $GivenWorkMail = $row["Werkmail"];
                 $GivenPhoneNumber = $row["Telefoonnummer"];
                 $GivenLand = $row["Land"];
                 $GivenAdres = $row["Adres"];
@@ -138,6 +141,7 @@
                     "message" => "Login successful",
                     "GivenID" => $GivenID,
                     "GivenUsername" => $GivenUsername,
+                    "GivenDiscordID" => $GivenDiscordID,
                     "GivenFirstname" => $GivenFirstname,
                     "GivenLastname" => $GivenLastname,
                     "GivenBirthday" => $GivenBirthday,

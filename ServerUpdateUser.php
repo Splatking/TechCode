@@ -37,9 +37,10 @@
     if($postdata) {
         $request = json_decode($postdata, true);
 
-        if(isset($request["TechID"]) && isset($request["username"]) && isset($request["email"]) && isset($request["phonenumber"]) && isset($request["birthday"]) && isset($request["firstname"]) && isset($request["lastname"]) && isset($request["country"]) && isset($request["adres"]) && isset($request["delivercode"])) {
+        if(isset($request["TechID"]) && isset($request["username"]) && isset($request["DiscordID"]) && isset($request["email"]) && isset($request["phonenumber"]) && isset($request["birthday"]) && isset($request["firstname"]) && isset($request["lastname"]) && isset($request["country"]) && isset($request["adres"]) && isset($request["delivercode"])) {
             $TechID = $request["TechID"];
             $username = $request["username"];
+            $DiscordID = $request["DiscordID"];
             $email = $request["email"];
             $phonenumber = $request["phonenumber"];
             $birthday = date('Y-m-d', strtotime($request["birthday"]));
@@ -49,10 +50,10 @@
             $adress = $request["adres"];
             $delivercode = $request["delivercode"];
 
-            $sql = "UPDATE `accounts` SET Gebruikersnaam=?, Voornaam=?, Achternaam=?, Geboortedatum=?, Email=?, Telefoonnummer=?, Land=?, Adres=?, Postcode=? WHERE Tech_ID=?";
+            $sql = "UPDATE `accounts` SET Gebruikersnaam=?, Discord_ID=?, Voornaam=?, Achternaam=?, Geboortedatum=?, Email=?, Telefoonnummer=?, Land=?, Adres=?, Postcode=? WHERE Tech_ID=?";
             $stmt = $conn->prepare($sql);
 
-            $stmt->bind_param("ssssssssss", $username, $firstname, $lastname, $birthday, $email, $phonenumber, $country, $adress, $delivercode, $TechID);
+            $stmt->bind_param("sssssssssss", $username, $DiscordID, $firstname, $lastname, $birthday, $email, $phonenumber, $country, $adress, $delivercode, $TechID);
             $stmt->execute();
 
             if ($stmt->affected_rows > 0) {
