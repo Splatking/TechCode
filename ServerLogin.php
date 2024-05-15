@@ -103,7 +103,6 @@
                 }
     
                 $stmt->close();
-                $conn->close();
             } else {
                 http_response_code(401);
                 echo json_encode(array("message" => "Invalid username or password"));
@@ -159,11 +158,37 @@
                 echo json_encode($responseData);
 
                 $stmt->close();
-                $conn->close();
             } else {
                 http_response_code(401);
                 echo json_encode(array("message" => "Invalid TechID"));
             }
+        } else if(isset($request["DiscordID"])){
+            $DiscordID = $request["DiscordID"];
+
+            $sql = "SELECT Tech_ID, Gebruikersnaam, Rol FROM `accounts` WHERE `Discord_ID`=?";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("s", $DiscordID);
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            if ($result->num_rows > 0) {
+                $row = $result->fetch_assoc();
+
+                $responseData = array(
+                    "message" => "Login successful",
+                    "GivenID" => $row["Tech_ID"],
+                    "GivenUsername" => $row["Gebruikersnaam"],
+                    "GivenRol" => $row["Rol"]
+                );
+
+                header('Content-Type: application/json');
+                echo json_encode($responseData);
+            } else {
+                http_response_code(401);
+                echo json_encode(array("message" => "Invalid TechID"));
+            }
+
+            $stmt->close();
         } else {
             http_response_code(400);
             echo json_encode(array("message" => "Invalid request"));
@@ -171,5 +196,7 @@
     } else {
         http_response_code(400);
         echo json_encode(array("message" => "No data received"));
-    } 
+    }
+
+    $conn->close();
 ?>
