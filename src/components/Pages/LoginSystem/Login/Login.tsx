@@ -48,6 +48,10 @@ const RenderLoginScreen: React.FC<Setters> = ({ stateSetterFunctions }) => {
                 sessionStorage.setItem("DeliverCode", data.GivenDeliverCode);
                 sessionStorage.setItem("Rol", data.GivenRol);
                 sessionStorage.setItem("Password", password);
+
+                if(data.GivenDiscordID != 0){
+                    sessionStorage.setItem("Discord", data.GivenDiscordID);
+                }
     
                 stateSetterFunctions.setLoginScreenVisible(false);
                 stateSetterFunctions.setHomePageVisible(true);

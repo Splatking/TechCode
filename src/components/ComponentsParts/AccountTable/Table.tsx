@@ -3,6 +3,7 @@ import { Fragment, useState } from "react";
 function RenderTable(){
     const TechID = useState(sessionStorage.getItem("Tech_ID") || "-");
     const [username, setUsername] = useState(sessionStorage.getItem("Username") || "-");
+    const [DiscordID, setDiscordID] = useState(sessionStorage.getItem("Discord") || "-");
     const [firstname, setFirstname] = useState(sessionStorage.getItem("Firstname") || "-");
     const [lastname, setLastname] = useState(sessionStorage.getItem("Lastname") || "-");
     const [birthday, setBirthday] = useState(sessionStorage.getItem("Birthday") || "-");
@@ -15,6 +16,11 @@ function RenderTable(){
     const handleUsernameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setUsername(event.target.value);
     };
+
+    const handleDiscordIDChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setDiscordID(event.target.value);
+    };
+
 
     const handleFirstnameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setFirstname(event.target.value);
@@ -49,14 +55,14 @@ function RenderTable(){
     };
 
     function UpdateUserData(){
-        if(username !== "" && firstname !== "" && lastname !== "" && birthday !== "" && email !== "" && phonenumber !== ""){
+        if(username !== "" && DiscordID !== "" && firstname !== "" && lastname !== "" && birthday !== "" && email !== "" && phonenumber !== ""){
             fetch('http://localhost/TechCodeDatabase/ServerUpdateUser.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                     'Accept' : 'application/json'
                            },
-                body: JSON.stringify({ TechID: TechID[0], username, email, phonenumber, birthday, firstname, lastname, country, adres, delivercode }),
+                body: JSON.stringify({ TechID: TechID[0], username, DiscordID, email, phonenumber, birthday, firstname, lastname, country, adres, delivercode }),
             })
             .then(response => {
                 if(response.ok){
@@ -89,6 +95,10 @@ function RenderTable(){
                         sessionStorage.setItem("Adres", data.GivenAdres);
                         sessionStorage.setItem("DeliverCode", data.GivenDeliverCode);
                         sessionStorage.setItem("Rol", data.GivenRol);
+
+                        if(data.GivenDiscordID !== null && data.GivenDiscordID !== undefined){
+                            sessionStorage.setItem("Discord", data.GivenDiscordID);
+                        }                        
                     })
                     .catch(error => {
                         console.error('Error:', error.message);
@@ -123,6 +133,11 @@ function RenderTable(){
                     <td>Username:</td>
                     <td className="UserData" id="Username">{sessionStorage.getItem("Username")}</td>
                     <td><input type="text" value={username} onChange={handleUsernameChange} className="UserInput" id="UsernameValue" name="UsernameValue"/></td>
+                </tr>
+                <tr>
+                    <td>DiscordID:</td>
+                    <td className="UserData" id="DiscordID">{sessionStorage.getItem("Discord")}</td>
+                    <td><input type="text" value={DiscordID} onChange={handleDiscordIDChange} className="UserInput" id="DiscordValue" name="DiscordValue"/></td>
                 </tr>
                 <tr>
                     <td>Firstname:</td>
