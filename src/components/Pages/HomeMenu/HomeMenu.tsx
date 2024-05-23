@@ -3,6 +3,7 @@ import "./style.css";
 import FontysLogo from "../../Images/Fontys_Logo.png";
 import DeltaLogo from "../../Images/Delta_Logo.png";
 import TechCodeLogo from "../../Images/TechCode_Logo.png";
+import TechCodeLogoWhite from "../../Images/TechCode_Logo2.0_White.png";
 import DiscordLogo from "../../Images/Discord_Logo.png";
 import SitePreview from "../../Images/SitePreview.png";
 import JipVoss from "../../Images/JipVoss.png";
@@ -74,7 +75,9 @@ const RenderMainScreen: React.FC<Setters> = ({ stateSetterFunctions }) => {
                             <li>Projects</li>
                             <li>Contact options</li>
                         </ul><br/>
-                        Who is Jip Voss? Jip Voss is a man (18 years old) and living in the Netherlands. Where he works on ICT problems within school. He is now following the Fontys ICT study in the Delta excellence program. Working on mulitple projects at the same time. Because he doesn't really like to do the same stuff together. Jip is a motivated boy who really wants to reach the end-goal of all the projects he is working on.<br/><br/>
+                        Who is Jip Voss? Jip Voss is a man (18 years old) and living in the Netherlands. Where he works on ICT problems within school. He is now following the Fontys ICT study in the Delta excellence program. Working on multiple projects at the same time. Because he doesn't really like to do the same stuff together. Jip is a motivated boy who really wants to reach the end-goal of all the projects he is working on.<br/><br/>
+                    </p>
+                    <div className="LanguageBox">
                         Nice to know which languages I can write:<br/>
                         <ul>
                             <li>Java(script)</li>
@@ -86,13 +89,14 @@ const RenderMainScreen: React.FC<Setters> = ({ stateSetterFunctions }) => {
                             <li>C++</li>
                             <li>Frameworking (with Vite)</li>
                         </ul><br/>
+                    </div>
+                    <div className="ContactBox">
                         Get in contact with Jip through:<br/>
                         <ul>
                             <li><a href="https://www.linkedin.com/in/jip-voss">LinkedIn</a></li>
                             <li><a href="https://www.instagram.com/jipthefox/">Instagram</a></li>
                         </ul><br/><br/>
-                        Or press this little button to go into the portofolio:
-                    </p>
+                    </div>
                     <button onClick={LoadPortofolio} className="QuickMenuButton" id="PortofolioButton"><div><p>Open portofolio</p></div><div className="arrows-body"><div className="arrow"></div><div className="arrow"></div><div className="arrow"></div></div></button>
                 </div>
                 <div className="RightSideWelcome">
@@ -119,7 +123,7 @@ const RenderMainScreen: React.FC<Setters> = ({ stateSetterFunctions }) => {
                         <li><input type="image" src={FontysLogo} onClick={LoadFontys} className="CompanyLogo" id="FontysLogo"/></li>
                         <li><input type="image" src={DeltaLogo} onClick={LoadDelta} className="CompanyLogo" id="DeltaLogo"/></li>
                         <li><input type="image" src={DiscordLogo} onClick={LoadDiscord} className="CompanyLogo" id="DiscordLogo"/></li>
-                        <li><input type="image" src={TechCodeLogo} onClick={Reload} className="CompanyLogo" id="TechCodeLogoInput"/></li>
+                        <li><input type="image" src={TechCodeLogoWhite} onClick={Reload} className="CompanyLogo" id="TechCodeLogoInput"/></li>
                     </ul>
                 </div>
             </div>
