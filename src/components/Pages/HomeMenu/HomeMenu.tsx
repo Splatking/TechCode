@@ -2,12 +2,27 @@ import { Fragment, useEffect } from "react";
 import "./style.css";
 import FontysLogo from "../../Images/Fontys_Logo.png";
 import DeltaLogo from "../../Images/Delta_Logo.png";
-import TechCodeLogo from "../../Images/TechCode_Logo.png";
 import TechCodeLogoWhite from "../../Images/TechCode_Logo2.0_White.png";
 import DiscordLogo from "../../Images/Discord_Logo.png";
 import SitePreview from "../../Images/SitePreview.png";
 import JipVoss from "../../Images/JipVoss.png";
 import { Setters, HideScreens } from "../../Scripts/ScreenHandler";
+
+//languages Logo
+import HTMLLogo from "../../Images/HTMLLogo.png";
+import JavaLogo from "../../Images/JavaLogo.png";
+import JavaScriptLogo from "../../Images/JSLogo.png";
+import LUALogo from "../../Images/LUALogo.png";
+import CSSLogo from "../../Images/CSSLogo.png";
+import PHPLogo from "../../Images/PHPLogo.png";
+import CSLogo from "../../Images/CSLogo.png";
+import CPPLogo from "../../Images/CPPLogo.png";
+import ViteLogo from "../../Images/ViteLogo.png";
+
+//Socials
+import InstagramIcon from "../../Images/Instagram_Logo.png";
+import LinkedInIcon from "../../Images/LinkedIn_Logo.png";
+import EmailIcon from "../../Images/EmailImage.jpg";
 
 const RenderMainScreen: React.FC<Setters> = ({ stateSetterFunctions }) => {
     function Reload(){
@@ -33,6 +48,14 @@ const RenderMainScreen: React.FC<Setters> = ({ stateSetterFunctions }) => {
 
     function LoadLatestProduct(){
 
+    }
+
+    function LoadLinkedIn(){
+        window.open("https://www.linkedin.com/in/jip-voss/");
+    }
+
+    function LoadInstagram(){
+        window.open("https://www.instagram.com/jipthefox/");
     }
 
     //This function starts cloning of the companies logos to put in the scrolling loop
@@ -77,26 +100,34 @@ const RenderMainScreen: React.FC<Setters> = ({ stateSetterFunctions }) => {
                         </ul><br/>
                         Who is Jip Voss? Jip Voss is a man (18 years old) and living in the Netherlands. Where he works on ICT problems within school. He is now following the Fontys ICT study in the Delta excellence program. Working on multiple projects at the same time. Because he doesn't really like to do the same stuff together. Jip is a motivated boy who really wants to reach the end-goal of all the projects he is working on.<br/><br/>
                     </p>
-                    <div className="LanguageBox">
-                        Nice to know which languages I can write:<br/>
-                        <ul>
-                            <li>Java(script)</li>
-                            <li>Lua</li>
-                            <li>HTML</li>
-                            <li>CSS</li>
-                            <li>PHP</li>
-                            <li>C#</li>
-                            <li>C++</li>
-                            <li>Frameworking (with Vite)</li>
-                        </ul><br/>
-                    </div>
-                    <div className="ContactBox">
-                        Get in contact with Jip through:<br/>
-                        <ul>
-                            <li><a href="https://www.linkedin.com/in/jip-voss">LinkedIn</a></li>
-                            <li><a href="https://www.instagram.com/jipthefox/">Instagram</a></li>
-                        </ul><br/><br/>
-                    </div>
+                    <div className="LineItem">
+                        <div className="LanguageBox">
+                            <div className="LanguagesToImage">
+                                <p id="InnerLanguageBox">Nice to know which languages I can write:<br/></p>
+                                <div className="UpperCase">
+                                    <img className="LanguageImage" src={JavaLogo} alt="Java"/>
+                                    <img className="LanguageImage" src={JavaScriptLogo} alt="Java"/>
+                                    <img className="LanguageImage" src={LUALogo} alt="Java"/>
+                                    <img className="LanguageImage" src={HTMLLogo} alt="Java"/>
+                                    <img className="LanguageImage" src={CSSLogo} alt="Java"/>
+                                </div>
+                                <div className="DownCase">
+                                    <img className="LanguageImage" src={PHPLogo} alt="Java"/>
+                                    <img className="LanguageImage" src={CSLogo} alt="Java"/>
+                                    <img className="LanguageImage" src={CPPLogo} alt="Java"/>
+                                    <img className="LanguageImage" src={ViteLogo} alt="Java"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="ContactBoxHome">
+                            Get in contact with Jip through:<br/>
+                            <div className="ContactHolder">
+                                <input type="image" src={InstagramIcon} onClick={LoadInstagram} className="SocialLoaderHome" id="InstagramLoader"/>
+                                <input type="image" src={LinkedInIcon} onClick={LoadLinkedIn} className="SocialLoaderHome" id="LinkedInLoader"/>
+                                <a href="mailto:jipvoss@gmail.com" target="_newtab"><img src={EmailIcon} className="SocialLoaderHome" id="EmailLoader"/></a>
+                            </div>
+                        </div>
+                    </div><br/><br/>
                     <button onClick={LoadPortofolio} className="QuickMenuButton" id="PortofolioButton"><div><p>Open portofolio</p></div><div className="arrows-body"><div className="arrow"></div><div className="arrow"></div><div className="arrow"></div></div></button>
                 </div>
                 <div className="RightSideWelcome">

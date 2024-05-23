@@ -114,6 +114,37 @@
     width: 50%;
 }
 
+#InnerLanguageBox {
+    text-align: center;
+    background-color: white;
+    color: black;
+}
+
+.LanguageImage {
+    margin: 1%;
+    width: 18%;
+}
+
+.LanguagesToImage {
+    width: 60%;
+    background-color: darkgray;
+}
+
+.ContactBoxHome {
+    text-align: center;
+    border-radius: 25px;
+    background-color: white;
+    color: black;
+    width: 60%;
+    height: 40%;
+}
+
+.SocialLoaderHome {
+    margin: 1%;
+    border-radius: 25%;
+    width: 32%;
+}
+
 .RightSideLatestProject {
     width: 45%;
 }
