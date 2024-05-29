@@ -17,6 +17,9 @@ function RenderMainScreen(){
                 <div className="RightGUI">
                     <div className="UsefullLinks">
                         <h1>Useful links</h1>
+                        <div className="Links">
+                            <a href=""></a>
+                        </div>
                     </div>
                     <div className="AccountInformation">
                         <h1>My account information</h1>

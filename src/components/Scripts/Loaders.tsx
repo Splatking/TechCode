@@ -27,10 +27,15 @@ function LoadInstagram(){
     window.open("https://www.instagram.com/jipthefox/");
 }
 
+function LoadDDYT(){
+    window.open("https://www.youtube.com/@donutdriveofficial");
+}
+
 export {Reload};
 export {LoadFontys};
 export {LoadDelta};
 export {LoadDiscord};
 export {LoadDD};
+export {LoadDDYT};
 export {LoadLinkedIn};
 export {LoadInstagram};

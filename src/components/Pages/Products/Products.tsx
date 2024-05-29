@@ -2,6 +2,9 @@
 import { Fragment } from "react/jsx-runtime";
 import "./Products.css";
 
+//Loaders
+import {LoadDDYT} from "../../Scripts/Loaders";
+
 function ProductsScreen(){
     return <Fragment>
         <div className="ProductGUI">
@@ -45,6 +48,11 @@ function ProductsScreen(){
                                 <h2 className="ProjectTitle">Donut Drive</h2>
                                 <p className="ProjectDescription">Drive around in a car and race through the tracks!</p>
                                 <button className="Button" id="MoreInfoProjectButton">More info</button>
+                            </div>
+                            <div className="ProjectItem" id="YTProject">
+                                <h2 className="ProjectTitle">Donut Drive YT</h2>
+                                <p className="ProjectDescription">Mêmes, gaming and more action can be found here!</p>
+                                <button className="Button" id="MoreInfoProjectButton" onClick={LoadDDYT}>More info</button>
                             </div>
                         </div>
                     </div>

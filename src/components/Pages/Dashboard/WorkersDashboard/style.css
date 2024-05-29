@@ -10,6 +10,7 @@
 }
 
 .RightGUI {
+    margin-top: 1%;
     width: 35%;
     display: flex;
     flex-direction: column;
