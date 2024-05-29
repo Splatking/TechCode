@@ -1,15 +1,10 @@
 import { Fragment } from "react/jsx-runtime";
 import "./style.css";
-import { useEffect } from "react";
 import Table from "../../../ComponentsParts/AccountTable/Table";
 import WorkersTable from "../../../ComponentsParts/AllAccountsInformation/AccountLoader";
 
 
 function RenderMainScreen(){
-    useEffect(() => {
-        
-    })
-
     return (
         <Fragment>
             <div className="WorkerDashboardGUI">

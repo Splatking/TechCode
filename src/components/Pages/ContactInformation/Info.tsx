@@ -5,19 +5,10 @@ import DiscordIcon from "../../Images/Discord_Icon.png";
 import EmailIcon from "../../Images/EmailImage.jpg";
 import "./style.css";
 
+//Loaders
+import { LoadDiscord, LoadInstagram, LoadLinkedIn } from "../../Scripts/Loaders";
+
 function RenderInfoScreen() {
-    function LoadDiscord(){
-        window.open("https://discord.gg/U7QctUSwq4");
-    }
-
-    function LoadLinkedIn(){
-        window.open("https://www.linkedin.com/in/jip-voss/");
-    }
-
-    function LoadInstagram(){
-        window.open("https://www.instagram.com/jipthefox/");
-    }
-
     return (
         <Fragment>
             <div className="ContactDIV">
