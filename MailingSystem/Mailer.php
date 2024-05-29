@@ -36,7 +36,7 @@
     function GenerateUpdateEmail($User){
         return "Hey $User,<br><br> 
         just wanted to let you know. Your account is succesfully updated! Go check it out on https://TechCode.com for the full details of your account settings!<br><br>
-        <img src='../Images/TechCode_Logo.jpg' alt='TechCode'>";
+        <img src='http://localhost/TechCodeDatabase/Images/TechCode_Logo.jpg' alt='TechCode'>";
     }
 
     function GenerateRolEmail($User){
