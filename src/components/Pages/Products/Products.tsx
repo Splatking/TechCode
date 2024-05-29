@@ -38,6 +38,16 @@ function ProductsScreen(){
                             </div>
                         </div>
                     </div>
+                    <div className="ProjectCategory" id="FromWouter">
+                        <h2 className="SubTitle" id="ProjectCategoryTitle">Projects by: Wouter Joore</h2>
+                        <div className="ProjectScroller">
+                            <div className="ProjectItem" id="DonutDriveProject">
+                                <h2 className="ProjectTitle">Donut Drive</h2>
+                                <p className="ProjectDescription">Drive around in a car and race through the tracks!</p>
+                                <button className="Button" id="MoreInfoProjectButton">More info</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -59,7 +59,7 @@ const Buttons: React.FC<Setters> = ({ stateSetterFunctions }) => {
     return (
         <div className="Buttons">
             <div className="dropdown">
-                <button type="button" onClick={LoadProductPage} id="TeamButton" className="ItemButton">Portofolio - Jip Voss</button>
+                <button type="button" onClick={LoadProductPage} id="TeamButton" className="ItemButton">Portofolio</button>
                 <div className="dropdown-content">
                     <button type="button" onClick={LoadJipVoss} id="FirstItem">About me</button>
                     <button type="button" onClick={LoadProductPage}>Projects</button>

@@ -2,11 +2,15 @@ import { Fragment, useEffect } from "react";
 import "./style.css";
 import FontysLogo from "../../Images/Fontys_Logo.png";
 import DeltaLogo from "../../Images/Delta_Logo.png";
+import DDLogo from "../../Images/DonutDriveLogo.jpg";
 import TechCodeLogoWhite from "../../Images/TechCode_Logo2.0_White.png";
 import DiscordLogo from "../../Images/Discord_Logo.png";
 import SitePreview from "../../Images/SitePreview.png";
 import JipVoss from "../../Images/JipVoss.png";
 import { Setters, HideScreens } from "../../Scripts/ScreenHandler";
+
+//imports
+import { Reload, LoadInstagram, LoadLinkedIn, LoadDiscord, LoadDelta, LoadDD, LoadFontys } from "../../Scripts/Loaders";
 
 //languages Logo
 import HTMLLogo from "../../Images/HTMLLogo.png";
@@ -25,37 +29,9 @@ import LinkedInIcon from "../../Images/LinkedIn_Logo.png";
 import EmailIcon from "../../Images/EmailImage.jpg";
 
 const RenderMainScreen: React.FC<Setters> = ({ stateSetterFunctions }) => {
-    function Reload(){
-        window.location.reload();
-    }
-
     function LoadPortofolio(){
         HideScreens(stateSetterFunctions);
         stateSetterFunctions.setProductPageVisible(true);
-    }
-
-    function LoadFontys(){
-        window.open("https://www.fontys.nl/")
-    }
-
-    function LoadDelta(){
-        window.open("https://deltafhict.nl/")
-    }
-
-    function LoadDiscord(){
-        window.open("https://discord.gg/U7QctUSwq4")
-    }
-
-    function LoadLatestProduct(){
-
-    }
-
-    function LoadLinkedIn(){
-        window.open("https://www.linkedin.com/in/jip-voss/");
-    }
-
-    function LoadInstagram(){
-        window.open("https://www.instagram.com/jipthefox/");
     }
 
     //This function starts cloning of the companies logos to put in the scrolling loop
@@ -103,7 +79,7 @@ const RenderMainScreen: React.FC<Setters> = ({ stateSetterFunctions }) => {
                     <div className="LineItem">
                         <div className="LanguageBox">
                             <div className="LanguagesToImage">
-                                <p id="InnerLanguageBox">Nice to know which languages I can write:<br/></p>
+                                <p id="InnerLanguageBox">Nice to know which technologies I work with:<br/></p>
                                 <div className="UpperCase">
                                     <img className="LanguageImage" src={JavaLogo} alt="Java"/>
                                     <img className="LanguageImage" src={JavaScriptLogo} alt="Java"/>
@@ -143,7 +119,7 @@ const RenderMainScreen: React.FC<Setters> = ({ stateSetterFunctions }) => {
                         <h1 className="Title">Latest project</h1>
                         <h2 className="SubTitle">TechCode site</h2>
                         <p>The TechCode site has been created in semester 2 of Open Learning and Delta for Jip Voss at Fontys HBO-ICT. The site has been released around - and will be used as an portofolio site!</p><br/>
-                        <button onClick={LoadLatestProduct} className="QuickMenuButton" id="LatestProjectButton"><div><p>Show me more!</p></div><div className="arrows-body"><div className="arrow"></div><div className="arrow"></div><div className="arrow"></div></div></button>
+                        <button onClick={LoadPortofolio} className="QuickMenuButton" id="LatestProjectButton"><div><p>Show me more!</p></div><div className="arrows-body"><div className="arrow"></div><div className="arrow"></div><div className="arrow"></div></div></button>
                     </div>
                 </div>
             </div>
@@ -154,6 +130,7 @@ const RenderMainScreen: React.FC<Setters> = ({ stateSetterFunctions }) => {
                         <li><input type="image" src={FontysLogo} onClick={LoadFontys} className="CompanyLogo" id="FontysLogo"/></li>
                         <li><input type="image" src={DeltaLogo} onClick={LoadDelta} className="CompanyLogo" id="DeltaLogo"/></li>
                         <li><input type="image" src={DiscordLogo} onClick={LoadDiscord} className="CompanyLogo" id="DiscordLogo"/></li>
+                        <li><input type="image" src={DDLogo} onClick={LoadDD} className="CompanyLogo" id="DDLogoInput"/></li>
                         <li><input type="image" src={TechCodeLogoWhite} onClick={Reload} className="CompanyLogo" id="TechCodeLogoInput"/></li>
                     </ul>
                 </div>
