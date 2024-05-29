@@ -39,13 +39,13 @@
         <img src='../Images/TechCode_Logo.jpg' alt='TechCode'>";
     }
 
-    function GenerateRolEmail($user){
+    function GenerateRolEmail($User){
         return "Hey $User,<br><br> 
         just wanted to let you know. Your accountrole is succesfully updated (by an TechCode employee)! Go check it out on https://TechCode.com for the full details of your account settings!<br><br>
         <img src='http://localhost/TechCodeDatabase/Images/TechCode_Logo.jpg' alt='TechCode'>";
     }
 
-    function GenerateTerminationEmail($user){
+    function GenerateTerminationEmail($User){
         return "Hey $User,<br><br> 
         We're sad to see you go! Because your account has been terminated (by you or an TechCode employee). This can have the following causes:<br>
         <ul>
