@@ -18,7 +18,7 @@ function RenderMainScreen(){
                     <div className="UsefullLinks">
                         <h1>Useful links</h1>
                         <div className="Links">
-                            <a href=""></a>
+                            <p>No links in here yet!</p>
                         </div>
                     </div>
                     <div className="AccountInformation">
