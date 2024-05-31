@@ -99,7 +99,10 @@
 }
 
 #JipVossImage {
-    height: 100%;
+    margin-left: 25%;
+    height: auto;
+    width: 50%;
+    border-radius: 50%;
 }
 
 #LatestProduct {
@@ -200,4 +203,11 @@
 
 #TechCodeLogoInput{
     border-radius: 25px;
+}
+
+#VideoPlayer {
+    visibility: hidden;
+    position: absolute;
+    width: 100%;
+    height: 100%;
 }

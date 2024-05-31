@@ -1,6 +1,6 @@
 import { Fragment } from "react/jsx-runtime";
 import "./style.css";
-import JipVossImage from "../../Images/JipVoss.png";
+import JipVossImage from "../../Images/JipVoss.jpeg";
 import LinkedIn_Logo from "../../Images/LinkedIn_Logo.png";
 import Instagram_Logo from "../../Images/Instagram_Logo.png";
 

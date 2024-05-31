@@ -6,8 +6,9 @@ import DDLogo from "../../Images/DonutDriveLogo.jpg";
 import TechCodeLogoWhite from "../../Images/TechCode_Logo2.0_White.png";
 import DiscordLogo from "../../Images/Discord_Logo.png";
 import SitePreview from "../../Images/SitePreview.png";
-import JipVoss from "../../Images/JipVoss.png";
+import JipVoss from "../../Images/JipVoss.jpeg";
 import { Setters, HideScreens } from "../../Scripts/ScreenHandler";
+import AudioFile from "../../Audio/Meme1.mp3";
 
 //imports
 import { Reload, LoadInstagram, LoadLinkedIn, LoadDiscord, LoadDelta, LoadDD, LoadFontys } from "../../Scripts/Loaders";
@@ -33,6 +34,13 @@ const RenderMainScreen: React.FC<Setters> = ({ stateSetterFunctions }) => {
         HideScreens(stateSetterFunctions);
         stateSetterFunctions.setProductPageVisible(true);
     }
+
+    const PlayAudio = () => {
+        const audioPlayer = document.getElementById("AudioPlayer") as HTMLAudioElement;
+        if (audioPlayer) {
+            audioPlayer.play();
+        }
+    };
 
     //This function starts cloning of the companies logos to put in the scrolling loop
     useEffect(() => {
@@ -107,7 +115,7 @@ const RenderMainScreen: React.FC<Setters> = ({ stateSetterFunctions }) => {
                     <button onClick={LoadPortofolio} className="QuickMenuButton" id="PortofolioButton"><div><p>Open portofolio</p></div><div className="arrows-body"><div className="arrow"></div><div className="arrow"></div><div className="arrow"></div></div></button>
                 </div>
                 <div className="RightSideWelcome">
-                    <img src={JipVoss} id="JipVossImage"/>
+                    <input type="image" src={JipVoss} onClick={PlayAudio} id="JipVossImage"/>
                 </div>
             </div>
             <div className="LineItem">
@@ -135,6 +143,9 @@ const RenderMainScreen: React.FC<Setters> = ({ stateSetterFunctions }) => {
                     </ul>
                 </div>
             </div>
+            <audio id="AudioPlayer">
+                <source src={AudioFile} type="audio/mpeg" />
+            </audio>
         </Fragment>
     );
 }
