@@ -90,6 +90,10 @@
     flex-direction: row;
 }
 
+#InnerLanguageBox {
+    color: white;
+}
+
 .LeftSideWelcome {
     width: 70%;
 }
@@ -117,36 +121,13 @@
     width: 50%;
 }
 
-#InnerLanguageBox {
-    text-align: center;
-    background-color: white;
-    color: black;
-}
-
 .LanguageImage {
     margin: 1%;
-    width: 18%;
+    width: 9%;
 }
 
 .LanguagesToImage {
-    width: 60%;
-    background-color: darkgray;
-}
-
-.ContactBoxHome {
-    text-align: center;
-    border-radius: 25px;
-    background-color: white;
-    color: black;
-    width: 60%;
-    height: 40%;
-    margin-right: 20%;
-}
-
-.SocialLoaderHome {
-    margin: 1%;
-    border-radius: 25%;
-    width: 32%;
+    width: 100%;
 }
 
 .RightSideLatestProject {
@@ -210,4 +191,25 @@
     position: absolute;
     width: 100%;
     height: 100%;
+}
+
+.BottomLine {
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.SocialLoaderHome {
+    margin: 0.5%;
+    border-radius: 25%;
+    width: 2.5%;
+}
+
+#EmailLoader  {
+    width: 100%;
+}
+
+#EmailReference {
+    width: 2.5%;
 }

@@ -84,34 +84,6 @@ const RenderMainScreen: React.FC<Setters> = ({ stateSetterFunctions }) => {
                         </ul><br/>
                         Who is Jip Voss? Jip Voss is a man (18 years old) and living in the Netherlands. Where he works on ICT problems within school. He is now following the Fontys ICT study in the Delta excellence program. Working on multiple projects at the same time. Because he doesn't really like to do the same stuff together. Jip is a motivated boy who really wants to reach the end-goal of all the projects he is working on.<br/><br/>
                     </p>
-                    <div className="LineItem">
-                        <div className="LanguageBox">
-                            <div className="LanguagesToImage">
-                                <p id="InnerLanguageBox">Nice to know which technologies I work with:<br/></p>
-                                <div className="UpperCase">
-                                    <img className="LanguageImage" src={JavaLogo} alt="Java"/>
-                                    <img className="LanguageImage" src={JavaScriptLogo} alt="Java"/>
-                                    <img className="LanguageImage" src={LUALogo} alt="Java"/>
-                                    <img className="LanguageImage" src={HTMLLogo} alt="Java"/>
-                                    <img className="LanguageImage" src={CSSLogo} alt="Java"/>
-                                </div>
-                                <div className="DownCase">
-                                    <img className="LanguageImage" src={PHPLogo} alt="Java"/>
-                                    <img className="LanguageImage" src={CSLogo} alt="Java"/>
-                                    <img className="LanguageImage" src={CPPLogo} alt="Java"/>
-                                    <img className="LanguageImage" src={ViteLogo} alt="Java"/>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="ContactBoxHome">
-                            Get in contact with Jip through:<br/>
-                            <div className="ContactHolder">
-                                <input type="image" src={InstagramIcon} onClick={LoadInstagram} className="SocialLoaderHome" id="InstagramLoader"/>
-                                <input type="image" src={LinkedInIcon} onClick={LoadLinkedIn} className="SocialLoaderHome" id="LinkedInLoader"/>
-                                <a href="mailto:jipvoss@gmail.com" target="_newtab"><img src={EmailIcon} className="SocialLoaderHome" id="EmailLoader"/></a>
-                            </div>
-                        </div>
-                    </div><br/><br/>
                     <button onClick={LoadPortofolio} className="QuickMenuButton" id="PortofolioButton"><div><p>Open portofolio</p></div><div className="arrows-body"><div className="arrow"></div><div className="arrow"></div><div className="arrow"></div></div></button>
                 </div>
                 <div className="RightSideWelcome">
@@ -131,6 +103,24 @@ const RenderMainScreen: React.FC<Setters> = ({ stateSetterFunctions }) => {
                     </div>
                 </div>
             </div>
+            <div>
+                <div className="LanguageBox">
+                    <div className="LanguagesToImage">
+                        <h1 className="Title" id="InnerLanguageBox">Nice to know which technologies I work with:<br/></h1>
+                        <div className="LanguageLine">
+                            <img className="LanguageImage" src={JavaLogo} alt="Java"/>
+                            <img className="LanguageImage" src={JavaScriptLogo} alt="Java"/>
+                            <img className="LanguageImage" src={LUALogo} alt="Java"/>
+                            <img className="LanguageImage" src={HTMLLogo} alt="Java"/>
+                            <img className="LanguageImage" src={CSSLogo} alt="Java"/>
+                            <img className="LanguageImage" src={PHPLogo} alt="Java"/>
+                            <img className="LanguageImage" src={CSLogo} alt="Java"/>
+                            <img className="LanguageImage" src={CPPLogo} alt="Java"/>
+                            <img className="LanguageImage" src={ViteLogo} alt="Java"/>
+                        </div>
+                    </div>
+                </div><br/><br/>
+            </div>
             <div className="ScreenItem" id="PossibleBy">
                 <h1 className="Title">Made possible by:</h1>
                 <div className="Companies">
@@ -142,6 +132,11 @@ const RenderMainScreen: React.FC<Setters> = ({ stateSetterFunctions }) => {
                         <li><input type="image" src={TechCodeLogoWhite} onClick={Reload} className="CompanyLogo" id="TechCodeLogoInput"/></li>
                     </ul>
                 </div>
+            </div>
+            <div className="BottomLine">
+                <input type="image" src={InstagramIcon} onClick={LoadInstagram} className="SocialLoaderHome" id="InstagramLoader"/>
+                <input type="image" src={LinkedInIcon} onClick={LoadLinkedIn} className="SocialLoaderHome" id="LinkedInLoader"/>
+                <a href="mailto:jipvoss@gmail.com" target="_newtab" id="EmailReference"><img src={EmailIcon} className="SocialLoaderHome" id="EmailLoader"/></a>
             </div>
             <audio id="AudioPlayer">
                 <source src={AudioFile} type="audio/mpeg" />
