@@ -73,21 +73,27 @@ const RenderMainScreen: React.FC<Setters> = ({ stateSetterFunctions }) => {
         <Fragment>
             <div className="ScreenItem" id="TechCode_Introduction">
                 <div className="LeftSideWelcome">
-                    <h1 className="Title">Welcome by TechCode</h1>
-                    <p>
-                        Your go-to for searching our online portofolio and view our upcoming products! The portofolio will be mainly focussed on that from Jip Voss.<br/><br/>
-                        The portofolio contains information of who Jip is and what for ICT background he has. To make sure you can find all information about Jip they're 3 categories:<br/>
-                        <ul>
-                            <li>About me</li>
-                            <li>Projects</li>
-                            <li>Contact options</li>
-                        </ul><br/>
-                        Who is Jip Voss? Jip Voss is a man (18 years old) and living in the Netherlands. Where he works on ICT problems within school. He is now following the Fontys ICT study in the Delta excellence program. Working on multiple projects at the same time. Because he doesn't really like to do the same stuff together. Jip is a motivated boy who really wants to reach the end-goal of all the projects he is working on.<br/><br/>
-                    </p>
-                    <button onClick={LoadPortofolio} className="QuickMenuButton" id="PortofolioButton"><div><p>Open portofolio</p></div><div className="arrows-body"><div className="arrow"></div><div className="arrow"></div><div className="arrow"></div></div></button>
+                    <div className="LineItem">
+                        <div className="LeftSideWelcomeFrame">
+                            <h1 className="Title">Welcome by TechCode</h1>
+                            <h2 className="SubTitle">Your go-to for searching our online portofolio and view our upcoming products! The portofolio will be mainly focussed on that from Jip Voss.</h2>
+                        </div>
+                        <div className="RightSideWelcomeFrame">
+                            <p>
+                                The portofolio contains information of who Jip is and what for ICT background he has. To make sure you can find all information about Jip they're 3 categories:<br/>
+                                <ul>
+                                    <li>About me</li>
+                                    <li>Projects</li>
+                                    <li>Contact options</li>
+                                </ul><br/>
+                                Who is Jip Voss? Jip Voss is a man (18 years old) and living in the Netherlands. Where he works on ICT problems within school. He is now following the Fontys ICT study in the Delta excellence program. Working on multiple projects at the same time. Because he doesn't really like to do the same stuff together. Jip is a motivated boy who really wants to reach the end-goal of all the projects he is working on.<br/><br/>
+                            </p>
+                        </div>
+                    </div>
                 </div>
                 <div className="RightSideWelcome">
                     <input type="image" src={JipVoss} onClick={PlayAudio} id="JipVossImage"/>
+                    <button onClick={LoadPortofolio} className="QuickMenuButton" id="PortofolioButton"><div><p>Open portofolio</p></div><div className="arrows-body"><div className="arrow"></div><div className="arrow"></div><div className="arrow"></div></div></button>
                 </div>
             </div>
             <div className="LineItem">
@@ -96,10 +102,16 @@ const RenderMainScreen: React.FC<Setters> = ({ stateSetterFunctions }) => {
                         <img src={SitePreview} alt="Latest product preview" id="PreviewImage"/>
                     </div>
                     <div className="RightSideLatestProject">
-                        <h1 className="Title">Latest project</h1>
-                        <h2 className="SubTitle">TechCode site</h2>
-                        <p>The TechCode site has been created in semester 2 of Open Learning and Delta for Jip Voss at Fontys HBO-ICT. The site has been released around - and will be used as an portofolio site!</p><br/>
-                        <button onClick={LoadPortofolio} className="QuickMenuButton" id="LatestProjectButton"><div><p>Show me more!</p></div><div className="arrows-body"><div className="arrow"></div><div className="arrow"></div><div className="arrow"></div></div></button>
+                        <div className="LineItem">
+                            <div className="LeftSideProjectFrame">
+                                <h1 className="Title">Latest project</h1>
+                                <h2 className="SubTitle">TechCode site</h2>
+                            </div>
+                            <div className="RightSideProjectFrame">
+                                <p>The TechCode site has been created in semester 2 of Open Learning and Delta for Jip Voss at Fontys HBO-ICT. The site has been released around - and will be used as an portofolio site!</p><br/>
+                                <button onClick={LoadPortofolio} className="QuickMenuButton" id="LatestProjectButton"><div><p>Show me more!</p></div><div className="arrows-body"><div className="arrow"></div><div className="arrow"></div><div className="arrow"></div></div></button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
