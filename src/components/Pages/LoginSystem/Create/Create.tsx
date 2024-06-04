@@ -50,62 +50,72 @@ const RenderCreateScreen: React.FC<Setters> = ({ stateSetterFunctions }) => {
         if(checkbox?.checked == true){
             if(username != "" && password != ""){
                 if(password == password2){
-                    fetch('http://localhost/TechCodeDatabase/ServerCreate.php', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'Accept' : 'application/json'
-                        },
-                        body: JSON.stringify({ username, email, phonenumber, birthday, Firstname, Lastname, password }),
-                    })
-                    .then(response => {
-                        if(response.ok){
-                            fetch('http://localhost/TechCodeDatabase/ServerLogin.php', {
-                                method: 'POST',
-                                headers: {
-                                    'Content-Type': 'application/json',
-                                    'Accept': 'application/json'
-                                },
-                                body: JSON.stringify({ username, password }),
-                            })
-                            .then(function (response) {
-                                console.log(response.status);
-                                if (response.ok) {
-                                    return response.json();
-                                } else {
-                                    throw new Error('Invalid username or password');
-                                }
-                            })
-                            .then(function (data) {
-                                sessionStorage.setItem("Tech_ID", data.GivenID);
-                                sessionStorage.setItem("Username", data.GivenUsername);
-                                sessionStorage.setItem("Firstname", data.GivenFirstname);
-                                sessionStorage.setItem("Lastname", data.GivenLastname);
-                                sessionStorage.setItem("Birthday", data.GivenBirthday);
-                                sessionStorage.setItem("Email", data.GivenEmail);
-                                sessionStorage.setItem("WorkEmail", data.GivenWorkMail);
-                                sessionStorage.setItem("Phonenumber", data.GivenPhoneNumber);
-                                sessionStorage.setItem("Country", data.GivenLand);
-                                sessionStorage.setItem("Adres", data.GivenAdres);
-                                sessionStorage.setItem("DeliverCode", data.GivenDeliverCode);
-                                sessionStorage.setItem("Rol", data.GivenRol);
-                    
-                                stateSetterFunctions.setCreateScreenVisible(false);
-                                stateSetterFunctions.setHomePageVisible(true);
-                                stateSetterFunctions.setMenuBarVisible(true);
-                            })
-                            .catch(error => {
-                                console.error('Error:', error.message);
-                                alert(error.message);
-                            });
-                        } else {
-                            alert("Invalid username or password");
+                    if(PasswordCheck()){
+                        if(email.split("").includes("@")){
+                            if(!isNaN(parseFloat(phonenumber))){
+                                fetch('http://localhost/TechCodeDatabase/ServerCreate.php', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                        'Accept' : 'application/json'
+                                    },
+                                    body: JSON.stringify({ username, email, phonenumber, birthday, Firstname, Lastname, password }),
+                                })
+                                .then(response => {
+                                    if(response.ok){
+                                        fetch('http://localhost/TechCodeDatabase/ServerLogin.php', {
+                                            method: 'POST',
+                                            headers: {
+                                                'Content-Type': 'application/json',
+                                                'Accept': 'application/json'
+                                            },
+                                            body: JSON.stringify({ username, password }),
+                                        })
+                                        .then(function (response) {
+                                            console.log(response.status);
+                                            if (response.ok) {
+                                                return response.json();
+                                            } else {
+                                                throw new Error('Invalid username or password');
+                                            }
+                                        })
+                                        .then(function (data) {
+                                            sessionStorage.setItem("Tech_ID", data.GivenID);
+                                            sessionStorage.setItem("Username", data.GivenUsername);
+                                            sessionStorage.setItem("Firstname", data.GivenFirstname);
+                                            sessionStorage.setItem("Lastname", data.GivenLastname);
+                                            sessionStorage.setItem("Birthday", data.GivenBirthday);
+                                            sessionStorage.setItem("Email", data.GivenEmail);
+                                            sessionStorage.setItem("WorkEmail", data.GivenWorkMail);
+                                            sessionStorage.setItem("Phonenumber", data.GivenPhoneNumber);
+                                            sessionStorage.setItem("Country", data.GivenLand);
+                                            sessionStorage.setItem("Adres", data.GivenAdres);
+                                            sessionStorage.setItem("DeliverCode", data.GivenDeliverCode);
+                                            sessionStorage.setItem("Rol", data.GivenRol);
+                                
+                                            stateSetterFunctions.setCreateScreenVisible(false);
+                                            stateSetterFunctions.setHomePageVisible(true);
+                                            stateSetterFunctions.setMenuBarVisible(true);
+                                        })
+                                        .catch(error => {
+                                            console.error('Error:', error.message);
+                                            alert(error.message);
+                                        });
+                                    } else {
+                                        alert("Invalid username or password");
+                                    }
+                                })
+                                .catch(error => {
+                                    console.error('Error:', error);
+                                    alert("An error occurred while logging in");
+                                });
+                            } else {
+                                alert("Your phonenumber includes letters! It must include only numbers!"); 
+                            }
+                        } else  {
+                            alert("You didn't provide an email adress!"); 
                         }
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                        alert("An error occurred while logging in");
-                    });
+                    }
                 } else {
                     alert("The passwords are not the same!");
                 }
@@ -115,6 +125,29 @@ const RenderCreateScreen: React.FC<Setters> = ({ stateSetterFunctions }) => {
         } else {
             alert("You didn't agree to our policies!");
         }
+    }
+
+    function PasswordCheck(){
+        let result = false;
+        let SplittedPassword = password.split("");
+        let SpecialCharactersArray = ["@", "!", "#", "$", "%", "&", "*", "(", ")", ",", ".", ";", ":", "/", "?", "<", ">"];
+
+        if(SplittedPassword.length < 8){
+            alert("The given password is too short!");
+            result = false;
+        } else {
+            for(let i = 0; i < SplittedPassword.length; i++){
+                if(SpecialCharactersArray.includes(SplittedPassword[i])){
+                    result = true;
+                }
+            }
+
+            if(result == false){
+                alert("Your password didn't met the requirements");
+            }
+        }
+
+        return result;
     }
 
     function LoadLoginScreen(){
