@@ -14,7 +14,7 @@
             return $num1 * $num2;
         }
 
-        public function Divide($nu1, $num2){
+        public function Divide($num1, $num2){
             return $num1 / $num2;
         }
     }

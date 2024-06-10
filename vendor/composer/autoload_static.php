@@ -37,7 +37,7 @@ class ComposerStaticInitfbee484fbcb98ba45566f17e8eb69e9b
         ),
         'Api\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/src/Api',
+            0 => __DIR__ . '/../..' . '/Api',
         ),
     );
 
