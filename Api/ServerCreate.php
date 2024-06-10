@@ -17,7 +17,7 @@
     }
 
     //includes
-    include "./MailingSystem/Mailer.php";
+    include "../MailingSystem/Mailer.php";
 
     //DATABASE CONNECTION
     $servername = "localhost";

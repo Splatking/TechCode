@@ -24,22 +24,22 @@
 
         public function Login($LoginUsername, $LoginPassword){
             $conn = new \mysqli($this->servername, $this->username, $this->password, $this->database);
-
+        
             if ($conn->connect_error) {
                 die("Connection failed: " . $conn->connect_error);
             }
-
+        
             $sql = "SELECT * FROM `accounts` WHERE `Gebruikersnaam`=?";
             $stmt = $conn->prepare($sql);
             $stmt->bind_param("s", $LoginUsername);
             $stmt->execute();
-
+        
             $result = $stmt->get_result();
-
+        
             if ($result->num_rows > 0) {
                 $row = $result->fetch_assoc();
                 $hashedPassword = $row["Wachtwoord"];
-
+        
                 if(password_verify($LoginPassword, $hashedPassword)){
                     $GivenID = $row["Tech_ID"];
                     $GivenUsername = $row["Gebruikersnaam"];
@@ -54,7 +54,7 @@
                     $GivenAdres = $row["Adres"];
                     $GivenDeliverCode = $row["Postcode"];
                     $GivenRol = $row["Rol"];
-
+        
                     $responseData = array(
                         "message" => "Login successful",
                         "GivenID" => $GivenID,
@@ -71,20 +71,19 @@
                         "GivenDeliverCode" => $GivenDeliverCode,
                         "GivenRol" => $GivenRol
                     );
-    
-                    header('Content-Type: application/json');
-    
+        
+                    // Return the JSON response
                     echo json_encode($responseData);
                 } else {
                     http_response_code(401);
-                    echo json_encode(array("message" => "Invalid username or password"));
+                    return json_encode(array("message" => "Invalid username or password"));
                 }
-    
+        
                 $stmt->close();
                 $conn->close();
             } else {
                 http_response_code(401);
-                echo json_encode(array("message" => "Invalid username or password"));
+                return json_encode(array("message" => "Invalid username or password"));
             }
         }
 
