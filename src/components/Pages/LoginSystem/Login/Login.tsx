@@ -24,7 +24,7 @@ const RenderLoginScreen: React.FC<Setters> = ({ stateSetterFunctions }) => {
                     'Accept': 'application/json'
                 },
                 body: JSON.stringify({ username, password }),
-            })
+            })        
             .then(function (response) {
                 console.log(response.status);
                 console.log(response);
