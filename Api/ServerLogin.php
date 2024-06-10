@@ -1,62 +1,37 @@
 <?php
-    //Server Settup
-    if (isset($_SERVER['HTTP_ORIGIN'])) {
-        header("Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']}");
-        header('Access-Control-Allow-Credentials: true');
-        header('Access-Control-Max-Age: 86400');
-    }
-    
-    if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
-        if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_METHOD']))
-            header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
-    
-        if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']))
-            header("Access-Control-Allow-Headers: {$_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']}");
-    
-        exit(0);
-    }
-    
-    //DATA HOLDER
-    $GivenID;
-    $GivenUsername;
-    $GivenFirstname;
-    $GivenLastname;
-    $GivenBirthday;
-    $GivenEmail;
-    $GivenWorkMail;
-    $GivenPhoneNumber;
-    $GivenLand;
-    $GivenAdres;
-    $GivenDeliverCode;
-    $GivenRol;
+    namespace Api;
 
-    //DATABASE CONNECTION
-    $servername = "localhost";
-    $username = "TechCode_Systems";
-    $password = "System123";
-    $database = "techcode_database";
+    class ServerLogin {
+        // Class properties
+        private $GivenID;
+        private $GivenUsername;
+        private $GivenFirstname;
+        private $GivenLastname;
+        private $GivenBirthday;
+        private $GivenEmail;
+        private $GivenWorkMail;
+        private $GivenPhoneNumber;
+        private $GivenLand;
+        private $GivenAdres;
+        private $GivenDeliverCode;
+        private $GivenRol;
 
-    $conn = new mysqli($servername, $username, $password, $database);
+        // Database connection properties
+        private $servername = "localhost";
+        private $username = "TechCode_Systems";
+        private $password = "System123";
+        private $database = "techcode_database";
 
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
+        public function Login($LoginUsername, $LoginPassword){
+            $conn = new \mysqli($this->servername, $this->username, $this->password, $this->database);
 
-    $postdata = file_get_contents("php://input");
-
-    if($postdata){
-        $request = json_decode($postdata, true);
-
-        
-        if (isset($request["username"]) && isset($request["password"])) {
-            $username = $request["username"];
-            $password = $request["password"];
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+            }
 
             $sql = "SELECT * FROM `accounts` WHERE `Gebruikersnaam`=?";
             $stmt = $conn->prepare($sql);
-
-            $stmt->bind_param("s", $username);
-
+            $stmt->bind_param("s", $LoginUsername);
             $stmt->execute();
 
             $result = $stmt->get_result();
@@ -65,7 +40,7 @@
                 $row = $result->fetch_assoc();
                 $hashedPassword = $row["Wachtwoord"];
 
-                if(password_verify($password, $hashedPassword)){
+                if(password_verify($LoginPassword, $hashedPassword)){
                     $GivenID = $row["Tech_ID"];
                     $GivenUsername = $row["Gebruikersnaam"];
                     $GivenDiscordID = $row["Discord_ID"];
@@ -106,11 +81,20 @@
                 }
     
                 $stmt->close();
+                $conn->close();
             } else {
                 http_response_code(401);
                 echo json_encode(array("message" => "Invalid username or password"));
             }
-        } else if(isset($request["TechID"])){
+        }
+
+        public function CreationLogin($TechID){
+            $conn = new mysqli($servername, $username, $password, $database);
+
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+            }
+
             $TechID = $request["TechID"];
 
             $sql = "SELECT * FROM `accounts` WHERE `Tech_ID`=?";
@@ -161,11 +145,20 @@
                 echo json_encode($responseData);
 
                 $stmt->close();
+                $conn->close();
             } else {
                 http_response_code(401);
                 echo json_encode(array("message" => "Invalid TechID"));
             }
-        } else if(isset($request["DiscordID"])){
+        }
+
+        public function BotLogin($DiscordID){
+            $conn = new mysqli($servername, $username, $password, $database);
+
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+            }
+
             $DiscordID = $request["DiscordID"];
 
             $sql = "SELECT Tech_ID, Gebruikersnaam, Rol FROM `accounts` WHERE `Discord_ID`=?";
@@ -192,14 +185,51 @@
             }
 
             $stmt->close();
-        } else {
-            http_response_code(400);
-            echo json_encode(array("message" => "Invalid request"));
+            $conn->close();
         }
-    } else {
-        http_response_code(400);
-        echo json_encode(array("message" => "No data received"));
+    } 
+
+    // Server Setup
+    if (isset($_SERVER['HTTP_ORIGIN'])) {
+        header("Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']}");
+        header('Access-Control-Allow-Credentials: true');
+        header('Access-Control-Max-Age: 86400');
+    }
+    
+    if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
+        if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_METHOD']))
+            header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+    
+        if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']))
+            header("Access-Control-Allow-Headers: {$_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']}");
+    
+        exit(0);
     }
 
-    $conn->close();
+    $server = new ServerLogin();
+
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $postdata = file_get_contents("php://input");
+
+        if($postdata){
+            $request = json_decode($postdata, true);
+
+            if (isset($request["username"]) && isset($request["password"])) {
+                $server->Login($request["username"], $request["password"]);
+            } elseif (isset($request["TechID"])) {
+                $server->CreationLogin($request["TechID"]);
+            } elseif (isset($request["DiscordID"])) {
+                $server->BotLogin($request["DiscordID"]);
+            } else {
+                http_response_code(400);
+                echo json_encode(array("message" => "Invalid request"));
+            }
+        } else {
+            http_response_code(400);
+            echo json_encode(array("message" => "No data received"));
+        }
+    } else {
+        http_response_code(405);
+        echo json_encode(array("message" => "Method not allowed"));
+    }
 ?>
