@@ -56,7 +56,7 @@ function RenderTable(){
 
     function UpdateUserData(){
         if(username !== "" && DiscordID !== "" && firstname !== "" && lastname !== "" && birthday !== "" && email !== "" && phonenumber !== ""){
-            fetch('http://localhost/TechCodeDatabase/ServerUpdateUser.php', {
+            fetch('http://localhost/TechCodeDatabase/Api/ServerUpdateUser.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -66,7 +66,7 @@ function RenderTable(){
             })
             .then(response => {
                 if(response.ok){
-                    fetch('http://localhost/TechCodeDatabase/ServerLogin.php', {
+                    fetch('http://localhost/TechCodeDatabase/Api/ServerLogin.php', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',

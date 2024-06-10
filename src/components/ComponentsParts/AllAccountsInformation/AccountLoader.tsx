@@ -10,7 +10,7 @@ function ExportTable() {
     }, []);
 
     function loadData() {
-        fetch('http://localhost/TechCodeDatabase/ServerWorkersConnection.php', {
+        fetch('http://localhost/TechCodeDatabase/Api/ServerWorkersConnection.php', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -34,7 +34,7 @@ function ExportTable() {
 
     function UpdateRole(event: ChangeEvent<HTMLSelectElement>, techId: any, Gebruikersnaam: any, Email: any) {
         const newRole = event.target.value;
-        fetch('http://localhost/TechCodeDatabase/ServerRoleUpdate.php', {
+        fetch('http://localhost/TechCodeDatabase/Api/ServerRoleUpdate.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -54,7 +54,7 @@ function ExportTable() {
     }
 
     function AccountTermination(techId: any, Gebruikersnaam: any, Email: any) {
-        fetch('http://localhost/TechCodeDatabase/ServerAccountTermination.php', {
+        fetch('http://localhost/TechCodeDatabase/Api/ServerAccountTermination.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

@@ -17,7 +17,7 @@ const RenderLoginScreen: React.FC<Setters> = ({ stateSetterFunctions }) => {
     //functions
     function Login() {
         if (username !== "" && password !== "") {
-            fetch('http://localhost/TechCodeDatabase/ServerLogin.php', {
+            fetch('http://localhost/TechCodeDatabase/Api/ServerLogin.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

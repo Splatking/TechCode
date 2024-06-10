@@ -53,7 +53,7 @@ const RenderCreateScreen: React.FC<Setters> = ({ stateSetterFunctions }) => {
                     if(PasswordCheck()){
                         if(email.split("").includes("@")){
                             if(!isNaN(parseFloat(phonenumber))){
-                                fetch('http://localhost/TechCodeDatabase/ServerCreate.php', {
+                                fetch('http://localhost/TechCodeDatabase/Api/ServerCreate.php', {
                                     method: 'POST',
                                     headers: {
                                         'Content-Type': 'application/json',
@@ -63,7 +63,7 @@ const RenderCreateScreen: React.FC<Setters> = ({ stateSetterFunctions }) => {
                                 })
                                 .then(response => {
                                     if(response.ok){
-                                        fetch('http://localhost/TechCodeDatabase/ServerLogin.php', {
+                                        fetch('http://localhost/TechCodeDatabase/Api/ServerLogin.php', {
                                             method: 'POST',
                                             headers: {
                                                 'Content-Type': 'application/json',
