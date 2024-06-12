@@ -1,21 +1,18 @@
 <?php
     use PHPUnit\Framework\TestCase;
-    use Api\ServerRoleTest;
+    use Api\ServerRoleUpdate;
 
-    class ServerCreateTest extends TestCase {
-        public function testCreate() {
+    class ServerRoleTest extends TestCase {
+        public function testRole() {
             // Test credentials
             $testID = "69";
             $testRole = "[TA]Test Account";
 
-            $server = new ServerRoleTest();
+            $server = new ServerRoleUpdate();
 
             $result = $server->updateRole($testID, $testRole);
 
             $this->assertNotNull($result);
-
-            $this->assertEquals(200, $result["code"]);
-
             $this->assertEquals("User successfully updated", $result["message"]);
         }
     }

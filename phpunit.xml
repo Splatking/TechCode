@@ -10,8 +10,14 @@
         <testsuite name="ServerCreate">
             <file>test/ServerCreateTest.php</file>
         </testsuite>
+        <testsuite name="ServerUpdateUser">
+            <file>test/ServerUpdateUserTest.php</file>
+        </testsuite>
         <testsuite name="ServerRole">
             <file>test/ServerRoleTest.php</file>
+        </testsuite>
+        <testsuite name="WorkersConnection">
+            <file>test/ServerWorkersConnectionTest.php</file>
         </testsuite>
         <testsuite name="ServerTermination">
             <file>test/ServerTermination.php</file>

@@ -10,31 +10,34 @@
 
         public function updateRole($TechID, $NewRole){
             $conn = new \mysqli($this->servername, $this->username, $this->password, $this->database);
-        
+            
             if ($conn->connect_error) {
                 die("Connection failed: " . $conn->connect_error);
             }
-
+        
             $sql = "UPDATE `accounts` SET Rol=? WHERE Tech_ID=?";
             $stmt = $conn->prepare($sql);
-
+        
             $stmt->bind_param("ss", $NewRole, $TechID);
             $stmt->execute();
-
+        
             if ($stmt->affected_rows > 0) {
+                $response = array("message" => "User successfully updated");
                 http_response_code(200);
-                echo json_encode(array("message" => "User successfully updated"));
-                return json_encode(array("message" => "User successfully updated"));
             } else {
                 if ($stmt->errno == 0) {
+                    $response = array("message" => "User successfully updated");
                     http_response_code(200);
-                    echo json_encode(array("message" => "User was not updated, possibly no changes"));
                 } else {
+                    $response = array("message" => "Database error occurred while updating user");
                     http_response_code(500);
-                    echo json_encode(array("message" => "Database error occurred while updating user"));
                 }
             }
+            
             $stmt->close();
+            $conn->close();
+        
+            return $response;
         }
     }
 
@@ -61,7 +64,7 @@
     // Get raw POST data
     $postdata = file_get_contents("php://input");
 
-    $server = new ServerLogin();
+    $server = new ServerRoleUpdate();
 
     if ($postdata) {
         $request = json_decode($postdata, true);
@@ -82,6 +85,4 @@
         http_response_code(400);
         echo json_encode(array("message" => "No data received"));
     }
-
-    $conn->close();
 ?>

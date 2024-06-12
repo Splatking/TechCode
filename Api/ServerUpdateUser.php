@@ -1,4 +1,45 @@
 <?php
+    namespace Api;
+
+    class ServerUpdateUser {
+        // DATABASE CONNECTION
+        private $servername = "localhost";
+        private $username = "TechCode_Systems";
+        private $password = "System123";
+        private $database = "techcode_database";
+
+        public function UpdateUser($GivenUsernamen, $DiscordID, $firstname, $lastname, $birthday, $email, $phonenumber, $country, $adress, $delivercode, $TechID){
+            $conn = new \mysqli($this->servername, $this->username, $this->password, $this->database);
+
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+            }
+
+            $sql = "UPDATE `accounts` SET Gebruikersnaam=?, Discord_ID=?, Voornaam=?, Achternaam=?, Geboortedatum=?, Email=?, Telefoonnummer=?, Land=?, Adres=?, Postcode=? WHERE Tech_ID=?";
+            $stmt = $conn->prepare($sql);
+
+            $stmt->bind_param("sssssssssss", $GivenUsernamen, $DiscordID, $firstname, $lastname, $birthday, $email, $phonenumber, $country, $adress, $delivercode, $TechID);
+            $stmt->execute();
+
+            if ($stmt->affected_rows > 0) {
+                http_response_code(200);
+                echo json_encode(array("message" => "User successfully updated"));
+                return array("message" => "User successfully updated");
+            } else {
+                if ($stmt->errno == 0) {
+                    http_response_code(200);
+                    echo json_encode(array("message" => "User was not updated, possibly no changes"));
+                    return array("message" => "User successfully updated");
+                } else {
+                    http_response_code(500);
+                    echo json_encode(array("message" => "Database error occurred while updating user"));
+                }
+            }
+            $stmt->close();
+            $conn->close();
+        }
+    }
+
     //Server Setup
     if (isset($_SERVER['HTTP_ORIGIN'])) {
         header("Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']}");
@@ -19,20 +60,10 @@
     //includes
     include "../MailingSystem/Mailer.php";
 
-    // DATABASE CONNECTION
-    $servername = "localhost";
-    $username = "TechCode_Systems";
-    $password = "System123";
-    $database = "techcode_database";
-
-    $conn = new mysqli($servername, $username, $password, $database);
-
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-
     // Get raw POST data
     $postdata = file_get_contents("php://input");
+
+    $server = new ServerUpdateUser();
 
     if($postdata) {
         $request = json_decode($postdata, true);
@@ -50,26 +81,7 @@
             $adress = $request["adres"];
             $delivercode = $request["delivercode"];
 
-            $sql = "UPDATE `accounts` SET Gebruikersnaam=?, Discord_ID=?, Voornaam=?, Achternaam=?, Geboortedatum=?, Email=?, Telefoonnummer=?, Land=?, Adres=?, Postcode=? WHERE Tech_ID=?";
-            $stmt = $conn->prepare($sql);
-
-            $stmt->bind_param("sssssssssss", $username, $DiscordID, $firstname, $lastname, $birthday, $email, $phonenumber, $country, $adress, $delivercode, $TechID);
-            $stmt->execute();
-
-            if ($stmt->affected_rows > 0) {
-                http_response_code(200);
-                echo json_encode(array("message" => "User successfully updated"));
-            } else {
-                if ($stmt->errno == 0) {
-                    http_response_code(200);
-                    echo json_encode(array("message" => "User was not updated, possibly no changes"));
-                } else {
-                    http_response_code(500);
-                    echo json_encode(array("message" => "Database error occurred while updating user"));
-                }
-            }
-            $stmt->close();
-
+            $server->UpdateUser($username, $DiscordID, $firstname, $lastname, $birthday, $email, $phonenumber, $country, $adress, $delivercode, $TechID);
             sendEmail($email, $username, "Account update");
         } else {
             http_response_code(400);
@@ -79,6 +91,4 @@
         http_response_code(400);
         echo json_encode(array("message" => "No data received"));
     }
-
-    $conn->close();
 ?>

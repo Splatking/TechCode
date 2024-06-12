@@ -2,8 +2,8 @@
     use PHPUnit\Framework\TestCase;
     use Api\ServerAccountTermination;
 
-    class ServerCreateTest extends TestCase {
-        public function testCreate() {
+    class ServerTerminationTest extends TestCase {
+        public function testTermination() {
             // Test credentials
             $testID = "69";
 
