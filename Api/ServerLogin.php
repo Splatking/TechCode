@@ -74,6 +74,7 @@
         
                     // Return the JSON response
                     echo json_encode($responseData);
+                    return json_encode($responseData);
                 } else {
                     http_response_code(401);
                     return json_encode(array("message" => "Invalid username or password"));
