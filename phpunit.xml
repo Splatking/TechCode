@@ -2,7 +2,13 @@
 <phpunit bootstrap="vendor/autoload.php" colors="true" stopOnFailure="false">
     <testsuites>
         <testsuite name="Calculator">
-            <directory>tests</directory>
+            <file>test/CalculatorTest.php</file>
+        </testsuite>
+        <testsuite name="ServerLogin">
+            <file>test/ServerLoginTest.php</file>
+        </testsuite>
+        <testsuite name="ServerCreate">
+            <file>test/ServerCreateTest.php</file>
         </testsuite>
     </testsuites>
     <php>
