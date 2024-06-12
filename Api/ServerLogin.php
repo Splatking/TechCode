@@ -89,13 +89,11 @@
         }
 
         public function CreationLogin($TechID){
-            $conn = new mysqli($servername, $username, $password, $database);
+            $conn = new \mysqli($this->servername, $this->username, $this->password, $this->database);
 
             if ($conn->connect_error) {
                 die("Connection failed: " . $conn->connect_error);
             }
-
-            $TechID = $request["TechID"];
 
             $sql = "SELECT * FROM `accounts` WHERE `Tech_ID`=?";
             $stmt = $conn->prepare($sql);
@@ -141,25 +139,23 @@
                 );
     
                 header('Content-Type: application/json');
-    
                 echo json_encode($responseData);
-
-                $stmt->close();
-                $conn->close();
+                return json_encode($responseData);
             } else {
                 http_response_code(401);
                 echo json_encode(array("message" => "Invalid TechID"));
             }
+
+            $stmt->close();
+            $conn->close();
         }
 
         public function BotLogin($DiscordID){
-            $conn = new mysqli($servername, $username, $password, $database);
+            $conn = new \mysqli($this->servername, $this->username, $this->password, $this->database);
 
             if ($conn->connect_error) {
                 die("Connection failed: " . $conn->connect_error);
             }
-
-            $DiscordID = $request["DiscordID"];
 
             $sql = "SELECT Tech_ID, Gebruikersnaam, Rol FROM `accounts` WHERE `Discord_ID`=?";
             $stmt = $conn->prepare($sql);
@@ -179,6 +175,7 @@
 
                 header('Content-Type: application/json');
                 echo json_encode($responseData);
+                return json_encode($responseData);
             } else {
                 http_response_code(401);
                 echo json_encode(array("message" => "Invalid TechID"));
