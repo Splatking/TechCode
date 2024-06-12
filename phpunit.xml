@@ -10,6 +10,12 @@
         <testsuite name="ServerCreate">
             <file>test/ServerCreateTest.php</file>
         </testsuite>
+        <testsuite name="ServerRole">
+            <file>test/ServerRoleTest.php</file>
+        </testsuite>
+        <testsuite name="ServerTermination">
+            <file>test/ServerTermination.php</file>
+        </testsuite>
     </testsuites>
     <php>
         <ini name="display_errors" value="On" />

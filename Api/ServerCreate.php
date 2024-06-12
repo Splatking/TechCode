@@ -62,7 +62,7 @@
     // Include the mailing system
     include "../MailingSystem/Mailer.php";
     
-    $server = new ServerCreate();
+    
     
     $postdata = file_get_contents("php://input");
     if ($postdata) {
