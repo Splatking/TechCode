@@ -93,7 +93,6 @@ const RenderMainScreen: React.FC<Setters> = ({ stateSetterFunctions }) => {
                 </div>
                 <div className="RightSideWelcome">
                     <input type="image" src={JipVoss} onClick={PlayAudio} id="JipVossImage"/>
-                    <button onClick={LoadPortofolio} className="QuickMenuButton" id="PortofolioButton"><div><p>Open portofolio</p></div><div className="arrows-body"><div className="arrow"></div><div className="arrow"></div><div className="arrow"></div></div></button>
                 </div>
             </div>
             <div className="LineItem">
@@ -109,7 +108,7 @@ const RenderMainScreen: React.FC<Setters> = ({ stateSetterFunctions }) => {
                             </div>
                             <div className="RightSideProjectFrame">
                                 <p>The TechCode site has been created in semester 2 of Open Learning and Delta for Jip Voss at Fontys HBO-ICT. The site has been released around - and will be used as an portofolio site!</p><br/>
-                                <button onClick={LoadPortofolio} className="QuickMenuButton" id="LatestProjectButton"><div><p>Show me more!</p></div><div className="arrows-body"><div className="arrow"></div><div className="arrow"></div><div className="arrow"></div></div></button>
+                                <button onClick={LoadPortofolio} className="QuickMenuButton" id="LatestProjectButton"><div><p>Open complete portofolio!</p></div><div className="arrows-body"><div className="arrow"></div><div className="arrow"></div><div className="arrow"></div></div></button>
                             </div>
                         </div>
                     </div>
