@@ -1,0 +1,16 @@
+.ContactDIV {
+    width: 17.5%;
+    margin-left: 41.25%;
+    background-color: white;
+    border-radius: 25px;
+}
+
+.ContactHolder {
+    text-align: center;
+}
+
+.SocialLoader {
+    width: 25%;
+    border-radius: 50%;
+    margin-right: 5%;
+}

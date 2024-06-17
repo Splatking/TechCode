@@ -17,14 +17,14 @@ const RenderLoginScreen: React.FC<Setters> = ({ stateSetterFunctions }) => {
     //functions
     function Login() {
         if (username !== "" && password !== "") {
-            fetch('http://localhost/TechCodeDatabase/ServerLogin.php', {
+            fetch('http://localhost/TechCodeDatabase/Api/ServerLogin.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                     'Accept': 'application/json'
                 },
                 body: JSON.stringify({ username, password }),
-            })
+            })        
             .then(function (response) {
                 console.log(response.status);
                 console.log(response);
@@ -48,6 +48,10 @@ const RenderLoginScreen: React.FC<Setters> = ({ stateSetterFunctions }) => {
                 sessionStorage.setItem("DeliverCode", data.GivenDeliverCode);
                 sessionStorage.setItem("Rol", data.GivenRol);
                 sessionStorage.setItem("Password", password);
+
+                if(data.GivenDiscordID != 0){
+                    sessionStorage.setItem("Discord", data.GivenDiscordID);
+                }
     
                 stateSetterFunctions.setLoginScreenVisible(false);
                 stateSetterFunctions.setHomePageVisible(true);

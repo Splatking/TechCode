@@ -1,19 +1,13 @@
 import { Fragment } from "react/jsx-runtime";
 import "./style.css";
-import JipVossImage from "../../Images/JipVoss.png";
+import JipVossImage from "../../Images/JipVoss.jpeg";
 import LinkedIn_Logo from "../../Images/LinkedIn_Logo.png";
 import Instagram_Logo from "../../Images/Instagram_Logo.png";
 
+//Loaders
+import { LoadLinkedIn, LoadInstagram } from "../../Scripts/Loaders";
+
 function JipVoss() { 
-    //functions
-    function OpenLinkedIn() {
-        window.open("https://www.linkedin.com/in/jip-v-6167a22b4/");
-    }
-
-    function OpenInstagram(){
-        window.open("https://www.instagram.com/jipthefox/Links");
-    }
-
     return (
         <Fragment>
             <div className="PortofolioDIV">
@@ -48,8 +42,8 @@ function JipVoss() {
                         </ul>
                         <p className="PersonalText" id="Third_Lines">
                             Besides all the ICT fun I'm also taking driving lessons at the moment. I still have a few steps to go for the pink paper, but it’s going pretty steady now.<br/><br/>
-                            Oh yeah! Before I forget I also have an instagram page: <input type="image" src={Instagram_Logo} alt="Instagram Logo" onClick={OpenInstagram} className="ThirdPartyLogo" id="InstagramLogo"/> <a href="https://www.instagram.com/jipthefox/Links">Instagram page</a> (hit that follow button now gamers)!<br/>
-                            You can also check me out on: <input type="image" src={LinkedIn_Logo} alt="LinkedIn Logo" onClick={OpenLinkedIn} className="ThirdPartyLogo" id="LinkedInLog"/> <a href="https://www.linkedin.com/in/jip-v-6167a22b4/">LinkedIn page</a>
+                            Oh yeah! Before I forget I also have an instagram page: <input type="image" src={Instagram_Logo} alt="Instagram Logo" onClick={LoadInstagram} className="ThirdPartyLogo" id="InstagramLogo"/> <a href="https://www.instagram.com/jipthefox/Links">Instagram page</a> (hit that follow button now gamers)!<br/>
+                            You can also check me out on: <input type="image" src={LinkedIn_Logo} alt="LinkedIn Logo" onClick={LoadLinkedIn} className="ThirdPartyLogo" id="LinkedInLog"/> <a href="https://www.linkedin.com/in/jip-v-6167a22b4/">LinkedIn page</a>
                         </p>
                     </div>
                 </div>

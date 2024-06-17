@@ -1,6 +1,6 @@
 import { Fragment, useState, useEffect } from "react";
 import VERSION from "../../Scripts/SiteSettings.tsx";
-import TechCode_Logo from "../../Images/TechCode_Logo.jpg";
+import TechCode_Logo from "../../Images/TechCode_Logo.png";
 import Buttons from "../MenuButtons/MenuButtons.tsx";
 import "./style.css";
 import { Setters, HideScreens } from "../../Scripts/ScreenHandler";
@@ -8,6 +8,7 @@ import { Setters, HideScreens } from "../../Scripts/ScreenHandler";
 //images
 import LoggedInAsPerson from "../../Icons/person_FILL0_wght400_GRAD0_opsz24.png";
 import LoginSymbol from "../../Icons/login_FILL0_wght400_GRAD0_opsz24.png";
+import RankingSymbol from "../../Icons/workspace_premium_24dp_FILL0_wght400_GRAD0_opsz24.png";
 
 const RenderMenuBar: React.FC<Setters> = ({ stateSetterFunctions }) => {
     //variable
@@ -15,6 +16,7 @@ const RenderMenuBar: React.FC<Setters> = ({ stateSetterFunctions }) => {
     const LoginSymbolImage = document.getElementById("LoginSymbolImage");
 
     const [loggedInUser, setLoggedInUser] = useState(sessionStorage.getItem("TechName") || "-");
+    const [loggedInUserRank, setLoggedInUserRank] = useState(sessionStorage.getItem("Rol") || "-");
 
     const LoadHomeScreen = () => {
         HideScreens(stateSetterFunctions);
@@ -51,7 +53,9 @@ const RenderMenuBar: React.FC<Setters> = ({ stateSetterFunctions }) => {
     useEffect(() => {
         const interval = setInterval(() => {
             const loggedInUser = sessionStorage.getItem("Username") || "-";
+            const LoggedInUserRank = sessionStorage.getItem("Rol") || "-";
             setLoggedInUser(loggedInUser);
+            setLoggedInUserRank(LoggedInUserRank);
             LoadLoginName();
         }, 5 * 1000);
     })
@@ -66,6 +70,7 @@ const RenderMenuBar: React.FC<Setters> = ({ stateSetterFunctions }) => {
                 <div></div>
                 <div>
                     <p id="LoginText"><img src={LoggedInAsPerson}/> {loggedInUser}</p>
+                    <p id="RankingText"><img src={RankingSymbol} id="RankingIcon"/> {loggedInUserRank}</p>
                     <button type="button" onClick={LoadLoginScreen} id="LoginButton" data-status="LoginButton"><img src={LoginSymbol} id="LoginSymbolImage"/> Login</button>
                     <p id="VERSION">Version: {VERSION}</p>
                 </div>

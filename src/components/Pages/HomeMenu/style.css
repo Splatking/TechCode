@@ -4,13 +4,86 @@
     }
 }
 
+@keyframes arrow-load {
+    0% {
+        opacity: 0;
+        transform: rotate(135deg) translate(60px,60px);
+    }
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: rotate(135deg) translate(-60px,-60px);
+    }
+}
+
 .ScreenItem{
-    background-color: white;
+    color: white;
     border-radius: 25px;
-    text-align: center;
     padding: 0.5%;
     margin-top: 2.5vh;
     position: relative;
+}
+
+#PortofolioButton{
+    width: 100%;
+    margin-top: 2.5%;
+}
+
+.QuickMenuButton{
+    border: 2px solid white;
+    background-color: white;
+    color: black;
+    font-size: 16pt;;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.QuickMenuButton:hover {
+    background-color: black;
+    color: white;
+}
+
+.arrows-body {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 60px;
+}
+
+.arrow {
+    position: relative;
+    width: 35px;
+    height: 35px;
+    margin-top: 10px;
+    border-top: 12px solid white;
+    border-left: 12px solid white;
+    transform: rotate(135deg);
+    animation: arrow-load 2s infinite;
+}
+
+.arrow:nth-child(1){
+    left: 25px;
+}
+
+.arrow:nth-child(2){
+    animation-delay: -0.2s;
+}
+
+.arrow:nth-child(3){
+    right: 25px;
+    animation-delay: -0.4s;
+}
+
+#TechCode_Introduction {
+    text-align: left;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .LineItem {
@@ -18,41 +91,69 @@
     flex-direction: row;
 }
 
-#QuickMenu {
-    margin-left: 2.5vw;
+.RightSideWelcomeFrame {
+    margin-top: 3.5%;
 }
 
-.QuickMenuButton {
-    font-size: 16pt;
-    border: 2px solid black;
-    background-color: black;
-    width: 90%;
-    text-decoration: none;
-    transition: all 0.5s;
-    cursor: pointer;
+#InnerLanguageBox {
     color: white;
-    border-radius: 25px;
 }
 
-.QuickMenuButton:hover {
-    background-color: #ddd;
-    color: black;
-    text-decoration: underline;
+.LeftSideWelcome {
+    width: 70%;
+}
+
+.RightSideWelcome {
+    width: 25%;
+}
+
+#JipVossImage {
+    margin-left: 25%;
+    height: auto;
+    width: 50%;
+    border-radius: 50%;
 }
 
 #LatestProduct {
-    width: 65vw;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.LeftSideLatestProject {
+    width: 50%;
+}
+
+.LeftSideProjectFrame {
+    width: 60%;
+}
+
+.RightSideProjectFrame {
+    margin-top: 5.5%;
+}
+
+.LanguageImage {
+    margin: 1%;
+    width: 9%;
+}
+
+.LanguagesToImage {
+    width: 100%;
+}
+
+.RightSideLatestProject {
+    width: 45%;
+}
+
+#LatestProjectButton {
+    width: 81.5%;
+    margin-left: 18.5%;
 }
 
 #PreviewImage {
-    border: 2px solid black;
-    border-radius: 25px;
-    width: 80%;
-}
-
-#PreviewImage:hover {
-    transform-origin: center;
-    animation: scaling 2000ms ease-in-out forwards;
+    border: 2px solid white;
+    width: 100%;
 }
 
 .Companies {
@@ -71,12 +172,12 @@
     gap: 7.5rem;
     display: flex;
     flex-direction: row;
-    color: white;
+    color: black;
 }
 
 .Companies[data-animated=true]{
     overflow: hidden;
-    mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+    mask: linear-gradient(90deg, transparent, white 20%, black 80%, transparent);
 }
 
 .Companies[data-animated=true] .Companies__inner{
@@ -95,4 +196,33 @@
 
 #TechCodeLogoInput{
     border-radius: 25px;
+}
+
+#VideoPlayer {
+    visibility: hidden;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.BottomLine {
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.SocialLoaderHome {
+    margin: 0.5%;
+    border-radius: 25%;
+    width: 2.5%;
+}
+
+#EmailLoader  {
+    width: 100%;
+    margin-top: 1%;
+}
+
+#EmailReference {
+    width: 3%;
 }

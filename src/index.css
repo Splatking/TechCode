@@ -1,35 +1,10 @@
 @font-face {
-    font-family: Micro5-Regular;
-    src: url("./components/Fonts/Micro5-Regular.ttf") format("truetype");
-}
-
-@font-face {
-    font-family: DancingFont;
-    src: url("./components/Fonts/DancingScript-VariableFont_wght.ttf") format("truetype");
-}
-
-@font-face {
-    font-family: Garamond-Regular;
-    src: url("./components/Fonts/EBGaramond-VariableFont_wght.ttf") format("truetype");
-}
-
-@font-face {
-    font-family: Garamond-Italic;
-    src: url("./components/Fonts/EBGaramond-Italic-VariableFont_wght.ttf") format("truetype");
-}
-
-@font-face {
-    font-family: Madimi-Regular;
-    src: url("./components/Fonts/MadimiRegular.ttf") format("truetype");
-}
-
-@font-face {
-    font-family: Lora;
-    src: url("./components/Fonts/Lora-VariableFont_wght.ttf") format("truetype");
+    font-family: Latto;
+    src: url("./components/Fonts/Lato-Light.ttf") format("truetype");
 }
 
 body {
-    font-family: "Lora", sans-serif;
+    font-family: "Latto", sans-serif;
     font-size: 14pt;
     overflow: hidden;
     width: 100vw;
@@ -40,13 +15,13 @@ body {
 }
 
 body button {
-    font-family: "Lora", sans-serif;
+    font-family: "Latto", sans-serif;
 }
 
 .MainScreen {
     width: 98vw;
-    height: 85vh;
-    margin-top: 15vh;
+    height: 82.5vh;
+    margin-top: 17.5vh;
     padding: 1% 1% 1% 1%;
     position: fixed;
     overflow-y: auto;
@@ -58,7 +33,7 @@ body button {
     border-bottom-left-radius: 25px;
     border-bottom-right-radius: 25px;
     width: 99vw;
-    height: 15vh;
+    height: 17.5vh;
     padding: 0.5%;
     position: fixed;
     display: flex;

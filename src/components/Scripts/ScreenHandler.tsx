@@ -12,6 +12,7 @@ interface Setters {
       setWorkingByScreenVisible: React.Dispatch<React.SetStateAction<boolean>>;
       setTeamScreenVisible: React.Dispatch<React.SetStateAction<boolean>>;
       setJipVossVisible: React.Dispatch<React.SetStateAction<boolean>>;
+      setInfoVisible: React.Dispatch<React.SetStateAction<boolean>>;
     };
 }
 
@@ -25,6 +26,7 @@ function HideScreens(stateSetterFunctions: Setters['stateSetterFunctions']){
   stateSetterFunctions.setWorkingByScreenVisible(false);
   stateSetterFunctions.setTeamScreenVisible(false);
   stateSetterFunctions.setJipVossVisible(false);
+  stateSetterFunctions.setInfoVisible(false);
 }
 
 export type {Setters as Setters};
